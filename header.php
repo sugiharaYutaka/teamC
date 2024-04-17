@@ -1,3 +1,7 @@
+<head>
+    <link rel="stylesheet" href="css/header.css">
+    <meta name="viewport" content="width=device-width,initial-scale=0.8">
+</head>
 <div id="hamberger">
     <nav>
         <ul>
@@ -29,3 +33,4 @@
     </button>
     <div id="menuarea"></div>
 </header>
+<script src="script/header.js"></script>

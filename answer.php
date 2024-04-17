@@ -1,8 +1,8 @@
 <?php
-require_once ('../answer/stabHeader.php');
+include "header.php";
 ?>
-<link href="../answer/answer.css" rel="stylesheet">
-<div class="main-container">
+<link href="css/answer.css" rel="stylesheet">
+<div class="main-container margin-top">
     <form class="answer-form" method="post" action="">
         <div class="row">
             <span class="label">質問内容</span>
