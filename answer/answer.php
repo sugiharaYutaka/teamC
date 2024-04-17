@@ -5,12 +5,12 @@ require_once ('../answer/stabHeader.php');
 <div class="main-container">
     <form class="answer-form" method="post" action="">
         <div class="row">
-            <span class="label">内容</span>
-            <textarea class="input lines" name="text"></textarea>
+            <span class="label">質問内容</span>
+            <textarea class="input lines"></textarea>
         </div>
         <div class="row">
-            <span class="label">タグ・キーワード</span>
-            <input class="input" name="tag">
+            <span class="label">回答内容</span>
+            <input class="input" name="answer">
         </div>
         <div class="row">
             <span class="label">画像添付</span>
