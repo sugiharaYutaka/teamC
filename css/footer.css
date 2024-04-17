@@ -157,6 +157,9 @@ nav button {
     cursor: pointer;
 }
 
+#hamberger-area {
+    width: 75px;
+}
 
 footer {
     display: flex;
@@ -194,6 +197,20 @@ footer input[type="submit"] {
     margin-right: auto;
     transition: 0.5s;
     cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+    /* ここに横幅が600px以下の時に発動するスタイルを記述 */
+
+    nav {
+        width: 100%;
+    }
+
+    div#product button {
+        margin: 5px;
+        width: 80%;
+    }
+
 }
 
 

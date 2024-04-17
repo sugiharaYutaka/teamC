@@ -21,6 +21,7 @@
     <div id="mask"></div>
 </div>
 <header>
+    <div id="hamberger-area"></div>
     <a id="header" href="index.php">
         <h1>KOBE DENSHI</h1>
     </a>
