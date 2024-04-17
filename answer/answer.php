@@ -10,7 +10,7 @@ require_once ('../answer/stabHeader.php');
         </div>
         <div class="row">
             <span class="label">回答内容</span>
-            <input class="input" name="answer">
+            <textarea class="input lines" name="answer"></textarea>
         </div>
         <div class="row">
             <span class="label">画像添付</span>
