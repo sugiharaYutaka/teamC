@@ -9,7 +9,7 @@
             <li><a href="home.php">HOME</a></li>
             <li><a href="mypage.php">PROFILE</a></li>
             <li><a href="QandA.php">Q & A</a></li>
-            <li><a href="puestion.php">QUENTION</a></li>
+            <li><a href="question.php">QUENTION</a></li>
             <li><a href="post.php">POST</a></li>
             <li><a href="article.php">ARTICLE</a></li>
         </ul>
