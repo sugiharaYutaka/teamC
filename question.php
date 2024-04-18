@@ -2,7 +2,7 @@
 include "header.php";
 ?>
 <link href="css/question.css" rel="stylesheet">
-<div class="main-contanier margin-top">
+<div class="main-container margin-top">
     <form class="qusetion-form" method="post" action="send.php">
         <div class="row">
             <span class="label">質問内容</span>
