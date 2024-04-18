@@ -16,13 +16,13 @@ include "header.php";
                 <div class="top-wrap">
                     <span class="title">
                         <a href="">
-                            PythonとuWSGIの環境構築について沼ったこと
+                            Centos7の任意のポートを開放する方法を教えてください
                         </a>
                     </span>
                 </div>
                 <div class="bot-wrap">
                     <span class="bot-label">
-                        good
+                        回答
                     </span>
                     <span class="bot-count">
                         3
