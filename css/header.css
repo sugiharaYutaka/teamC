@@ -219,7 +219,8 @@ footer input[type="submit"] {
 /*自主製作用の為以下のcssは無関係*/
 
 body {
-    background-color: pink;
+    background-image: url("../img/IMG_1429.JPG");
+    background-size: cover;
 }
 
 /* headerのheight + margin*/
