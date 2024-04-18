@@ -19,6 +19,7 @@ a {
     margin-right: auto;
     border: solid 1px #cbcbcb;
     border-radius: 3px;
+    background-color: #fff;
 }
 
 .question-form {
