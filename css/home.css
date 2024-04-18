@@ -4,68 +4,73 @@ body {
     margin-right: auto;
 }
 
+p {
+    font-size: 18px;
+    color: #fff;
+}
+
+a {
+    font-size: 18px;
+    text-decoration: none;
+}
+
+input[type='search'] {
+    width: 60%;
+    max-width: 500px;
+    border: 0;
+    font-size: 20px;
+
+}
+
+input[type='submit'] {
+    width: 40px;
+    height: 25px;
+}
+
 .question {
-    width: 270px;
+    width: 49%;
     font-size: 13px;
     float: left;
     display: inline;
     color: #5a5a5a;
-    margin: 0px 150px 0px 5px;
-    padding: 0px 0px 0px 0px;
-    border-top: 0px solid #C0C0C0;
-    border-left: 0px solid #C0C0C0;
-    border-right: 0px solid #C0C0C0;
-    border-bottom: 0px solid #C0C0C0;
+    margin: 0;
+    text-align: center;
 }
 
 .article {
-    width: 270px;
+    width: 49%;
     font-size: 13px;
     float: left;
     display: inline;
     color: #5a5a5a;
-    margin: 0px 150px 0px 5px;
-    padding: 0px 0px 0px 0px;
-    border-top: 0px solid #C0C0C0;
-    border-left: 0px solid #C0C0C0;
-    border-right: 0px solid #C0C0C0;
-    border-bottom: 0px solid #C0C0C0;
+    margin: 0;
+    text-align: center;
 }
 
 .questionAll {
-    width: 270px;
+    width: 100%;
     font-size: 12px;
     text-align: left;
     color: #5a5a5a;
-    margin: 0px 0px 0px 7px;
+    margin: 0;
     padding: 0px 0px 5px 0px;
-    border-top: 0px solid #C0C0C0;
-    border-left: 0px solid #C0C0C0;
-    border-right: 0px solid #C0C0C0;
-    border-bottom: 0px solid #C0C0C0;
+    text-align: center;
 }
 
 .articleAll {
-    width: 270px;
+    width: 100%;
     font-size: 12px;
     text-align: left;
     color: #5a5a5a;
-    margin: 0px 0px 0px 7px;
-    padding: 0px 0px 5px 0px;
-    border-top: 0px solid #C0C0C0;
-    border-left: 0px solid #C0C0C0;
-    border-right: 0px solid #C0C0C0;
-    border-bottom: 0px solid #C0C0C0;
+    margin: 0;
+    text-align: center;
 }
 
 .div-y {
     width: 0px;
-    height: 200px;
+    height: 100%;
     float: left;
     display: inline;
-    margin: 0px 3px 0px 22px;
-    _margin: 0px 5px 0px 13px;
-    padding: 0px 0px 0px 0px;
     border-top: 1px solid #C0C0C0;
     border-left: 1px solid #C0C0C0;
     border-right: 1px solid #C0C0C0;
@@ -73,11 +78,10 @@ body {
 }
 
 .total {
-    width: 895px;
-    margin: 27px auto 0px;
-    _margin: 0px auto;
-    padding: 0px 12px 200px 10px;
-    _padding: 7px 12px 5px 10px;
+    width: 95%;
+    max-width: 950px;
+    height: 60%;
+    margin: 0px auto 0px;
     background: #fff;
     border-top: 1px solid #C0C0C0;
     border-left: 1px solid #C0C0C0;
