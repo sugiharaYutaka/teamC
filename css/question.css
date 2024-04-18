@@ -1,5 +1,20 @@
+p {
+    font-size: 18px;
+    color: #fff;
+}
+
+a {
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.label {
+    font-size: 18px;
+}
+
 .main-container {
-    width: 980px;
+    width: 95%;
+    max-width: 950px;
     margin-left: auto;
     margin-right: auto;
     border: solid 1px #cbcbcb;
@@ -28,7 +43,7 @@
     display: block;
     width: 100%;
     padding: .375rem .75rem;
-    font-size: 1rem;
+    font-size: 20px;
     font-weight: 400;
     line-height: 1.5;
     color: #212529;
@@ -36,6 +51,10 @@
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: .25rem;
+}
+
+input {
+    font-size: 20px;
 }
 
 ::file-selector-button,
