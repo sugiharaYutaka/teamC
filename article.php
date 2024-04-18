@@ -16,15 +16,15 @@ include "header.php";
                 <div class="top-wrap">
                     <span class="title">
                         <a href="">
-                            PythonとuWSGIで環境構築について
+                            PythonとuWSGIの環境構築について沼ったこと
                         </a>
                     </span>
                 </div>
                 <div class="bot-wrap">
-                    <span class="answer-label">
-                        回答
+                    <span class="bot-label">
+                        good
                     </span>
-                    <span class="answer-count">
+                    <span class="bot-count">
                         3
                     </span>
                 </div>
