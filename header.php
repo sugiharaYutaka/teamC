@@ -26,7 +26,7 @@
 </div>
 <header>
     <div id="hamberger-area"></div>
-    <a id="header" href="index.php">
+    <a id="header" href="home.php">
         <h1>KOBE DENSHI</h1>
     </a>
     <button id="user" onclick="location.href='loginform.php'">LOGIN
