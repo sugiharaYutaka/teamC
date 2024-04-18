@@ -3,6 +3,9 @@ $user_id = 1;
 require_once __DIR__ . '/class/Product.php';
 $product = new Product();
 $item = $product->getItem($user_id);
+require_once __DIR__ . '/class/question.php';
+$question = new question();
+$questions = $question->allquestion(); //全ての質問を取ってくる
 ?>
 
 <?php
@@ -21,9 +24,14 @@ include "header.php";
     <div class="total">
         <div class="question">
             <a href="">質問一覧</a>
+            <?php
+                foreach($questions as $ques){   //ここでデータベースに登録されてるすべての質問を取り出し、表示
+            ?>
             <div class="questionAll">
-                <a href="">質問</a>
+
+                <a href=""><?php echo $ques['text'] ?></a>
             </div>
+            <?php } ?>
         </div>
         <div class="div-y"></div>
         <div class="article">
