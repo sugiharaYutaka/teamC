@@ -28,9 +28,6 @@ include 'header.php';
 <div class="main-container margin-top">
     <h2 class="center">ログアウトしました</h2>
     <div class="button">
-        <button class="cancel" onclick="location.href='mypage.php'">マイページ</button>
-    </div>
-    <div class="button">
         <button class="cancel" onclick="location.href='home.php'">ホーム</button>
     </div>
     <br>
