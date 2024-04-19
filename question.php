@@ -3,10 +3,10 @@ include "header.php";
 ?>
 <link href="css/question.css" rel="stylesheet">
 <div class="main-container margin-top">
-    <form class="qusetion-form" method="post" action="send.php">
-        <div class="row">
+    <form class="qusetion-form" method="post" action="class/send.php" enctype="multipart/form-data">
+        <div class=" row">
             <span class="label">質問内容</span>
-            <textarea class="input lines"></textarea>
+            <textarea class="input lines" name="text"></textarea>
         </div>
         <div class="row">
             <span class="label">タグ・キーワード</span>
@@ -18,7 +18,7 @@ include "header.php";
         </div>
         <div class="row">
             <div class="content-end">
-                <button type="button" class="btn">送信</button>
+                <button type="submit" class="btn">送信</button>
             </div>
         </div>
     </form>
