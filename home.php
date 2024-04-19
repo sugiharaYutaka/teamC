@@ -16,7 +16,7 @@ if ($result) {
     $login_user = $_SESSION['login_user'];
 } else {
     $login_user['name'] = 'ゲスト';
-} ?>
+}
 
 require_once __DIR__ . '/class/article.php';
 $article = new article();
@@ -53,11 +53,11 @@ include "header.php";
         <div class="article">
             <a href="article.php">記事一覧</a>
             <?php
-                foreach($articles as $art){   //ここでデータベースに登録されてるすべての質問を取り出し、表示
+            foreach ($articles as $art) {   //ここでデータベースに登録されてるすべての質問を取り出し、表示
             ?>
-            <div class="articleAll">
-                <a href=""><?php echo $art['text'] ?></a>
-            </div>
+                <div class="articleAll">
+                    <a href=""><?php echo $art['text'] ?></a>
+                </div>
             <?php } ?>
         </div>
     </div>
