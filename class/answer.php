@@ -9,7 +9,7 @@ class answer extends DbData
     {
     //登録する
     if($imagefile != null){  //ファイルが指定されていればそのファイルをデータベースに登録
-        $sql = "insert into answer(user_id,text,quetion_id,image_filename) values(?, ?, ?,?)";
+        $sql = "insert into answers(user_id,text,quetion_id,image_filename) values(?, ?, ?,?)";
         $result = $this->exec($sql, [$userId, $text, $questionid, $imagefile]);
     }
     else{ //されていなかったら登録しない(デフォルトの画像)
@@ -22,31 +22,42 @@ class answer extends DbData
     //回答の取り出し
     public function allanswer($answerid)
     {
-        $sql = "select * from answer where answer_id = ?";
-        $stmt = query($sql, [$answerid]);
+        $sql = "select * from answers where answer_id = ?";
+        $stmt = $this->query($sql, [$answerid]);
         $questions = $stmt->fetchAll();
         return $questions;
     }
+
     //指定した質問の回答のみを取り出す
     public function qanswer($questionid)
     {
-        $sql = "select * from answer where quetion_id = ?";
-        $stmt = query($sql, [$questionid]);
+        $sql = "select * from answers where quetion_id = ?";
+        $stmt = $this->query($sql, [$questionid]);
         $questions = $stmt->fetchAll();
         return $questions;
     }
     //回答の削除
     public function deleteanswer($answerid)
     {
-      $sql = "delete from answer where answer_id = ?";
+      $sql = "delete from answers where answer_id = ?";
       $result = $this->exec($sql, [$answerid]);
     }
     //ユーザーの回答
     public function useranswer($userid)
     {
-        $sql = "select * from answer where user_id = ?";
-        $stmt = query($sql, [$userid]);
+        $sql = "select * from answers where user_id = ?";
+        $stmt = $this->query($sql, [$userid]);
         $questions = $stmt->fetchAll();
         return $questions;
     }
+
+    //指定した質問の回答数の取得
+    public function countanswer($questionid)
+    {
+        $sql = "select count(*) from answers where quetion_id = ?";
+        $stmt = $this->query($sql, [$questionid]);
+        $count = $stmt->fetch();
+        return $count;
+    }
+
 }
