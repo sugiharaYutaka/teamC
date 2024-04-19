@@ -1,3 +1,13 @@
+p {
+    font-size: 18px;
+    color: #fff;
+}
+
+a {
+    font-size: 18px;
+    text-decoration: none;
+}
+
 .row {
     display: flex;
     width: 95%;
