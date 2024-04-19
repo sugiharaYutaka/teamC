@@ -46,7 +46,7 @@ include "header.php";
             ?>
                 <div class="questionAll">
 
-                <a href=""><?php echo mb_strimwidth($ques['text'], 0, 100, '...','UTF-8' ) ?></a>
+                <a href="answer.php?question_id=<?= $ques['question_id'] ?>"><?php echo mb_strimwidth($ques['text'], 0, 100, '...','UTF-8' ) ?></a>
             </div>
             <hr>
 
