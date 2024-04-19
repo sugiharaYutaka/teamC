@@ -8,14 +8,18 @@ class question extends DbData
   public function addquestion($userId, $text, $tag, $imagefile)
   {
     //登録する
-    if ($imagefile != null) {  //ファイルが指定されていればそのファイルをデータベースに登録
-      $sql = "insert into question(user_id, text, tag, image_filename) values(?, ?, ?,?)";
-      $result = $this->exec($sql, [$userId, $text, $tag, $imagefile]);
-      return 'i';
-    } else { //されていなかったら登録しない(デフォルトの画像)
-      $sql = "insert into question(user_id, text, tag) values(?, ?, ?)";
-      $result = $this->exec($sql, [$userId, $text, $tag]);
-      return 'e';
+    try {
+
+      if ($imagefile != null) {  //ファイルが指定されていればそのファイルをデータベースに登録
+        $sql = "insert into question(user_id, text, tag, image_filename) values(?, ?, ?,?)";
+        $result = $this->exec($sql, [$userId, $text, $tag, $imagefile]);
+      } else { //されていなかったら登録しない(デフォルトの画像)
+        $sql = "insert into question(user_id, text, tag) values(?, ?, ?)";
+        $result = $this->exec($sql, [$userId, $text, $tag]);
+      }
+      return true;
+    } catch (Exception $e) {
+      return false;
     }
   }
 
@@ -26,6 +30,15 @@ class question extends DbData
     $sql = "delete from question where question_id = ?";
     $result = $this->exec($sql, [$question_id]);
   }
+  // 指定した質問を取得
+  public function getQuestion($question_id)
+  {
+    $sql = "select * from question where question_id = ?";
+    $stmt = $this->query($sql, [$question_id]);
+    $questions = $stmt->fetch();
+    return $questions;
+  }
+
 
   //指定したユーザーの全ての質問を取ってくる
   public function userquestion($user_id)
