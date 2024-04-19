@@ -35,7 +35,7 @@ class answer extends DbData
     public function qanswer($questionid)
     {
         $sql = "select * from answer where quetion_id = ?";
-        $stmt = query($sql, [$questionid]);
+        $stmt = $this->query($sql, [$questionid]);
         $questions = $stmt->fetchAll();
         return $questions;
     }
