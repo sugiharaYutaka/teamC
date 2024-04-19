@@ -1,10 +1,23 @@
 <?php
 include "header.php";
+require_once __DIR__ . '/class/question.php';
+$question = new question();
+require_once __DIR__ . '/class/answer.php';
+$answer = new answer();
+$questions = $question->allquestion(); //全ての質問を取ってくる
 ?>
 <link href="css/article.css" rel="stylesheet">
 <div class="main-container margin-top">
     <?php
-    for ($data = 0; $data < 6; $data++) {
+     foreach($questions as $ques){ 
+        $questionId = $ques['question_id'];  //質問のIDを保存
+        $qanswers = $answer->qanswer($questionId);
+        $qcount = $answer->countanswer($questionId);
+        $qtext = $ques['text'];
+        if(Strlen($qtext) >= 80 ){
+            $qtext = substr($qtext,0, );
+            $qtext = $qtext."...";
+        }
         echo '
         <div class="row">
             <div class="w-20">
@@ -15,8 +28,8 @@ include "header.php";
             <div class="w-80">
                 <div class="top-wrap">
                     <span class="title">
-                        <a href="">
-                            Centos7の任意のポートを開放する方法を教えてください
+                        <a href="answer.php?question_id=',$ques['question_id'],'">
+                            ',mb_strimwidth ($qtext, 0, 160, '...','UTF-8' ),'
                         </a>
                     </span>
                 </div>
@@ -25,7 +38,7 @@ include "header.php";
                         回答
                     </span>
                     <span class="bot-count">
-                        3
+                        ',"$qcount[0]",'
                     </span>
                 </div>
             </div>
