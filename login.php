@@ -20,7 +20,7 @@ if (count($err) > 0) {
 //ログイン成功処理
 $result = UserLogic::login($email, $password);
 if (!$result) {
-    header('Location: ../login_form.php');
+    header('Location: login_form.php');
     return;
 }
 ?>

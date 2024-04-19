@@ -17,6 +17,13 @@ a {
     background-color: #fff;
 }
 
+div#alert p {
+    margin: 10px;
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+
 .center {
     text-align: center;
 }

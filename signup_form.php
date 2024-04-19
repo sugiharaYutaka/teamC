@@ -5,9 +5,12 @@ require_once 'class/UserLogic.php';
 //ログイン判定
 $result = UserLogic::checkLogin();
 if ($result) {
-    header('Location: mypage_S.php');
+    header('Location: mypage.php');
     return;
 }
+
+$login_err = isset($_SESSION['login_err']) ? $_SESSION['login_err'] : null;
+unset($_SESSION['login_err']);
 ?>
 
 <head>

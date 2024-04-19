@@ -17,7 +17,7 @@ $email = filter_input(INPUT_POST, 'email');
 $result = UserLogic::signUpCheck($email);
 if ($result) {
     $_SESSION['login_err'] = 'このメールアドレスは登録済みです。';
-    header('Location: signup_form_H.php');
+    header('Location: signup_form.php');
     return;
 }
 
