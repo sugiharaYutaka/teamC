@@ -1,8 +1,11 @@
 <?php
 include "header.php";
-require_once __DIR__ . '/class/article.php';
-$article = new article();
+if(!isset($article)){
+    require_once __DIR__ . '/class/article.php';
+    $article = new article();
+}
 $articles = $article->allarticle(); //全ての質問を取ってくる
+
 ?>
 <link href="css/article.css" rel="stylesheet">
 <div class="main-container margin-top">
@@ -23,10 +26,14 @@ $articles = $article->allarticle(); //全ての質問を取ってくる
                         </a>
                     </span>
                 </div>
-                <div class="bot-wrap">
-                    <span class="bot-label">
-                        good
-                    </span>
+                <form method="POST" action="addgoodarticle.php">
+                    <div class="bot-wrap">
+                        <span class="bot-label">
+                            <input type="hidden" name="article_id" value="',$art['article_id'],'">&nbsp;
+						    <input type="hidden" name="good" value="',$art['good'],'">&nbsp;
+                            <input type="submit" value="👍">
+                        </span>
+                    </form>
                     <span class="bot-count">
                         ',$art['good'],'
                     </span>

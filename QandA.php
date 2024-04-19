@@ -28,7 +28,7 @@ $questions = $question->allquestion(); //全ての質問を取ってくる
             <div class="w-80">
                 <div class="top-wrap">
                     <span class="title">
-                        <a href="">
+                        <a href="answer.php?question_id=',$ques['question_id'],'">
                             ',mb_strimwidth ($qtext, 0, 160, '...','UTF-8' ),'
                         </a>
                     </span>
