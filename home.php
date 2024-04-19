@@ -28,24 +28,28 @@ include "header.php";
     <div class="total">
         <div class="question">
             <a href="">質問一覧</a>
+            <hr>
             <?php
                 foreach($questions as $ques){   //ここでデータベースに登録されてるすべての質問を取り出し、表示
             ?>
             <div class="questionAll">
 
-                <a href=""><?php echo $ques['text'] ?></a>
+                <a href=""><?php echo mb_strimwidth($ques['text'], 0, 100, '...','UTF-8' ) ?></a>
             </div>
+            <hr>
             <?php } ?>
         </div>
         <div class="div-y"></div>
         <div class="article">
             <a href="">記事一覧</a>
+            <hr>
             <?php
                 foreach($articles as $art){   //ここでデータベースに登録されてるすべての質問を取り出し、表示
             ?>
             <div class="articleAll">
-                <a href=""><?php echo $art['text'] ?></a>
+                <a href=""><?php echo mb_strimwidth($art['text'], 0, 100, '...','UTF-8' ) ?></a>
             </div>
+            <hr>
             <?php } ?>
         </div>
     </div>
