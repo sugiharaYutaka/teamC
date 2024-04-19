@@ -9,11 +9,11 @@ class question extends DbData
   {
       //登録する
       if($imagefile != null){  //ファイルが指定されていればそのファイルをデータベースに登録
-        $sql = "insert into question values(?, ?, ?,?)";
+        $sql = "insert into question(user_id,text,tag,image_filename) values(?, ?, ?,?)";
         $result = $this->exec($sql, [$userId, $text, $tag, $imagefile]);
       }
       else{ //されていなかったら登録しない(デフォルトの画像)
-        $sql = "insert into question values(?, ?, ?)";
+        $sql = "insert into question(user_id,text,tag) values(?, ?, ?)";
         $result = $this->exec($sql, [$userId, $text, $tag]);
       }
   }
