@@ -1,9 +1,20 @@
+p {
+    font-size: 18px;
+}
+
+a {
+    font-size: 18px;
+    text-decoration: none;
+}
+
 .main-container {
-    width: 980px;
+    width: 95%;
+    max-width: 950px;
     margin-left: auto;
     margin-right: auto;
     border: solid 1px #cbcbcb;
     border-radius: 3px;
+    background-color: #fff;
 }
 
 .center {
@@ -36,6 +47,18 @@
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: .25rem;
+}
+
+input[type='text'] {
+    font-size: 20px;
+}
+
+input[type='email'] {
+    font-size: 20px;
+}
+
+input[type='password'] {
+    font-size: 20px;
 }
 
 .button {
