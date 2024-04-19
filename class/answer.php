@@ -34,8 +34,8 @@ class answer extends DbData
     //指定した質問をusersテーブルと内部結合して取得
     public function qanswer($questionid)
     {
-        $sql = "select * from answers inner join users on users.user_id = answers.user_id where answers.quetion_id = ?";
-        $stmt = $this->query($sql, [$questionid]);
+        $sql = "select * from answer where quetion_id = ?";
+        $stmt = query($sql, [$questionid]);
         $questions = $stmt->fetchAll();
         return $questions;
     }
@@ -53,4 +53,14 @@ class answer extends DbData
         $questions = $stmt->fetchAll();
         return $questions;
     }
+
+    //指定した質問の回答数の取得
+    public function countanswer($questionid)
+    {
+        $sql = "select count(*) from answers where quetion_id = ?";
+        $stmt = $this->query($sql, [$questionid]);
+        $count = $stmt->fetch();
+        return $count;
+    }
+
 }
