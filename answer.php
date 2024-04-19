@@ -1,13 +1,17 @@
 <?php
 include "header.php";
+require_once ('../teamC/class/getQA.php');
 ?>
 <link href="css/answer.css" rel="stylesheet">
 <div class="main-container margin-top">
-    <form class="answer-form" method="post" action="">
+    <form class="answer-form" method="post" action="../teamC/class/sendAnswer.php" enctype="multipart/form-data">
         <div class="row">
             <span class="label">質問内容</span>
-            <textarea class="input lines"></textarea>
+            <?php
+            echo '<textarea class="input lines">' . $question['text'] . '</textarea>';
+            ?>
         </div>
+        <input type="hidden" name="question_id" value="<?php echo ($question['question_id']); ?>">
         <div class="row">
             <span class="label">回答内容</span>
             <textarea class="input lines" name="answer"></textarea>
@@ -18,8 +22,36 @@ include "header.php";
         </div>
         <div class="row">
             <div class="content-end">
-                <button type="button" class="btn">送信</button>
+                <button type="submit" class="btn">送信</button>
             </div>
         </div>
     </form>
+    <hr>
+    <span class="label title-margin">回答一覧</span>
+    <?php
+    foreach ($answers as $answer) {
+        echo '
+        <div class="row-answer">
+            <div class="w-20">
+                <div class="icon-wrap" alt="icon">
+                    <img src="" class="user-icon">
+                </div>
+                <div class="name-wrap">
+                    <span class="user-name">
+                            ' . $answer['name'] . '
+                    </span>
+                </div>
+            </div>
+            <div class="w-80">
+                <div class="text-wrap">
+                    <span class="answer-text">
+                        ' . $answer['text'] . '
+                    </span>
+                </div>
+            </div>
+        </div>
+        <hr>
+        ';
+    }
+    ?>
 </div>

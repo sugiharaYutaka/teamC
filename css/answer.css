@@ -35,6 +35,16 @@ a {
     padding-bottom: 10px;
 }
 
+.row-answer {
+    width: 95%;
+    padding-right: 2.5%;
+    padding-left: 2.5%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .label {
     display: block;
     font-weight: bold;
@@ -85,6 +95,88 @@ a {
     color: #ffffff;
     transition: 0.3s;
 }
+
+.content-end {
+    display: flex;
+    justify-content: end;
+}
+
+.w-20 {
+    flex: 0 0 auto;
+    width: 20%;
+}
+
+.w-80 {
+    flex: 0 0 auto;
+    width: 80%;
+    display: flex;
+    align-items: center;
+}
+
+.title-margin {
+    margin-right: 2.5%;
+    margin-left: 2.5%;
+    margin-top: 1rem;
+}
+
+.content {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.icon-wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.user-name {
+    color: #707070;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.user-icon {
+    width: 64px;
+    height: 64px;
+    border: solid 1px #ced4da;
+    border-radius: 50%;
+}
+
+.name-wrap {
+    display: flex;
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.text-wrap {
+    display: flex;
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    align-items: center;
+    display: flex;
+}
+
+.answer-text {
+    text-decoration: none;
+    color: #707070;
+    display: flex;
+    flex-wrap: wrap;
+    word-break: break-all;
+    font-weight: normal;
+    font-size: 20px;
+}
+
+.label {
+    display: block;
+    font-weight: bold;
+}
+
 
 .content-end {
     display: flex;
