@@ -5,11 +5,6 @@ $question = new question();
 require_once __DIR__ . '/class/answer.php';
 $answer = new answer();
 $questions = $question->allquestion(); //全ての質問を取ってくる
-$user_id = 1;
-$text = "A";
-$tag = "AA";
-$imagefile = null;
-$question->addquestion($user_id,$text,$tag,$imagefile)
 ?>
 <link href="css/article.css" rel="stylesheet">
 <div class="main-container margin-top">

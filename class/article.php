@@ -20,13 +20,20 @@ class article extends DbData
   }
 
     //全ての記事を取得
-    public function allarticle($userId)
+    public function allarticle()
     {
       $sql = "select * from article";
-      $stmt = $this->query($sql, [$userId]);
-      $userarticle = $stmt->fetchAll();
-      return $userarticle;
+      $stmt = $this->query($sql, []);
+      $articles = $stmt->fetchAll();
+      return $articles;
     }
+
+      // 指定した記事を削除する
+  public function deletearticle($article_id)
+  {
+    $sql = "delete from question where article_id = ?";
+    $result = $this->exec($sql, [$article_id]);
+  }
 
 
 }
