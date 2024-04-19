@@ -39,7 +39,7 @@ include "header.php";
     </div>
     <div class="total">
         <div class="question">
-            <a href="">質問一覧</a>
+            <a href="QandA.php">質問一覧</a>
             <?php
             foreach ($questions as $ques) {   //ここでデータベースに登録されてるすべての質問を取り出し、表示
             ?>
@@ -51,7 +51,7 @@ include "header.php";
         </div>
         <div class="div-y"></div>
         <div class="article">
-            <a href="">記事一覧</a>
+            <a href="article.php">記事一覧</a>
             <?php
                 foreach($articles as $art){   //ここでデータベースに登録されてるすべての質問を取り出し、表示
             ?>
