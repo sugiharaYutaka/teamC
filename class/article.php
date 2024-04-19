@@ -34,6 +34,12 @@ class article extends DbData
     $sql = "delete from question where article_id = ?";
     $result = $this->exec($sql, [$article_id]);
   }
+  //グッド数の追加
+  public function goodarticle($good,$article_id)
+  {
+    $sql = "update article set good = ? where article_id = ?";
+    $result = $this->exec($sql, [$good,$article_id]);
+  }
 
 
 }

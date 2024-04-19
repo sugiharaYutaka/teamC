@@ -6,6 +6,10 @@ $item = $product->getItem($user_id);
 require_once __DIR__ . '/class/question.php';
 $question = new question();
 $questions = $question->allquestion(); //全ての質問を取ってくる
+
+require_once __DIR__ . '/class/article.php';
+$article = new article();
+$articles = $article->allarticle();
 ?>
 
 <?php
@@ -36,9 +40,13 @@ include "header.php";
         <div class="div-y"></div>
         <div class="article">
             <a href="">記事一覧</a>
+            <?php
+                foreach($articles as $art){   //ここでデータベースに登録されてるすべての質問を取り出し、表示
+            ?>
             <div class="articleAll">
-                <a href="">記事</a>
+                <a href=""><?php echo $art['text'] ?></a>
             </div>
+            <?php } ?>
         </div>
     </div>
 </body>
