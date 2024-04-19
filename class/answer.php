@@ -34,7 +34,7 @@ class answer extends DbData
     //指定した質問をusersテーブルと内部結合して取得
     public function qanswer($questionid)
     {
-        $sql = "select * from answer where quetion_id = ?";
+        $sql = "select * from answers inner join users on users.user_id = answers.user_id where answers.quetion_id = ?";
         $stmt = $this->query($sql, [$questionid]);
         $questions = $stmt->fetchAll();
         return $questions;
@@ -62,5 +62,4 @@ class answer extends DbData
         $count = $stmt->fetch();
         return $count;
     }
-
 }
