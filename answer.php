@@ -1,6 +1,9 @@
 <?php
 include "header.php";
 require_once ('../teamC/class/getQA.php');
+require_once ('../teamC/class/UserLogic.php');
+$userLogic = new UserLogic();
+$user_name = $userLogic->getUserById($question['user_id']);
 ?>
 <link href="css/answer.css" rel="stylesheet">
 <div class="main-container margin-top">
@@ -8,13 +11,11 @@ require_once ('../teamC/class/getQA.php');
         <div class="row">
             <div class="user-data">
                 <div class="w-20">
-                    <div class="icon-wrap" alt="icon">
-                        <img src="" class="user-icon">
-                    </div>
+                    <img src="" class="user-icon">
                 </div>
                 <div class="w-80">
                     <span class="name">
-
+                        <?php echo $user_name['name'] ?>
                     </span>
                 </div>
             </div>
