@@ -257,8 +257,8 @@ footer input[type="submit"] {
 /*自主製作用の為以下のcssは無関係*/
 
 body {
-    background-image: url("../img/IMG_1429.JPG");
-    background-size: cover;
+    /*background-image: url("../img/IMG_1429.JPG")*/
+    background-color: rgb(69, 69, 69);
 }
 
 /* headerのheight + margin*/
