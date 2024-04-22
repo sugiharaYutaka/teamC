@@ -184,14 +184,17 @@ a {
 }
 
 .question-text {
+    margin-bottom: 15px;
+    margin-top: 15px;
     color: #212529
 }
 
 .user-data {
-    width: 30%;
+    width: 40%;
     flex-wrap: wrap;
     display: flex;
 }
+
 
 
 .user-icon {
@@ -203,4 +206,9 @@ a {
 
 .name {
     color: #4e4e4e;
+    font-weight: bold;
+}
+
+.hr-margin {
+    margin-bottom: 40px;
 }
