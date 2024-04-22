@@ -9,27 +9,27 @@ $questions = $question->allquestion(); //全ての質問を取ってくる
 <link href="css/article.css" rel="stylesheet">
 <div class="main-container margin-top">
     <?php
-     foreach($questions as $ques){ 
+    foreach ($questions as $ques) {
         $questionId = $ques['question_id'];  //質問のIDを保存
         $qanswers = $answer->qanswer($questionId);
         $qcount = $answer->countanswer($questionId);
         $qtext = $ques['text'];
-        if(Strlen($qtext) >= 80 ){
-            $qtext = substr($qtext,0, );
-            $qtext = $qtext."...";
+        if (Strlen($qtext) >= 80) {
+            $qtext = substr($qtext, 0, );
+            $qtext = $qtext . "...";
         }
         echo '
         <div class="row">
             <div class="w-20">
                 <div class="icon-wrap" alt="icon">
-                    <img src="" class="user-icon">
+                    <img src="" class="user-icon" onError="this.onerror=null;this.src=\'../teamC/img/user_icon.png\'">
                 </div>
             </div>
             <div class="w-80">
                 <div class="top-wrap">
                     <span class="title">
-                        <a href="answer.php?question_id=',$ques['question_id'],'">
-                            ',mb_strimwidth ($qtext, 0, 160, '...','UTF-8' ),'
+                        <a href="answer.php?question_id=', $ques['question_id'], '">
+                            ', mb_strimwidth($qtext, 0, 160, '...', 'UTF-8'), '
                         </a>
                     </span>
                 </div>
@@ -38,7 +38,7 @@ $questions = $question->allquestion(); //全ての質問を取ってくる
                         回答
                     </span>
                     <span class="bot-count">
-                        ',"$qcount[0]",'
+                        ', "$qcount[0]", '
                     </span>
                 </div>
             </div>
