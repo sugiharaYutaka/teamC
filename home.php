@@ -29,43 +29,59 @@ include "header.php";
 ?>
 
 <body>
+    <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
     <link href="css/home.css" rel="stylesheet">
-    <div class="search margin-top">
-        <form action="../teamC/home.php" method="get">
-            <input type="search" name="search" placeholder="キーワードを入力">
-            <input type="submit" name="submit" value="検索">
+    <div class="total">
+        <form action="../teamC/home.php" method="get" class="search margin-top">
+            <input type="search" class="input" name="search" placeholder="キーワードを入力">
+            <button type="submit" class="search-btn" name="submit"><i class="fa fa-search"></i></button>
             <p><?php echo $login_user['name']; ?></p>
         </form>
-    </div>
-    <div class="total">
-        <div class="question">
-            <a href="QandA.php">質問一覧</a>
-            <hr>
-            <?php
-            foreach ($questions as $ques) {   //ここでデータベースに登録されてるすべての質問を取り出し、表示
-            ?>
-                <div class="questionAll">
+        <div class="qa-content">
+            <div class="question">
+                <a href="QandA.php">質問一覧</a>
+                <hr>
+                <?php
+                foreach ($questions as $ques) {   //ここでデータベースに登録されてるすべての質問を取り出し、表示
+                    ?>
+                    <div class="row">
+                        <div class="w-20">
+                            <div class="icon-wrap" alt="icon">
+                                <img src="" class="user-icon">
+                            </div>
+                        </div>
+                        <div class="w-80">
+                            <span class="title">
+                                <a
+                                    href="answer.php?question_id=<?= $ques['question_id'] ?>"><?php echo mb_strimwidth($ques['text'], 0, 100, '...', 'UTF-8') ?></a>
+                            </span>
+                        </div>
+                    </div>
+                    <hr>
 
-                <a href="answer.php?question_id=<?= $ques['question_id'] ?>"><?php echo mb_strimwidth($ques['text'], 0, 100, '...','UTF-8' ) ?></a>
+                <?php } ?>
             </div>
-            <hr>
-
-            <?php } ?>
-        </div>
-        <div class="div-y"></div>
-        <div class="article">
-            <a href="article.php">記事一覧</a>
-            <hr>
-            <?php
-            foreach ($articles as $art) {   //ここでデータベースに登録されてるすべての質問を取り出し、表示
-            ?>
-
-            <div class="articleAll">
-                <a href=""><?php echo mb_strimwidth($art['text'], 0, 100, '...','UTF-8' ) ?></a>
+            <div class="article">
+                <a href="article.php">記事一覧</a>
+                <hr>
+                <?php
+                foreach ($articles as $art) {   //ここでデータベースに登録されてるすべての質問を取り出し、表示
+                    ?>
+                    <div class="row">
+                        <div class="w-20">
+                            <div class="icon-wrap" alt="icon">
+                                <img src="" class="user-icon">
+                            </div>
+                        </div>
+                        <div class="w-80">
+                            <span class="title">
+                                <a href=""><?php echo mb_strimwidth($art['text'], 0, 100, '...', 'UTF-8') ?></a>
+                            </span>
+                        </div>
+                    </div>
+                    <hr>
+                <?php } ?>
             </div>
-            <hr>
-
-            <?php } ?>
         </div>
     </div>
 </body>
