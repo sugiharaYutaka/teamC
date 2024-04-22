@@ -121,6 +121,10 @@ input[type='submit'] {
     margin-right: 15%;
 }
 
+.hr-margin {
+    margin-top: 5px;
+}
+
 .title a {
     text-decoration: none;
     color: #000000;
