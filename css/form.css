@@ -92,6 +92,7 @@ input[type='password'] {
     font-family: "Kosugi Maru", sans-serif;
     font-weight: 400;
     font-style: normal;
+    cursor: pointer;
 }
 
 .cancel {
@@ -101,6 +102,7 @@ input[type='password'] {
     font-family: "Kosugi Maru", sans-serif;
     font-weight: 400;
     font-style: normal;
+    cursor: pointer;
 }
 
 .forget {
