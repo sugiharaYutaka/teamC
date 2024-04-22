@@ -109,6 +109,11 @@ nav ul li a {
     font-style: normal;
 }
 
+nav ul li a:hover {
+    background-color: rgb(25, 25, 25);
+    color: white;
+}
+
 
 nav button {
     display: block;
@@ -257,7 +262,10 @@ footer input[type="submit"] {
 /*自主製作用の為以下のcssは無関係*/
 
 body {
-    /*background-image: url("../img/IMG_1429.JPG")*/
+    /*
+    background-image: url("../img/IMG_1429.JPG");
+    background-size: cover;
+    */
     background-color: rgb(69, 69, 69);
 }
 

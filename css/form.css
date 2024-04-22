@@ -1,5 +1,6 @@
 p {
-    font-size: 18px;
+    font-size: 15px;
+    margin-bottom: 10px;
 }
 
 a {
@@ -15,6 +16,14 @@ a {
     border: solid 1px #cbcbcb;
     border-radius: 3px;
     background-color: #fff;
+    font-family: "Kosugi Maru", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h2 {
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 div#alert p {
@@ -38,6 +47,8 @@ div#alert p {
 }
 
 .label {
+    font-size: 20px;
+    margin-bottom: 10px;
     display: block;
     font-weight: bold;
 }
@@ -74,17 +85,27 @@ input[type='password'] {
 }
 
 .btn {
-    background-color: rgb(116, 142, 211);
+    background-color: rgb(25, 25, 25);
     width: 150px;
     height: 50px;
+    color: white;
+    font-family: "Kosugi Maru", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    cursor: pointer;
 }
 
 .cancel {
-    background-color: rgb(241, 228, 228);
+    background-color: white;
     width: 150px;
     height: 50px;
+    font-family: "Kosugi Maru", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    cursor: pointer;
 }
 
 .forget {
     text-align: center;
+    margin-bottom: 15px;
 }

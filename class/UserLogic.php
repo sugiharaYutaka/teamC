@@ -129,6 +129,25 @@ class UserLogic
             return false;
         }
     }
+    public static function getUserById($id)
+    {
+        //SQL準備
+        //SQL実行
+        //SQL結果を返す
+        $sql = 'SELECT * FROM users WHERE user_id = ?';
+
+        $arr = [];
+        $arr[] = $id;
+
+        try {
+            $stmt = connect()->prepare($sql);
+            $stmt->execute($arr);
+            $user = $stmt->fetch();
+            return $user;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
 
     /**
      * ログインチェック

@@ -25,7 +25,7 @@ session_destroy();
 include 'header.php';
 ?>
 <div class="main-container margin-top">
-    <h2 class="center">ログイン画面</h2>
+    <h2 class="center">ログイン</h2>
     <div id="alert">
         <?php if (isset($err['email'])) : ?>
             <p><?php echo $err['email']; ?></p>
@@ -50,7 +50,7 @@ include 'header.php';
             <input type="password" name="password" placeholder="パスワード" required="required">
         </div>
         <div class="row">
-            <button type="submit" class="btn">ログイン</button>
+            <input type="submit" class="btn" value="ログイン">
     </form>
 </div>
 <div class="button">

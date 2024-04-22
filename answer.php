@@ -1,16 +1,30 @@
 <?php
 include "header.php";
 require_once ('../teamC/class/getQA.php');
+require_once ('../teamC/class/UserLogic.php');
+$userLogic = new UserLogic();
+$user_name = $userLogic->getUserById($question['user_id']);
+var_dump($question['text']);
 ?>
 <link href="css/answer.css" rel="stylesheet">
 <div class="main-container margin-top">
     <form class="answer-form" method="post" action="../teamC/class/sendAnswer.php" enctype="multipart/form-data">
         <div class="row">
-            <span class="label">質問内容</span>
+            <div class="user-data">
+                <div class="w-20">
+                    <img src="" class="user-icon">
+                </div>
+                <div class="w-80">
+                    <span class="name">
+                        <?php echo $user_name['name'] ?>
+                    </span>
+                </div>
+            </div>
             <?php
-            echo '<textarea class="input lines">' . $question['text'] . '</textarea>';
+            echo nl2br('<p class="question-text">' . $question['text'] . '</p>');
             ?>
         </div>
+        <hr class="hr-margin">
         <input type="hidden" name="question_id" value="<?php echo ($question['question_id']); ?>">
         <div class="row">
             <span class="label">回答内容</span>
