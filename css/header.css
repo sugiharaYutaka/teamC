@@ -9,11 +9,12 @@
 header {
     display: flex;
     position: fixed;
-    background-color: white;
+    background-color: rgb(25, 25, 25);
     width: 100%;
     height: 100px;
     top: 0;
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid white;
+
 }
 
 header button {
@@ -22,6 +23,15 @@ header button {
     margin-top: 25px;
     margin-bottom: 25px;
     cursor: pointer;
+    border: none;
+    font-size: 20px;
+    border-radius: none;
+    background-color: rgb(25, 25, 25);
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    color: white;
 }
 
 header a {
@@ -37,6 +47,11 @@ header a h1 {
     text-align: center;
     margin-top: auto;
     margin-bottom: auto;
+    color: white;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
 }
 
 nav {
@@ -66,25 +81,34 @@ nav ul h3 {
     text-align: center;
     padding-top: 24px;
     padding-bottom: 24px;
-    color: #000;
-    border-bottom: 1px solid #000;
+    color: rgb(25, 25, 25);
+    border-bottom: 1px solid rgb(25, 25, 25);
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
 }
 
 
 nav ul li {
     margin: 0;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid rgb(25, 25, 25);
 }
 
 nav ul li a {
     display: flex;
     text-decoration: none;
-    color: #000;
+    color: rgb(25, 25, 25);
     font-size: 20px;
     padding: 1rem;
     transition-duration: 0.2s;
     cursor: pointer;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
 }
+
 
 nav button {
     display: block;
@@ -92,8 +116,18 @@ nav button {
     margin-right: auto;
     height: 50px;
     margin-top: 25px;
+    font-size: 20px;
     cursor: pointer;
+    border: none;
+    border-radius: none;
+    background-color: white;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    color: rgb(25, 25, 25);
 }
+
 
 .toggle-btn {
     display: block;
@@ -113,8 +147,12 @@ nav button {
     width: 30px;
     height: 3px;
     border-radius: 3px;
-    background-color: #000;
+    background-color: white;
     transition: 0.5s;
+}
+
+.open .toggle-btn span {
+    background-color: rgb(25, 25, 25);
 }
 
 .toggle-btn span:nth-child(1) {
@@ -148,7 +186,7 @@ nav button {
 
 .open #mask {
     display: block;
-    background-color: #000;
+    background-color: rgb(25, 25, 25);
     width: 100%;
     height: 100%;
     top: 0;
@@ -169,7 +207,7 @@ footer {
     background-color: #fff;
     width: 100%;
     height: 75px;
-    border-top: 1px solid #000;
+    border-top: 1px solid rgb(25, 25, 25);
 }
 
 footer button {
