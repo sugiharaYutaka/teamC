@@ -19,9 +19,12 @@ class goodarticle extends DbData
     }
     else{
         //組み合わせがなければテーブルに追加
-        $sql = "insert into  goodarticle(user_id,article_id,good) value(?,?,true)";
+        $sql = "insert into  goodarticle(user_id,article_id,good) value(?,?,false)";
         $this->exec($sql, [$user_id,$article_id]);
-        return false;
+        $sql = "select good from goodarticle where user_id = ? and article_id = ?";
+        $stmt = $this->query($sql, [$user_id,$article_id]);
+        $articles = $stmt->fetch();
+        return $articles;
     }
   }
 
