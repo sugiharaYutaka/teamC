@@ -40,14 +40,15 @@ include "header.php";
         <div class="qa-content">
             <div class="question">
                 <a href="QandA.php">質問一覧</a>
-                <hr>
+                <hr class="hr-margin">
                 <?php
                 foreach ($questions as $ques) {   //ここでデータベースに登録されてるすべての質問を取り出し、表示
                     ?>
                     <div class="row">
                         <div class="w-20">
                             <div class="icon-wrap" alt="icon">
-                                <img src="" class="user-icon">
+                                <img src="" class="user-icon"
+                                    onError="this.onerror=null;this.src='../teamC/img/user_icon.png'">
                             </div>
                         </div>
                         <div class="w-80">
@@ -63,14 +64,15 @@ include "header.php";
             </div>
             <div class="article">
                 <a href="article.php">記事一覧</a>
-                <hr>
+                <hr class="hr-margin">
                 <?php
                 foreach ($articles as $art) {   //ここでデータベースに登録されてるすべての質問を取り出し、表示
                     ?>
                     <div class="row">
                         <div class="w-20">
                             <div class="icon-wrap" alt="icon">
-                                <img src="" class="user-icon">
+                                <img src="" class="user-icon"
+                                    onError="this.onerror=null;this.src='../teamC/img/user_icon.png'">
                             </div>
                         </div>
                         <div class="w-80">
