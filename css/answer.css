@@ -182,3 +182,40 @@ a {
     display: flex;
     justify-content: end;
 }
+
+.question-text {
+    color: #212529
+}
+
+.user-data {
+    width: 30%;
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.w-20 {
+    flex: 0 0 auto;
+    width: 20%;
+}
+
+.w-80 {
+    flex: 0 0 auto;
+    width: 80%;
+}
+
+
+.icon-wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.user-icon {
+    width: 64px;
+    height: 64px;
+    border: solid 1px #ced4da;
+    border-radius: 50%;
+}
+
+.name {
+    color: #4e4e4e;
+}

@@ -6,9 +6,20 @@ require_once ('../teamC/class/getQA.php');
 <div class="main-container margin-top">
     <form class="answer-form" method="post" action="../teamC/class/sendAnswer.php" enctype="multipart/form-data">
         <div class="row">
-            <span class="label">質問内容</span>
+            <div class="user-data">
+                <div class="w-20">
+                    <div class="icon-wrap" alt="icon">
+                        <img src="" class="user-icon">
+                    </div>
+                </div>
+                <div class="w-80">
+                    <span class="name">
+
+                    </span>
+                </div>
+            </div>
             <?php
-            echo '<textarea class="input lines">' . $question['text'] . '</textarea>';
+            echo '<p class="question-text">' . $question['text'] . '</p>';
             ?>
         </div>
         <input type="hidden" name="question_id" value="<?php echo ($question['question_id']); ?>">
