@@ -56,18 +56,8 @@ if ($result) {
             echo '<a href="myquestion.php?question_id=', $ques['question_id'], '">
                         ', mb_strimwidth($qtext, 0, 160, '...', 'UTF-8'), '
                         </a>';
-        }
-        echo '    
-                    if($login_user['user_id'] != $ques['user_id']){
-                        echo '<a href="answer.php?question_id=', $ques['question_id'], '">
-                            ', mb_strimwidth($qtext, 0, 160, '...', 'UTF-8'), '
-                        </a>';
-                    }else{
-                        echo '<a href="myquestion.php?question_id=', $ques['question_id'], '">
-                        ', mb_strimwidth($qtext, 0, 160, '...', 'UTF-8'), '
-                        </a>';
-                    }
-                    echo '    
+        }    
+                echo '    
                     </span>
                 </div>
                 <div class="bot-wrap">
