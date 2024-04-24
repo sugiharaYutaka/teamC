@@ -6,7 +6,23 @@ $text = $_POST['text'];
 $keyword = $_POST['keyword'];
 $image = null;
 $imageFilename = null;
-$user_id = 1;
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+    require_once 'UserLogic.php';
+}
+
+$result = UserLogic::checkLogin();
+
+if ($result) {
+    $login_user = $_SESSION['login_user'];
+    $user_id = $login_user['user_id'];
+} else {
+    $login_user['name'] = 'ゲスト';
+}
+
+
+
 //$user_id = (int)$_SESSION['user_id'];
 
 if ($_FILES['image']['size']) {

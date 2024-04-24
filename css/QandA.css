@@ -8,6 +8,56 @@ a {
     text-decoration: none;
 }
 
+/* 検索バー */
+input[type='search'] {
+    font-size: 20px;
+}
+
+.input {
+    display: block;
+    width: 90%;
+    padding: .375rem .75rem;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+}
+
+.search-btn {
+    display: block;
+    width: 10%;
+    padding: .375rem .75rem;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-top-right-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+}
+
+input[type='submit'] {
+    width: 40px;
+    height: 25px;
+}
+
+.search {
+    z-index: 1030;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 10px;
+}
+
+
 .row {
     display: flex;
     width: 95%;

@@ -62,4 +62,20 @@ class answer extends DbData
         $count = $stmt->fetch();
         return $count;
     }
+
+    //ベストアンサーに指定された回答をベストアンサーに変更。また、ベストアンサー取り消しも出来る
+    public function BestAnswer($answer_id,$bestans)
+    {
+        $sql = "update answers set bestans = ? where answer_id = ?";
+        $this->exec($sql, [$bestans,$answer_id]);
+    }
+
+    //指定した質問にベストアンサーが存在するかの確認
+    public function GetBestAnswer($question_id,$answer_id)
+    {
+        $sql = "select false from answers where answer_id = ? and quetion_id = ? and bestans = true";
+        $stmt = $this->query($sql, [$question_id,$answer_id]);
+        $bestans = $stmt->fetch();
+        return $bestans;
+    }
 }
