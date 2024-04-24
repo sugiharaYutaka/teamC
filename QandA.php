@@ -14,8 +14,9 @@ $questions = $question->allquestion(); //全ての質問を取ってくる
         $qanswers = $answer->qanswer($questionId);
         $qcount = $answer->countanswer($questionId);
         $qtext = $ques['text'];
+        $question_time = $ques['created_at']; //qusetionが作成された時間を取得
         if (Strlen($qtext) >= 80) {
-            $qtext = substr($qtext, 0, );
+            $qtext = substr($qtext, 0,);
             $qtext = $qtext . "...";
         }
         echo '
@@ -30,10 +31,13 @@ $questions = $question->allquestion(); //全ての質問を取ってくる
                     <span class="title">
                         <a href="answer.php?question_id=', $ques['question_id'], '">
                             ', mb_strimwidth($qtext, 0, 160, '...', 'UTF-8'), '
-                        </a>
-                    </span>
+                            </a>
                 </div>
                 <div class="bot-wrap">
+                <!-- 質問日時 -->
+                    <span class="time">
+                        ', $question_time, '&nbsp;
+                    </span>
                     <span class="bot-label">
                         回答
                     </span>
@@ -43,8 +47,7 @@ $questions = $question->allquestion(); //全ての質問を取ってくる
                 </div>
             </div>
         </div><hr>
-        '
-        ;
+        ';
     }
     ?>
 </div>
