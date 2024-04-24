@@ -18,7 +18,7 @@ include "header.php";
                 <div class="achievements"><input type="submit" value="achievements" class="buttonEl"></div>
             </div>
             <div class="main-block-wrapper2">
-                <div class="mailaddress">mailaddress<br><input type="text" class="textBoxEl"></div>
+                <div class="mailaddress">mailaddress<br><input type="email" class="textBoxEl"></div>
                 <div class="password">password<br><input type="text" class="textBoxEl"></div>
                 <div class="question"></div>
             </div>
