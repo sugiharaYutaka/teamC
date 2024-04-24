@@ -6,8 +6,13 @@ require_once __DIR__ . '/class/answer.php';
 $answer = new answer();
 $questions = $question->allquestion(); //全ての質問を取ってくる
 ?>
+<link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
 <link href="css/article.css" rel="stylesheet">
-<div class="main-container margin-top">
+<form action="../teamC/home.php" method="get" class="search margin-top">
+    <input type="search" class="input" name="search" placeholder="キーワードを入力">
+    <button type="submit" class="search-btn" name="submit"><i class="fa fa-search"></i></button>
+</form>
+<div class="main-container">
     <?php
     foreach ($questions as $ques) {
         $questionId = $ques['question_id'];  //質問のIDを保存

@@ -28,7 +28,6 @@ include "header.php";
                 <div class="achievements">
                     <input type="button" value="achievements" class="buttonEl">
                 </div>
-            </div>
         </div>
         <div class="main-block-wrapper2">
             <div class="mailaddress">メールアドレス</div><input type="email" class="textBoxEl">

@@ -11,8 +11,13 @@ $result = UserLogic::checkLogin();
 
 
 ?>
+<link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
 <link href="css/article.css" rel="stylesheet">
-<div class="main-container margin-top">
+<form action="../teamC/home.php" method="get" class="search margin-top">
+    <input type="search" class="input" name="search" placeholder="キーワードを入力">
+    <button type="submit" class="search-btn" name="submit"><i class="fa fa-search"></i></button>
+</form>
+<div class="main-container">
     <?php
     foreach ($articles as $art) {
         echo '
