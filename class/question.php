@@ -52,10 +52,9 @@ class question extends DbData
   //全ての質問を取ってくる
   public function allquestion()
   {
-    $sql = "select * from question";
+    $sql = "select * from question ORDER BY created_at DESC";
     $stmt = $this->query($sql, []);
     $questions = $stmt->fetchAll();
     return $questions;
   }
-
 }

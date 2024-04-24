@@ -33,8 +33,9 @@ if ($result) {
         $qanswers = $answer->qanswer($questionId);
         $qcount = $answer->countanswer($questionId);
         $qtext = $ques['text'];
+        $question_time = $ques['created_at']; //qusetionが作成された時間を取得
         if (Strlen($qtext) >= 80) {
-            $qtext = substr($qtext, 0, );
+            $qtext = substr($qtext, 0,);
             $qtext = $qtext . "...";
         }
         echo '
@@ -47,6 +48,16 @@ if ($result) {
             <div class="w-80">
                 <div class="top-wrap">
                     <span class="title">';
+        if ($login_user['user_id'] != $ques['user_id']) {
+            echo '<a href="answer.php?question_id=', $ques['question_id'], '">
+                            ', mb_strimwidth($qtext, 0, 160, '...', 'UTF-8'), '
+                        </a>';
+        } else {
+            echo '<a href="myquestion.php?question_id=', $ques['question_id'], '">
+                        ', mb_strimwidth($qtext, 0, 160, '...', 'UTF-8'), '
+                        </a>';
+        }
+        echo '    
                     if($login_user['user_id'] != $ques['user_id']){
                         echo '<a href="answer.php?question_id=', $ques['question_id'], '">
                             ', mb_strimwidth($qtext, 0, 160, '...', 'UTF-8'), '
@@ -60,6 +71,10 @@ if ($result) {
                     </span>
                 </div>
                 <div class="bot-wrap">
+                <!-- 質問日時 -->
+                    <span class="time">
+                        ', $question_time, '&nbsp;
+                    </span>
                     <span class="bot-label">
                         回答
                     </span>
@@ -69,8 +84,7 @@ if ($result) {
                 </div>
             </div>
         </div><hr>
-        '
-        ;
+        ';
     }
     ?>
 </div>
