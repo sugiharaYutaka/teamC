@@ -24,7 +24,7 @@ include "header.php";
             </div>
             <div class="right-contents">
                 <div class="name">名前</div>
-                <input type="text" class="textBoxEl" placeholder="お名前">
+                <input type="text" class="textBoxEl" >
                 <div class="achievements">
                     <input type="button" value="achievements" class="buttonEl">
                 </div>
