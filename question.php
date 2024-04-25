@@ -3,7 +3,28 @@ include "header.php";
 ?>
 <link href="css/question.css" rel="stylesheet">
 <div class="main-container margin-top">
+    <?php
+
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+        require_once 'class/UserLogic.php';
+    }
+
+    $user_id = null;
+    $result = UserLogic::checkLogin();
+
+    if ($result) {
+        $login_user = $_SESSION['login_user'];
+        $user_id = $login_user['user_id'];
+    } else {
+        $login_user['name'] = 'ゲスト';
+    }
+    if($user_id != null){
+    ?>
     <form class="qusetion-form" method="post" action="../teamC/class/sendQuestion.php" enctype="multipart/form-data">
+        <?php }else{ ?>
+            <form class="qusetion-form" method="post" action="../teamC/login_form.php" enctype="multipart/form-data">
+            <?php } ?>
         <div class=" row">
             <span class="label">質問内容</span>
             <textarea class="input lines" name="text"></textarea>

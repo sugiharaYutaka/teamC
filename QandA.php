@@ -6,6 +6,19 @@ require_once __DIR__ . '/class/answer.php';
 $answer = new answer();
 $questions = $question->allquestion(); //全ての質問を取ってくる
 $searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる 空ならNULLが入る
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+    require_once 'class/UserLogic.php';
+}
+
+$result = UserLogic::checkLogin();
+
+if ($result) {
+    $login_user = $_SESSION['login_user'];
+} else {
+    $login_user['name'] = 'ゲスト';
+    $login_user['user_id'] = 0;
+}
 ?>
 <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
 <link href="css/article.css" rel="stylesheet">
@@ -20,8 +33,9 @@ $searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる
         $qanswers = $answer->qanswer($questionId);
         $qcount = $answer->countanswer($questionId);
         $qtext = $ques['text'];
+        $question_time = $ques['created_at']; //qusetionが作成された時間を取得
         if (Strlen($qtext) >= 80) {
-            $qtext = substr($qtext, 0, );
+            $qtext = substr($qtext, 0,);
             $qtext = $qtext . "...";
         }
         $tag = $ques['tag'];
@@ -32,18 +46,30 @@ $searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる
         <div class="row">
             <div class="w-20">
                 <div class="icon-wrap" alt="icon">
+                    <a href="profile.php?user_id=', $ques['user_id'],'">
                     <img src="" class="user-icon" onError="this.onerror=null;this.src=\'../teamC/img/user_icon.png\'">
                 </div>
             </div>
             <div class="w-80">
                 <div class="top-wrap">
-                    <span class="title">
-                        <a href="answer.php?question_id=', $ques['question_id'], '">
+                    <span class="title">';
+        if ($login_user['user_id'] != $ques['user_id']) {
+            echo '<a href="answer.php?question_id=', $ques['question_id'], '">
                             ', mb_strimwidth($qtext, 0, 160, '...', 'UTF-8'), '
-                        </a>
+                        </a>';
+        } else {
+            echo '<a href="myquestion.php?question_id=', $ques['question_id'], '">
+                        ', mb_strimwidth($qtext, 0, 160, '...', 'UTF-8'), '
+                        </a>';
+        }    
+                echo '    
                     </span>
                 </div>
                 <div class="bot-wrap">
+                <!-- 質問日時 -->
+                    <span class="time">
+                        ', $question_time, '&nbsp;
+                    </span>
                     <span class="bot-label">
                         回答
                     </span>
@@ -53,8 +79,7 @@ $searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる
                 </div>
             </div>
         </div><hr>
-        '
-        ;
+        ';
     }
     ?>
 </div>
