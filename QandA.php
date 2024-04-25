@@ -6,6 +6,9 @@ require_once __DIR__ . '/class/answer.php';
 $answer = new answer();
 $questions = $question->allquestion(); //全ての質問を取ってくる
 $searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる 空ならNULLが入る
+if (is_null($searchWord)){
+    $searchWord = "";
+}
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
     require_once 'class/UserLogic.php';
@@ -39,7 +42,7 @@ if ($result) {
             $qtext = $qtext . "...";
         }
         $tag = $ques['tag'];
-        if (isset($searchWord) && $searchWord != $tag){
+        if ($searchWord != "" && $searchWord != $tag){
             continue;
         }
         echo '
