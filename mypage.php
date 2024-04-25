@@ -35,6 +35,7 @@ include "header.php";
             <div class="question">自分の質問</div>
         </div>
     </div>
+    </div>
 </body>
 <?php
 include "footer.php";
