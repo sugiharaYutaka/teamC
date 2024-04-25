@@ -43,6 +43,7 @@ if ($result) {
         <div class="row">
             <div class="w-20">
                 <div class="icon-wrap" alt="icon">
+                    <a href="profile.php?user_id=', $ques['user_id'],'">
                     <img src="" class="user-icon" onError="this.onerror=null;this.src=\'../teamC/img/user_icon.png\'">
                 </div>
             </div>
