@@ -39,7 +39,7 @@ if ($result) {
             $qtext = $qtext . "...";
         }
         $tag = $ques['tag'];
-        if (isset($searchWord) && $searchWord == $tag){
+        if (isset($searchWord) && $searchWord != $tag){
             continue;
         }
         echo '
