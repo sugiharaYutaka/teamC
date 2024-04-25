@@ -6,7 +6,7 @@ require_once __DIR__ . '/class/answer.php';
 $answer = new answer();
 $questions = $question->allquestion(); //全ての質問を取ってくる
 $searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる 空ならNULLが入る
-if (is_null($searchWord)){
+if (is_null($searchWord)){  //NULLから空白に変える
     $searchWord = "";
 }
 if (session_status() == PHP_SESSION_NONE) {
