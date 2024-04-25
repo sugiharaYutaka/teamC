@@ -55,6 +55,11 @@ $result = UserLogic::checkLogin();
                         <form method="POST" action="login_form.php">
                             <div class="bot-wrap">
                             <span class="bot-label">
+                            <!-- 日時 -->
+                                <span class="time">
+                                ', $art['created_at'], '
+                                </span>
+                            <!-- 日時ここまで -->
                                 <input type="hidden" name="article_id" value="', $art['article_id'], '">
                                 <input type="hidden" name="good" value="', $art['good'], '">&nbsp;
                                 <input type="submit" value="👍">
