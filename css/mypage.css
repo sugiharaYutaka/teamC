@@ -1,6 +1,6 @@
 p {
     font-size: 18px;
-    color: #fff;
+    color: black;
 }
 
 a {
@@ -144,6 +144,11 @@ img#iconimg {
     padding: 5px;
     width: 100%;
     height: auto;
+}
+
+.username{
+    font-size: 20px;
+    margin: 5px;
 }
 
 .footer {
