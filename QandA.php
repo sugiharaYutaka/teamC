@@ -17,6 +17,7 @@ if ($result) {
     $login_user = $_SESSION['login_user'];
 } else {
     $login_user['name'] = 'ゲスト';
+    $login_user['user_id'] = 0;
 }
 
 ?>
