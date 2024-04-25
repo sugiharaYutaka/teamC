@@ -24,7 +24,6 @@ $result = UserLogic::checkLogin();
         <div class="row">
             <div class="w-20">
                 <div class="icon-wrap" alt="icon">
-                <a href="profile.php?user_id=', $art['user_id'],'">
                     <img src="" class="user-icon" onError="this.onerror=null;this.src=\'../teamC/img/user_icon.png\'">
                 </div>
             </div>
@@ -41,7 +40,12 @@ $result = UserLogic::checkLogin();
                         <form method="POST" action="addgoodarticle.php">
                             <div class="bot-wrap">
                             <span class="bot-label">
-                                <input type="hidden" name="article_id" value="', $art['article_id'], '">&nbsp;
+                            <!-- 日時 -->
+                                <span class="time">
+                                ', $art['created_at'], '
+                                </span>
+                            <!-- 日時ここまで -->
+                                <input type="hidden" name="article_id" value="', $art['article_id'], '">
                                 <input type="hidden" name="good" value="', $art['good'], '">&nbsp;
                                 <input type="submit" value="👍">
                             </span>
@@ -51,7 +55,12 @@ $result = UserLogic::checkLogin();
                         <form method="POST" action="login_form.php">
                             <div class="bot-wrap">
                             <span class="bot-label">
-                                <input type="hidden" name="article_id" value="', $art['article_id'], '">&nbsp;
+                            <!-- 日時 -->
+                                <span class="time">
+                                ', $art['created_at'], '
+                                </span>
+                            <!-- 日時ここまで -->
+                                <input type="hidden" name="article_id" value="', $art['article_id'], '">
                                 <input type="hidden" name="good" value="', $art['good'], '">&nbsp;
                                 <input type="submit" value="👍">
                             </span>
@@ -65,8 +74,7 @@ $result = UserLogic::checkLogin();
                 </div>
             </div>
         </div><hr>
-        '
-        ;
+        ';
     }
     ?>
 </div>
