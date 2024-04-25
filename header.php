@@ -32,10 +32,10 @@ if ($result) {
             <h3>KOBE DENSHI</h3>
             <li><a href="home.php">HOME</a></li>
             <li><a href="mypage.php">PROFILE</a></li>
-            <li><a href="QandA.php">QUENTION</a></li>
-            <li><a href="question.php">QUENTION POST</a></li>
+            <li><a href="QandA.php">QUESTION</a></li>
+            <li><a href="question.php">QUESTION POST</a></li>
             <li><a href="article.php">ARTICLE</a></li>
-            <li><a href="post.php">ARTICLEARTICLE POST</a></li>
+            <li><a href="post.php">ARTICLE POST</a></li>
         </ul>
         <button onclick="location.href='<?php echo ($buttonUrl) ?>'">
             <?php echo ($login_user['button2']) ?>
