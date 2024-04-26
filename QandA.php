@@ -42,7 +42,7 @@ if ($result) {
             $qtext = $qtext . "...";
         }
         $tag = $ques['tag'];
-        if ($searchWord != "" && $searchWord != $tag){
+        if ($searchWord != "" && $searchWord != $tag){  //検索内容があり、かつタグと違った場合表示しない
             continue;
         }
         echo '
