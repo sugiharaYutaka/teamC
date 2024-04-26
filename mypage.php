@@ -15,6 +15,7 @@ $login_err = isset($_SESSION['login_err']) ? $_SESSION['login_err'] : null;
 unset($_SESSION['login_err']);
 
 $login_user = $_SESSION['login_user'];
+//var_dump($login_user)
 ?>
 
 <!DOCTYPE html>
@@ -54,34 +55,37 @@ include "header.php";
         <div class="main-block-wrapper">
             <div class="left-contents">
                 <div class="icon">プロフィール画像</div>
-                <img src="img/user_icon.png" id="iconimg">
-                <label class="file_label">
-                    <div class="icon-change">
-                        <input type="file" name="file" id="file" accept=".png, .jpg, .jpeg">画像変更
-                    </div>
-                </label>
+                <img src="img/<?php echo ($login_user['icon_filename']) ?>" id="iconimg">
+                <form action="iconchange.php">
+                    <label class="file_label">
+                        <div class="icon-change">
+                            <input type="file" name="file" id="file" accept=".png, .jpg, .jpeg">ファイル選択
+                        </div>
+                    </label>
+                    <input type="hidden" name="user_id" value="<?php echo ($login_user['user_id']) ?>">
+                </form>
             </div>
             <div class="right-contents">
-            <div class="mailaddress">ユーザーID</div>
+                <div class="mailaddress">ユーザーID</div>
                 <p><?php echo ($login_user['user_id']) ?></p>
                 <div class="name">名前</div>
                 <p><?php echo ($login_user['name']) ?></p>
                 <div class="mailaddress">メールアドレス</div>
                 <p><?php echo ($login_user['email']) ?></p>
-                
+
             </div>
         </div>
         <div class="main-block-wrapper2">
             <form action="mypagechange.php" method="POST" name="form">
-                    <div class="password">パスワード変更</div>
-                    <h3>新しいパスワード</h3>
-                    <input type="password" id="pw1" name="password" placeholder="パスワード" required="required">
-                    <h3>新しいパスワード確認用</h3>
-                    <p>※同じパスワードをもう一度入力してください</p>
-                    <input type="password" id="pw2" name="password" placeholder="パスワード確認用" required="required"><br>
-                    <input type="hidden" name="user_id" value="<?php echo ($login_user['user_id']) ?>">
-                    <input onclick="return check()" type="submit" value="パスワードを変更">
-                </form>
+                <div class="password">パスワード変更</div>
+                <h3>新しいパスワード</h3>
+                <input type="password" id="pw1" name="password" placeholder="パスワード" required="required">
+                <h3>新しいパスワード確認用</h3>
+                <p>※同じパスワードをもう一度入力してください</p>
+                <input type="password" id="pw2" name="password" placeholder="パスワード確認用" required="required"><br>
+                <input type="hidden" name="user_id" value="<?php echo ($login_user['user_id']) ?>">
+                <input onclick="return check()" type="submit" value="パスワードを変更">
+            </form>
             <div class="question">自分の質問</div>
             <div class="question">自分の記事</div>
         </div>
