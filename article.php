@@ -8,18 +8,29 @@ $articles = $article->allarticle(); //全ての記事を取ってくる
 
 $result = UserLogic::checkLogin();
 
+$searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる 空ならNULLが入る
+if (is_null($searchWord)){  //NULLから空白に変える
+    $searchWord = "";
+}
 
-
+$hitFlag = true;
 ?>
 <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
 <link href="css/article.css" rel="stylesheet">
-<form action="../teamC/home.php" method="get" class="search margin-top">
+<form action="../teamC/article.php" method="get" class="search margin-top">
     <input type="search" class="input" name="search" placeholder="キーワードを入力">
     <button type="submit" class="search-btn" name="submit"><i class="fa fa-search"></i></button>
 </form>
 <div class="main-container">
     <?php
     foreach ($articles as $art) {
+        $tag = $art['tag'];
+        if ($searchWord != "" && $searchWord != $tag){  //検索内容があり、かつタグと違った場合表示しない
+            continue;
+        }
+        else{
+            $hitFlag = false;
+        }
         echo '
         <div class="row">
             <div class="w-20">
@@ -40,7 +51,12 @@ $result = UserLogic::checkLogin();
                         <form method="POST" action="addgoodarticle.php">
                             <div class="bot-wrap">
                             <span class="bot-label">
-                                <input type="hidden" name="article_id" value="', $art['article_id'], '">&nbsp;
+                            <!-- 日時 -->
+                                <span class="time">
+                                ', $art['created_at'], '
+                                </span>
+                            <!-- 日時ここまで -->
+                                <input type="hidden" name="article_id" value="', $art['article_id'], '">
                                 <input type="hidden" name="good" value="', $art['good'], '">&nbsp;
                                 <input type="submit" value="👍">
                             </span>
@@ -50,7 +66,12 @@ $result = UserLogic::checkLogin();
                         <form method="POST" action="login_form.php">
                             <div class="bot-wrap">
                             <span class="bot-label">
-                                <input type="hidden" name="article_id" value="', $art['article_id'], '">&nbsp;
+                            <!-- 日時 -->
+                                <span class="time">
+                                ', $art['created_at'], '
+                                </span>
+                            <!-- 日時ここまで -->
+                                <input type="hidden" name="article_id" value="', $art['article_id'], '">
                                 <input type="hidden" name="good" value="', $art['good'], '">&nbsp;
                                 <input type="submit" value="👍">
                             </span>
@@ -64,8 +85,14 @@ $result = UserLogic::checkLogin();
                 </div>
             </div>
         </div><hr>
-        '
-        ;
+        ';
     }
     ?>
+    <?php   //ヒットしてたかどうかでdisplayを変更するクラスを追加する
+    $ZeroHitClass = "ZeroHitDisplay";
+    if ($hitFlag) $ZeroHitClass = "";
+    ?>
+    <div class="ZeroHit <?php echo $ZeroHitClass; ?>">
+        <p>検索結果が見つかりませんでした</p>
+    </div>
 </div>

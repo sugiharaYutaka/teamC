@@ -31,7 +31,7 @@ if ($result) {
         <ul>
             <h3>KOBE DENSHI</h3>
             <li><a href="home.php">HOME</a></li>
-            <li><a href="mypage.php">PROFILE</a></li>
+            <li><a href="mypage.php">MYPAGE</a></li>
             <li><a href="QandA.php">QUESTION</a></li>
             <li><a href="question.php">QUESTION POST</a></li>
             <li><a href="article.php">ARTICLE</a></li>

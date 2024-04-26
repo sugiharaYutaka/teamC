@@ -21,11 +21,14 @@ if ($result) {
 require_once __DIR__ . '/class/article.php';
 $article = new article();
 $articles = $article->allarticle();
-?>
 
-
-<?php
 include "header.php";
+
+$searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる 空ならNULLが入る
+if (is_null($searchWord)){  //NULLから空白に変える
+    $searchWord = "";
+}
+$hitFlag = true;
 ?>
 
 <body>
@@ -43,13 +46,22 @@ include "header.php";
                 <hr class="hr-margin">
                 <?php
                 foreach ($questions as $ques) {   //ここでデータベースに登録されてるすべての質問を取り出し、表示
+                    $tag = $ques['tag'];
+                    if ($searchWord != "" && $searchWord != $tag){  //検索内容があり、かつタグと違った場合表示しない
+                        continue;
+                    }
+                    else{
+                        $hitFlag = false;
+                    }
                     ?>
                     <div class="row">
                         <div class="w-20">
                             <div class="icon-wrap" alt="icon">
+                                <a href="profile.php?user_id=<?= $ques['user_id'] ?> ">
                                 <img src="" class="user-icon"
                                     onError="this.onerror=null;this.src='../teamC/img/user_icon.png'">
-                            </div>
+                                </a>
+                                </div>
                         </div>
                         <div class="w-80">
                             <span class="title">
@@ -67,12 +79,21 @@ include "header.php";
                 <hr class="hr-margin">
                 <?php
                 foreach ($articles as $art) {   //ここでデータベースに登録されてるすべての質問を取り出し、表示
+                    $tag = $art['tag'];
+                    if ($searchWord != "" && $searchWord != $tag){  //検索内容があり、かつタグと違った場合表示しない
+                        continue;
+                    }
+                    else{
+                        $hitFlag = false;
+                    }
                     ?>
                     <div class="row">
                         <div class="w-20">
                             <div class="icon-wrap" alt="icon">
+                            <a href="profile.php?user_id=<?= $art['user_id'] ?> ">
                                 <img src="" class="user-icon"
                                     onError="this.onerror=null;this.src='../teamC/img/user_icon.png'">
+                            </a>
                             </div>
                         </div>
                         <div class="w-80">
@@ -84,6 +105,13 @@ include "header.php";
                     <hr>
                 <?php } ?>
             </div>
+        </div>
+        <?php   //ヒットしてたかどうかでdisplayを変更するクラスを追加する
+        $ZeroHitClass = "ZeroHitDisplay";
+        if ($hitFlag) $ZeroHitClass = "";
+        ?>
+        <div class="ZeroHit <?php echo $ZeroHitClass; ?>">
+            <p>検索結果が見つかりませんでした</p>
         </div>
     </div>
 </body>
