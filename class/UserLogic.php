@@ -173,4 +173,29 @@ class UserLogic
         $_SESSION = array();
         session_destroy();
     }
+
+
+    /**
+     * パスワード変更
+     * @param array $userData
+     * @return bool $result
+     */
+    public static function changePwd($userData)
+    {
+        $result = false;
+        $sql = 'UPDATE users SET password = ? WHERE user_id = ?';
+
+        $arr = [];
+        $arr[] = password_hash($userData['password'], PASSWORD_DEFAULT);
+        //var_dump($userData);
+        $arr[] = $userData['user_id'];
+        
+        try {
+            $stmt = connect()->prepare($sql);
+            $result = $stmt->execute($arr);
+            return $result;
+        } catch (\Exception $e) {
+            return $result;
+        }
+    }
 }
