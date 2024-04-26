@@ -1,3 +1,21 @@
+<?php
+if(isset($_GET['user_id']) && !empty($_GET['user_id'])){
+    $id = $_GET['user_id'];
+}
+else{
+    $id = 'ユーザーIDの情報がありません';
+}
+
+session_start();
+require_once 'class/UserLogic.php';
+//
+$result = UserLogic::getUserById($id);
+$userData = $result;
+//var_dump($userData)
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="ja">
 <?php
@@ -17,20 +35,21 @@ include "header.php";
         <div class="main-block-wrapper">
             <div class="left-contents">
                 <div class="icon">プロフィール画像</div>
-                <img src="img/user_icon.png" id="iconimg">
+                <img src="img/<?php echo ($userData['icon_filename']) ?>" id="iconimg">
                 <label class="file_label">
                 </label>
             </div>
             <div class="right-contents">
+                
+            <div class="mailaddress">ユーザーID</div>
+                <p><?php echo($id) ?></p>
                 <div class="name">名前</div>
-                <p class="username">さかもと</p>
-                <div class="achievements">
-                    <input type="button" value="achievements" class="buttonEl">
-                </div>
+                <p class="username"><?php echo ($userData['name']) ?></p>
+                <div class="achievements">実績</div>
             </div>
             <div class="main-block-wrapper2">
-                <div class="question">さかもとさんの質問</div>
-                <div class="question">さかもとさんの記事</div>
+                <div class="question"><?php echo ($userData['name']) ?>さんの質問</div>
+                <div class="question"><?php echo ($userData['name']) ?>さんの記事</div>
             </div>
         </div>
     </div>
