@@ -1,3 +1,22 @@
+<?php
+session_start();
+require_once 'class/UserLogic.php';
+//ログイン判定
+$result = UserLogic::checkLogin();
+
+if (!$result) {
+    $_SESSION['login_err'] = 'ユーザー登録してログインしてください';
+    header('Location: signup_form.php');
+    return;
+}
+
+
+$login_err = isset($_SESSION['login_err']) ? $_SESSION['login_err'] : null;
+unset($_SESSION['login_err']);
+
+$login_user = $_SESSION['login_user'];
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <?php
@@ -11,42 +30,63 @@ include "header.php";
     <link rel="stylesheet" href="css/header.css">
     <title>mypage</title>
 </head>
+<script type="text/javascript">
+    function check() {
+        var check3 = document.form.pw1.value;
+        var check4 = document.form.pw2.value;
+
+        if (check3 != check4) {
+            document.getElementById('alert').innerHTML = "<p>確認用パスワードが異なります。</p>";
+            return false;
+        } else {
+            return true;
+        }
+    }
+</script>
 
 <body>
     <div class="main-block margin-top">
+        <div id="alert">
+            <?php if (isset($login_err)) : ?>
+                <p><?php echo $login_err; ?></p>
+            <?php endif; ?>
+        </div>
         <div class="main-block-wrapper">
             <div class="left-contents">
                 <div class="icon">プロフィール画像</div>
                 <img src="img/user_icon.png" id="iconimg">
                 <label class="file_label">
                     <div class="icon-change">
-                        <form>
-                            <input type="file" name="file">画像変更
-                        </form>
+                        <input type="file" name="file" id="file" accept=".png, .jpg, .jpeg">画像変更
                     </div>
                 </label>
             </div>
             <div class="right-contents">
+            <div class="mailaddress">ユーザーID</div>
+                <p><?php echo ($login_user['user_id']) ?></p>
                 <div class="name">名前</div>
-                <input type="text" class="textBoxEl">
-                <div class="achievements">
-                    <input type="button" value="achievements" class="buttonEl">
-                </div>
-            </div>
-            <div class="main-block-wrapper2">
-                <div class="mailaddress">メールアドレス</div><form><input type="email" class="textBoxEl"></form>
-                <div class="password">パスワード</div><form><input type="password" class="textBoxEl"></form>
-                <div class="question">自分の質問</div>
-                <div class="question">自分の記事</div>
+                <p><?php echo ($login_user['name']) ?></p>
+                <div class="mailaddress">メールアドレス</div>
+                <p><?php echo ($login_user['email']) ?></p>
+                
             </div>
         </div>
+        <div class="main-block-wrapper2">
+            <form action="mypagechange.php" method="POST" name="form">
+                    <div class="password">パスワード変更</div>
+                    <h3>新しいパスワード</h3>
+                    <input type="password" id="pw1" name="password" placeholder="パスワード" required="required">
+                    <h3>新しいパスワード確認用</h3>
+                    <p>※同じパスワードをもう一度入力してください</p>
+                    <input type="password" id="pw2" name="password" placeholder="パスワード確認用" required="required"><br>
+                    <input type="hidden" name="user_id" value="<?php echo ($login_user['user_id']) ?>">
+                    <input onclick="return check()" type="submit" value="パスワードを変更">
+                </form>
+            <div class="question">自分の質問</div>
+            <div class="question">自分の記事</div>
+        </div>
     </div>
-    <footer>
-        <button onclick="location.href='home_H.php'">ホームに戻る</button>
-        <form><input type="submit" form="memberdata" value="保存">
-        </form>
-    </footer>
-
+    </div>
 </body>
 
 </html>

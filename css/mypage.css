@@ -1,13 +1,15 @@
 p {
+    margin: 5px;
     font-size: 18px;
     color: black;
 }
-
+h3{
+    margin: 10px;
+}
 a {
     font-size: 18px;
     text-decoration: none;
 }
-
 .main-block {
     background-color: white;
     margin-left: auto;
@@ -21,9 +23,20 @@ a {
     width: 90%;
     display: flex;
     flex-wrap: wrap;
-    padding-top: 15px;
+    padding-top: 10px;
     margin-left: auto;
     margin-right: auto;
+}
+
+div#alert p {
+    padding-top: 10px;
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+
+div#alert {
+    margin: 10px;
 }
 
 .left-contents {
@@ -48,9 +61,10 @@ a {
 input[type=file] {
     display: none;
 }
-.file_label{
-width: 100%;
-text-align: center;
+
+.file_label {
+    width: 100%;
+    text-align: center;
 }
 
 .icon-change {
@@ -65,7 +79,8 @@ text-align: center;
     border-bottom: rgb(69, 69, 69) solid 3px;
     border-right: rgb(69, 69, 69) solid 3px;
 }
-.icon-change:active{
+
+.icon-change:active {
     border-bottom: rgb(69, 69, 69) solid 1px;
     border-right: rgb(69, 69, 69) solid 1px;
     border-top: rgb(69, 69, 69) solid 3px;
@@ -101,7 +116,33 @@ img#iconimg {
     color: white;
     padding: 5px;
     width: 100%;
-    height: 40%;
+    height: 25%;
+}
+
+form{
+    text-align: center;
+}
+input[type=password] {
+    font-size: 20px;
+}
+input[type=submit] {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 50px;
+    width: 30%;
+    min-width: 180px;
+    font-size: 20px;
+    border: none;
+    background-color: rgb(25,25,25);
+    color: white;
+    font-family: "Kosugi Maru", sans-serif;
+    font-weight: 200;
+}
+
+input[type=submit]:hover {
+    background-color: rgb(69, 69, 69);
 }
 
 .main-block-wrapper2 {
@@ -146,7 +187,7 @@ img#iconimg {
     height: auto;
 }
 
-.username{
+.username {
     font-size: 20px;
     margin: 5px;
 }
