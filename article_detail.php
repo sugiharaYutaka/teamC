@@ -81,7 +81,7 @@ include "header.php";
                 </div>
             </div>
         </div>
-        <div class="start-content margin-top">
+        <div class="start-content margin-top-other">
             <form method="post" action="">
                 <div class="row">
                     <textarea class="comment-textarea" placeholder="コメントを入力"></textarea>
