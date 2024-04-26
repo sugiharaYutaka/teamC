@@ -46,8 +46,9 @@ $hitFlag = true;
                 <hr class="hr-margin">
                 <?php
                 foreach ($questions as $ques) {   //ここでデータベースに登録されてるすべての質問を取り出し、表示
+                    $qtext = $ques['text'];
                     $tag = $ques['tag'];
-                    if ($searchWord != "" && $searchWord != $tag){  //検索内容があり、かつタグと違った場合表示しない
+                    if ($searchWord != "" && strstr($tag, $searchWord) == false && strstr($qtext, $searchWord) == false){  //検索内容があり、かつ内容と違った場合表示しない
                         continue;
                     }
                     else{
@@ -79,8 +80,9 @@ $hitFlag = true;
                 <hr class="hr-margin">
                 <?php
                 foreach ($articles as $art) {   //ここでデータベースに登録されてるすべての質問を取り出し、表示
+                    $qtext = $art['text'];
                     $tag = $art['tag'];
-                    if ($searchWord != "" && $searchWord != $tag){  //検索内容があり、かつタグと違った場合表示しない
+                    if ($searchWord != "" && strstr($tag, $searchWord) == false && strstr($qtext, $searchWord) == false){  //検索内容があり、かつ内容と違った場合表示しない
                         continue;
                     }
                     else{
