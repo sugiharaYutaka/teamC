@@ -114,6 +114,14 @@ a {
     align-items: center;
 }
 
+.bestw-80 {
+    flex: 0 0 auto;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    background-color: aquamarine;
+}
+
 .title-margin {
     margin-right: 2.5%;
     margin-left: 2.5%;

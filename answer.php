@@ -54,14 +54,22 @@ $user_name = $userLogic->getUserById($question['user_id']);
                             ' . $answer['name'] . '
                     </span>
                 </div>
-            </div>
-            <div class="w-80">
-                <div class="text-wrap">
+            </div>';
+            if($answer['bestans'] == 1){
+                echo '<div class="bestw-80">';
+            } else {
+                echo '<div class="w-80">';
+            }
+            echo '<div class="text-wrap">
                     <span class="answer-text">
                         ' . $answer['text'] . '
                     </span>
                 </div>
+                <form method="POST" action="bestanswer.php?question_id='.$answer['quetion_id'].'">
+                    <div class="bot-wrap">
+                </form>
             </div>
+        </div>
         </div>
         <hr>
         ';
