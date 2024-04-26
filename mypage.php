@@ -76,8 +76,8 @@ include "header.php";
             </div>
         </div>
         <div class="main-block-wrapper2">
+            <div class="password">パスワード変更</div>
             <form action="mypagechange.php" method="POST" name="form">
-                <div class="password">パスワード変更</div>
                 <h3>新しいパスワード</h3>
                 <input type="password" id="pw1" name="password" placeholder="パスワード" required="required">
                 <h3>新しいパスワード確認用</h3>
