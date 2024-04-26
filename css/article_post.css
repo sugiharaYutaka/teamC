@@ -1,0 +1,107 @@
+.main-container {
+    width: 95%;
+    max-width: 950px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 3px;
+    background-color: transparent;
+    font-family: "Kosugi Maru", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background: #fff;
+}
+
+.section {
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.indent {
+    display: flex;
+    flex-wrap: wrap;
+    width: 95%;
+}
+
+.row-right {
+    width: 95%;
+    flex-wrap: wrap;
+    display: flex;
+    padding-right: 2.5%;
+    padding-left: 2.5%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    justify-content: end;
+}
+
+.label {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.row {
+    width: 95%;
+    flex-wrap: wrap;
+    display: flex;
+    padding-right: 2.5%;
+    padding-left: 2.5%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.input {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0;
+}
+
+input {
+    font-size: 20px;
+}
+
+.btn-group {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    flex-wrap: wrap;
+}
+
+.btn-plus {
+    padding: .375rem .75rem;
+    font-size: 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #2c2c2c
+}
+
+.btn-minus {
+    padding: .375rem .75rem;
+    font-size: 20px;
+    box-sizing: border-box;
+    color: #2c2c2c;
+    background-color: #fff;
+
+}
+
+.btn-plus:hover {
+    transition: 0.2s;
+    background-color: #2c2c2c;
+    color: #ffffff
+}
+
+.btn-minus:hover {
+    transition: 0.2s;
+    background-color: #2c2c2c;
+    color: #ffffff
+}
