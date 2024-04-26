@@ -48,8 +48,8 @@ include "header.php";
                 <div class="achievements">実績</div>
             </div>
             <div class="main-block-wrapper2">
-                <div class="question">さかもとさんの質問</div>
-                <div class="question">さかもとさんの記事</div>
+                <div class="question"><?php echo ($userData['name']) ?>さんの質問</div>
+                <div class="question"><?php echo ($userData['name']) ?>さんの記事</div>
             </div>
         </div>
     </div>
