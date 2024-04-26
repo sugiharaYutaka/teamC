@@ -24,8 +24,9 @@ $hitFlag = true;
 <div class="main-container">
     <?php
     foreach ($articles as $art) {
+        $qtext = $art['text'];
         $tag = $art['tag'];
-        if ($searchWord != "" && $searchWord != $tag){  //検索内容があり、かつタグと違った場合表示しない
+        if ($searchWord != "" && strstr($tag, $searchWord) == false && strstr($qtext, $searchWord) == false){  //検索内容があり、かつ内容と違った場合表示しない
             continue;
         }
         else{
