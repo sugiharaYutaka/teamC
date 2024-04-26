@@ -23,21 +23,28 @@ include "header.php";
                 </div>
             </div>
             <div class="row">
-                <hr>
                 <div class="article-title">
                     <span>AWSでブロックチェーン実装してみた</span>
                 </div>
             </div>
-            <div class="row">
-                <span class="main-text-title">
-                    1.はじめに
-                </span>
+            <hr>
+            <?php for ($index = 0; $index < 5; $index++) {
+                echo '
+                <div class="row">
+                    <span class="main-text-title">
+                        1.はじめに
+                    </span>
+                </div>
                 <hr>
+                <div class="row">
                 <span class="main-text">
                     きょうはきょうはきょうあｈ
                 </span>
+                <
+                ';
+            }
+            ?>
 
-            </div>
 
         </div>
         <div class="end-content">
