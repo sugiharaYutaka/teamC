@@ -26,7 +26,7 @@ class answer extends DbData
     //回答の取り出し
     public function allanswer($answerid)
     {
-        $sql = "select * from answer where answer_id = ?";
+        $sql = "select * from answers where quetion_id = ?";
         $stmt = $this->query($sql, [$answerid]);
         $questions = $stmt->fetchAll();
         return $questions;
