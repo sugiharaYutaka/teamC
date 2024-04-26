@@ -40,13 +40,13 @@
         background-color: #fff;
         border-radius: 2px;
         margin-top: 0px;
+        padding: 10px
     }
 
-    margin-top: 15px;
-    width: 100%;
-    box-sizing: border-box;
-    background-color: #fff;
-    border-radius: 2px;
+    @media (max-width: 760px) {
+        display: none;
+    }
+
 }
 
 .row {
@@ -73,6 +73,11 @@
 
 
 .icon-wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.name-wrap {
     display: flex;
     justify-content: center;
 }
@@ -117,4 +122,49 @@
     width: 100%;
     color: #454545;
     font-size: 15px;
+}
+
+.comment-group {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.margin-top {
+    margin-top: 20px;
+}
+
+.comment-textarea {
+    width: 100%;
+    height: 5rem;
+    resize: none;
+}
+
+.btn {
+    display: inline-block;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid #ced4da;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: 0;
+}
+
+.btn:hover {
+    background-color: #4e4e4e;
+    color: #ffffff;
+    transition: 0.3s;
+}
+
+.content-end {
+    width: 100%;
+    margin-top: 10px;
+    justify-content: end;
+    display: flex;
 }
