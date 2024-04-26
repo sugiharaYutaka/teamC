@@ -13,6 +13,7 @@ if (is_null($searchWord)){  //NULLから空白に変える
     $searchWord = "";
 }
 
+$hitFlag = true;
 ?>
 <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
 <link href="css/article.css" rel="stylesheet">
@@ -26,6 +27,9 @@ if (is_null($searchWord)){  //NULLから空白に変える
         $tag = $art['tag'];
         if ($searchWord != "" && $searchWord != $tag){  //検索内容があり、かつタグと違った場合表示しない
             continue;
+        }
+        else{
+            $hitFlag = false;
         }
         echo '
         <div class="row">
@@ -84,4 +88,11 @@ if (is_null($searchWord)){  //NULLから空白に変える
         ';
     }
     ?>
+    <?php   //ヒットしてたかどうかでdisplayを変更するクラスを追加する
+    $ZeroHitClass = "ZeroHitDisplay";
+    if ($hitFlag) $ZeroHitClass = "";
+    ?>
+    <div class="ZeroHit <?php echo $ZeroHitClass; ?>">
+        <p>検索結果が見つかりませんでした</p>
+    </div>
 </div>

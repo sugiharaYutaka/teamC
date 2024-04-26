@@ -28,6 +28,7 @@ $searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる
 if (is_null($searchWord)){  //NULLから空白に変える
     $searchWord = "";
 }
+$hitFlag = true;
 ?>
 
 <body>
@@ -48,6 +49,9 @@ if (is_null($searchWord)){  //NULLから空白に変える
                     $tag = $ques['tag'];
                     if ($searchWord != "" && $searchWord != $tag){  //検索内容があり、かつタグと違った場合表示しない
                         continue;
+                    }
+                    else{
+                        $hitFlag = false;
                     }
                     ?>
                     <div class="row">
@@ -79,6 +83,9 @@ if (is_null($searchWord)){  //NULLから空白に変える
                     if ($searchWord != "" && $searchWord != $tag){  //検索内容があり、かつタグと違った場合表示しない
                         continue;
                     }
+                    else{
+                        $hitFlag = false;
+                    }
                     ?>
                     <div class="row">
                         <div class="w-20">
@@ -98,6 +105,13 @@ if (is_null($searchWord)){  //NULLから空白に変える
                     <hr>
                 <?php } ?>
             </div>
+        </div>
+        <?php   //ヒットしてたかどうかでdisplayを変更するクラスを追加する
+        $ZeroHitClass = "ZeroHitDisplay";
+        if ($hitFlag) $ZeroHitClass = "";
+        ?>
+        <div class="ZeroHit <?php echo $ZeroHitClass; ?>">
+            <p>検索結果が見つかりませんでした</p>
         </div>
     </div>
 </body>
