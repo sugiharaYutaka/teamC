@@ -16,6 +16,7 @@ if ($result) {
     $login_user = $_SESSION['login_user'];
 } else {
     $login_user['name'] = 'ゲスト';
+    $login_user['user_id'] = 0;
 }
 
 require_once __DIR__ . '/class/article.php';
@@ -65,8 +66,12 @@ $hitFlag = true;
                         </div>
                         <div class="w-80">
                             <span class="title">
+                           <?php  if ($login_user['user_id'] != $ques['user_id']) { ?>
                                 <a
                                     href="answer.php?question_id=<?= $ques['question_id'] ?>"><?php echo mb_strimwidth($ques['text'], 0, 100, '...', 'UTF-8') ?></a>
+                                    <?php } else { ?>
+                                        <a href="myquestion.php?question_id=<?= $ques['question_id'] ?>"><?php echo mb_strimwidth($ques['text'], 0, 100, '...', 'UTF-8') ?></a>
+                                        <?php } ?>
                             </span>
                         </div>
                     </div>

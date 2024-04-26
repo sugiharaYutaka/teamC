@@ -37,22 +37,26 @@ $user_name = $userLogic->getUserById($question['user_id']);
                             ' . $answer['name'] . '
                     </span>
                 </div>
-            </div>
-            <div class="w-80">
-                <div class="text-wrap">
+            </div>';
+            if($answer['bestans'] == 1){
+                echo '<div class="bestw-80">';
+            } else {
+                echo '<div class="w-80">';
+            }
+            echo '<div class="text-wrap">
                     <span class="answer-text">
                         ' . $answer['text'] . '
                     </span>
                 </div>
-                <form method="POST" action="bestanswer.php">
+                <form method="POST" action="bestanswer.php?question_id='.$answer['quetion_id'].'">
                     <div class="bot-wrap">
                     <span class="bot-label">
                         <input type="hidden" name="answer_id" value="', $answer['answer_id'], '">&nbsp;
-                        <input type="hidden" name="question_id" value="', $answer['quetion_id'], '">&nbsp;
                         <input type="submit" value="ベストアンサーにする">
                     </span>
                 </form>
             </div>
+        </div>
         </div>
         <hr>
         ';

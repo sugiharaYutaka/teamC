@@ -71,10 +71,10 @@ class answer extends DbData
     }
 
     //指定した質問にベストアンサーが存在するかの確認
-    public function GetBestAnswer($question_id,$answer_id)
+    public function GetBestAnswer($answer_id)
     {
-        $sql = "select false from answers where answer_id = ? and quetion_id = ? and bestans = true";
-        $stmt = $this->query($sql, [$question_id,$answer_id]);
+        $sql = "select bestans from answers where answer_id = ?";
+        $stmt = $this->query($sql, [$answer_id]);
         $bestans = $stmt->fetch();
         return $bestans;
     }
