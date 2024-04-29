@@ -35,7 +35,7 @@ if ($result) {
             <li><a href="QandA.php">QUESTION</a></li>
             <li><a href="question.php">QUESTION POST</a></li>
             <li><a href="article.php">ARTICLE</a></li>
-            <li><a href="post.php">ARTICLE POST</a></li>
+            <li><a href="article_post.php">ARTICLE POST</a></li>
         </ul>
         <button onclick="location.href='<?php echo ($buttonUrl) ?>'">
             <?php echo ($login_user['button2']) ?>
