@@ -55,6 +55,7 @@ $user_name = $userLogic->getUserById($question['user_id']);
                     <div class="bot-wrap">
                     <span class="bot-label">
                         <input type="hidden" name="answer_id" value="', $answer['answer_id'], '">&nbsp;
+                        <input type="hidden" name="user_id" value="',$answer['user_id'],'">&nbsp;
                         <input type="submit" value="ベストアンサーにする">
                     </span>
                 </form>
