@@ -17,9 +17,9 @@ include "header.php";
                 <span class="section">セクション1</span>
                 <div class="indent">
                     <span class="label">セクションタイトル</span>
-                    <input class="input" name="title">
+                    <input class="input" name="title1">
                     <span class="label">セクション本文</span>
-                    <input class="input " name="main_text">
+                    <input class="input " name="main_text1">
                 </div>
             </div>
         </div>
@@ -28,6 +28,9 @@ include "header.php";
                 <button type="button" class="btn-plus" onclick="addSection()">+</button>
                 <button type="button" class="btn-minus" onclick="deleteSection()">-</button>
             </div>
+        </div>
+        <div class="btn-wrap">
+            <button class="btn">投稿</button>
         </div>
     </form>
 </div>

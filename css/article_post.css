@@ -105,3 +105,31 @@ input {
     background-color: #2c2c2c;
     color: #ffffff
 }
+
+.btn {
+    display: inline-block;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid #ced4da;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: 0;
+    width: 30%;
+    margin: 10px;
+}
+
+.btn:hover {
+    transition: 0.3s;
+    color: #bdbdbd;
+    background-color: #3f3f3f;
+}
+
+.btn-wrap {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
