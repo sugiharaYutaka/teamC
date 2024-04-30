@@ -8,6 +8,7 @@ $articles = $article->allarticle(); //全ての記事を取ってくる
 
 $result = UserLogic::checkLogin();
 
+
 $hitFlag = true;
 if (empty($_GET['search'])) {
     $emptyFlag = true;
@@ -45,20 +46,21 @@ else{
             else{
                 $hitFlag = false;
             }
+
         }
-        
+
         echo '
         <div class="row">
             <div class="w-20">
                 <div class="icon-wrap" alt="icon">
-                <a href="profile.php?user_id=', $art['user_id'],'">
+                <a href="profile.php?user_id=', $art['user_id'], '">
                     <img src="" class="user-icon" onError="this.onerror=null;this.src=\'../teamC/img/user_icon.png\'">
                 </div>
             </div>
             <div class="w-80">
                 <div class="top-wrap">
                     <span class="title">
-                        <a href="">
+                        <a href="article_detail.php?article_id=', $art['article_id'], '">
                            ', mb_strimwidth($art['article_title'], 0, 160, '...', 'UTF-8'), '
                         </a>
                     </span>
@@ -107,7 +109,8 @@ else{
     ?>
     <?php   //ヒットしてたかどうかでdisplayを変更するクラスを追加する
     $ZeroHitClass = "ZeroHitDisplay";
-    if ($hitFlag) $ZeroHitClass = "";
+    if ($hitFlag)
+        $ZeroHitClass = "";
     ?>
     <div class="ZeroHit <?php echo $ZeroHitClass; ?>">
         <p>検索結果が見つかりませんでした</p>

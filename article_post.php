@@ -9,7 +9,7 @@ include "header.php";
             <input class="input" name="article_title">
         </div>
         <div class="row">
-            <span class="label">タグ</span>
+            <span class="label">タグ(半角スペースで区切って入力してください)</span>
             <input class="input" name="tag">
         </div>
         <div id="section-group">

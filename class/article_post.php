@@ -1,6 +1,7 @@
 <?php
 $titles = [];
 $main_texts = [];
+
 foreach ($_POST as $key => $value) {
     if (preg_match('/^title[0-9]{1,2}$/', $key)) {
         array_push($titles, $_POST[$key]);
@@ -34,7 +35,13 @@ if ($result) {
 }
 $article_title = $_POST['article_title'];
 $tag = $_POST['tag'];
+$tag = str_replace(" ", "//", $tag);
 $Article = new article();
-$Article->_addarticle($user_id, $article_title, $parsed_title, $parsed_main_text, $tag);
-header("Location:../home.php");
+if ($user_id == null) {
+    var_dump('login siro');
+} else {
+    $Article->_addarticle($user_id, $article_title, $parsed_title, $parsed_main_text, $tag);
+    header("Location:../home.php");
+}
+
 ?>

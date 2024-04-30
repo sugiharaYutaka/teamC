@@ -24,6 +24,13 @@ class article extends DbData
     return $userarticle;
   }
 
+  public function getArticleById($article_id)
+  {
+    $sql = "select * from article inner join users on users.user_id = article.user_id where article_id = ?";
+    $stmt = $this->query($sql, [$article_id]);
+    $userarticle = $stmt->fetch();
+    return $userarticle;
+  }
   //全ての記事を取得
   public function allarticle()
   {
