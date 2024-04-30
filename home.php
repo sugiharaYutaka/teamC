@@ -25,12 +25,19 @@ $articles = $article->allarticle();
 
 include "header.php";
 
-if (empty($_GET['search'])) $_GET['search'] = "";
-$searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる
-$searchWord = mb_convert_kana($searchWord, 's');//全角スペースを半角にする
-$searchWords = explode(" ", $searchWord);   //スペース区切りで分割する
-
 $hitFlag = true;
+if (empty($_GET['search'])) {
+    $emptyFlag = true;
+    $hitFlag = false;
+}
+else{
+    $searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる
+    $searchWord = mb_convert_kana($searchWord, 's');//全角スペースを半角にする
+    $searchWords = explode(" ", $searchWord);   //スペース区切りで分割する
+    $emptyFlag = false;
+}
+
+
 ?>
 
 <body>
@@ -51,16 +58,17 @@ $hitFlag = true;
                     $qtext = $ques['text'];
                     $tag = $ques['tag'];
 
-                    $searchWordFlag = true;
-                    for ($i = 0; $i < count($searchWords); $i++){
-                        if (strstr($qtext, $searchWords[$i]) == true ||
-                            strstr($tag, $searchWords[$i]) == true) $searchWordFlag = false;
-                    }
-                    if ($searchWord != "" && $searchWordFlag){  //検索内容があり、かつ内容と違った場合表示しない
-
-                        continue;
-                    } else {
-                        $hitFlag = false;
+                    if (!$emptyFlag){
+                        $searchWordFlag = true;
+                        for ($i = 0; $i < count($searchWords); $i++){
+                            if (strstr($qtext, $searchWords[$i]) == true ||
+                                strstr($tag, $searchWords[$i]) == true) $searchWordFlag = false;
+                        }
+                        if ($searchWordFlag){  //検索内容があり、かつ内容と違った場合表示しない
+                            continue;
+                        } else {
+                            $hitFlag = false;
+                        }
                     }
                     ?>
                     <div class="row">
@@ -96,16 +104,18 @@ $hitFlag = true;
                     $qtext = $art['article_title'];
                     $tag = $art['tag'];
 
-                    $searchWordFlag = true;
-                    for ($i = 0; $i < count($searchWords); $i++){
-                        if (strstr($qtext, $searchWords[$i]) == true ||
-                            strstr($tag, $searchWords[$i]) == true) $searchWordFlag = false;
-                    }
-                    if ($searchWord != "" && $searchWordFlag){  //検索内容があり、かつ内容と違った場合表示しない
-
-                        continue;
-                    } else {
-                        $hitFlag = false;
+                    if (!$emptyFlag){
+                        $searchWordFlag = true;
+                        for ($i = 0; $i < count($searchWords); $i++){
+                            if (strstr($qtext, $searchWords[$i]) == true ||
+                                strstr($tag, $searchWords[$i]) == true) $searchWordFlag = false;
+                        }
+                        if ($searchWordFlag){  //検索内容があり、かつ内容と違った場合表示しない
+    
+                            continue;
+                        } else {
+                            $hitFlag = false;
+                        }
                     }
                     ?>
                     <div class="row">
