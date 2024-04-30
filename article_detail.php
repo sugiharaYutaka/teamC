@@ -6,7 +6,10 @@ $Article = new article();
 $article_data = $Article->getArticleById($article_id);
 
 $section_titles = explode('//', $article_data['section_title']);
-$section_main_texts = explode('//', $article_data['section_main_text']);
+$section_main_texts = explode('//', $article_data['section_text']);
+$tagList = explode('//', $article_data['tag']);
+array_pop($section_main_texts);
+array_pop($section_titles);
 
 ?>
 <link href="css/article_detail.css" rel="stylesheet">
@@ -27,14 +30,14 @@ $section_main_texts = explode('//', $article_data['section_main_text']);
                     </span>
                 </div>
                 <div class="tag-container">
-
-                    <span class="tag">AWS</span>
-                    <span class="tag">Linux</span>
-                    <span class="tag">
-                        <?php
-                        echo $article_data['tag'];
-                        ?>
-                    </span>
+                    <?php
+                    foreach ($tagList as $tag) {
+                        echo '
+                        <span class="tag">'
+                            . $tag .
+                            '</span>';
+                    }
+                    ?>
                 </div>
             </div>
             <div class="row">
@@ -57,7 +60,7 @@ $section_main_texts = explode('//', $article_data['section_main_text']);
                 <hr>
                 <div class="row">
                 <span class="main-text">
-                ' . $section_main_texts .
+                ' . $section_main_texts[$index] .
                     '</span>
 
                 </div>
@@ -68,10 +71,12 @@ $section_main_texts = explode('//', $article_data['section_main_text']);
 
         </div>
         <div class="end-content">
-            <?php for ($index = 0; $index < 5; $index++) {
+            <?php foreach ($section_titles as $index => $title) {
                 echo '
             <div class="row">
-                <span class="main-text"> 1.はじめに</span>
+                <span class="main-text">
+                ' . ($index + 1) . '.' . $section_titles[$index] .
+                    '</span>
             </div>
             ';
             }
