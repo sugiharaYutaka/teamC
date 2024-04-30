@@ -26,7 +26,7 @@ $articles = $article->allarticle();
 include "header.php";
 
 $searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる 空ならNULLが入る
-if (is_null($searchWord)){  //NULLから空白に変える
+if (is_null($searchWord)) {  //NULLから空白に変える
     $searchWord = "";
 }
 $hitFlag = true;
@@ -49,10 +49,9 @@ $hitFlag = true;
                 foreach ($questions as $ques) {   //ここでデータベースに登録されてるすべての質問を取り出し、表示
                     $qtext = $ques['text'];
                     $tag = $ques['tag'];
-                    if ($searchWord != "" && strstr($tag, $searchWord) == false && strstr($qtext, $searchWord) == false){  //検索内容があり、かつ内容と違った場合表示しない
+                    if ($searchWord != "" && strstr($tag, $searchWord) == false && strstr($qtext, $searchWord) == false) {  //検索内容があり、かつ内容と違った場合表示しない
                         continue;
-                    }
-                    else{
+                    } else {
                         $hitFlag = false;
                     }
                     ?>
@@ -60,19 +59,20 @@ $hitFlag = true;
                         <div class="w-20">
                             <div class="icon-wrap" alt="icon">
                                 <a href="profile.php?user_id=<?= $ques['user_id'] ?> ">
-                                <img src="" class="user-icon"
-                                    onError="this.onerror=null;this.src='../teamC/img/user_icon.png'">
+                                    <img src="" class="user-icon"
+                                        onError="this.onerror=null;this.src='../teamC/img/user_icon.png'">
                                 </a>
-                                </div>
+                            </div>
                         </div>
                         <div class="w-80">
                             <span class="title">
-                           <?php  if ($login_user['user_id'] != $ques['user_id']) { ?>
-                                <a
-                                    href="answer.php?question_id=<?= $ques['question_id'] ?>"><?php echo mb_strimwidth($ques['text'], 0, 100, '...', 'UTF-8') ?></a>
-                                    <?php } else { ?>
-                                        <a href="myquestion.php?question_id=<?= $ques['question_id'] ?>"><?php echo mb_strimwidth($ques['text'], 0, 100, '...', 'UTF-8') ?></a>
-                                        <?php } ?>
+                                <?php if ($login_user['user_id'] != $ques['user_id']) { ?>
+                                    <a
+                                        href="answer.php?question_id=<?= $ques['question_id'] ?>"><?php echo mb_strimwidth($ques['text'], 0, 100, '...', 'UTF-8') ?></a>
+                                <?php } else { ?>
+                                    <a
+                                        href="myquestion.php?question_id=<?= $ques['question_id'] ?>"><?php echo mb_strimwidth($ques['text'], 0, 100, '...', 'UTF-8') ?></a>
+                                <?php } ?>
                             </span>
                         </div>
                     </div>
@@ -85,27 +85,26 @@ $hitFlag = true;
                 <hr class="hr-margin">
                 <?php
                 foreach ($articles as $art) {   //ここでデータベースに登録されてるすべての質問を取り出し、表示
-                    $qtext = $art['text'];
+                    $qtext = $art['article_title'];
                     $tag = $art['tag'];
-                    if ($searchWord != "" && strstr($tag, $searchWord) == false && strstr($qtext, $searchWord) == false){  //検索内容があり、かつ内容と違った場合表示しない
+                    if ($searchWord != "" && strstr($tag, $searchWord) == false && strstr($qtext, $searchWord) == false) {  //検索内容があり、かつ内容と違った場合表示しない
                         continue;
-                    }
-                    else{
+                    } else {
                         $hitFlag = false;
                     }
                     ?>
                     <div class="row">
                         <div class="w-20">
                             <div class="icon-wrap" alt="icon">
-                            <a href="profile.php?user_id=<?= $art['user_id'] ?> ">
-                                <img src="" class="user-icon"
-                                    onError="this.onerror=null;this.src='../teamC/img/user_icon.png'">
-                            </a>
+                                <a href="profile.php?user_id=<?= $art['user_id'] ?> ">
+                                    <img src="" class="user-icon"
+                                        onError="this.onerror=null;this.src='../teamC/img/user_icon.png'">
+                                </a>
                             </div>
                         </div>
                         <div class="w-80">
                             <span class="title">
-                                <a href=""><?php echo mb_strimwidth($art['text'], 0, 100, '...', 'UTF-8') ?></a>
+                                <a href=""><?php echo mb_strimwidth($art['article_title'], 0, 100, '...', 'UTF-8') ?></a>
                             </span>
                         </div>
                     </div>
@@ -115,7 +114,8 @@ $hitFlag = true;
         </div>
         <?php   //ヒットしてたかどうかでdisplayを変更するクラスを追加する
         $ZeroHitClass = "ZeroHitDisplay";
-        if ($hitFlag) $ZeroHitClass = "";
+        if ($hitFlag)
+            $ZeroHitClass = "";
         ?>
         <div class="ZeroHit <?php echo $ZeroHitClass; ?>">
             <p>検索結果が見つかりませんでした</p>

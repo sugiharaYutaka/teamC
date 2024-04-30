@@ -3,10 +3,10 @@ include "header.php";
 ?>
 <link href="css/article_post.css" rel="stylesheet">
 <div class="main-container margin-top">
-    <form class="">
+    <form method="post" action="class/article_post.php">
         <div class="row">
             <span class="label">記事タイトル</span>
-            <input class="input" name="title">
+            <input class="input" name="article_title">
         </div>
         <div class="row">
             <span class="label">タグ</span>
