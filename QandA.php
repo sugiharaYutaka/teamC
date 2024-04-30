@@ -5,11 +5,11 @@ $question = new question();
 require_once __DIR__ . '/class/answer.php';
 $answer = new answer();
 $questions = $question->allquestion(); //全ての質問を取ってくる
-if (empty($_GET['search'])) $_GET['search'] = null;
-$searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる 空ならNULLが入る
-if (is_null($searchWord)){  //NULLから空白に変える
-    $searchWord = "";
-}
+
+if (empty($_GET['search'])) $_GET['search'] = "";
+$searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる
+$searchWords = explode(" ", $searchWord);   //スペース区切りで分割する
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
     require_once 'class/UserLogic.php';
@@ -45,7 +45,12 @@ $hitFlag = true;
             $qtext = $qtext . "...";
         }
         $tag = $ques['tag'];
-        if ($searchWord != "" && strstr($tag, $searchWord) == false && strstr($qtext, $searchWord) == false){  //検索内容があり、かつ内容と違った場合表示しない
+        $searchWordFlag = true;
+        for ($i = 0; $i < count($searchWords); $i++){
+            if (strstr($qtext, $searchWords[$i]) == true ||
+                strstr($tag, $searchWords[$i]) == true) $searchWordFlag = false;
+        }
+        if ($searchWord != "" && $searchWordFlag){  //検索内容があり、かつ内容と違った場合表示しない
             continue;
         }
         else{
