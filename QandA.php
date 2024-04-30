@@ -8,6 +8,7 @@ $questions = $question->allquestion(); //全ての質問を取ってくる
 
 if (empty($_GET['search'])) $_GET['search'] = "";
 $searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる
+$searchWord = mb_convert_kana($searchWord, 's');//全角スペースを半角にする
 $searchWords = explode(" ", $searchWord);   //スペース区切りで分割する
 
 if (session_status() == PHP_SESSION_NONE) {
