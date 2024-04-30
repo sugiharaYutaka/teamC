@@ -3,8 +3,8 @@ require_once __DIR__ . '/DbData.php';
 
 class article extends DbData
 {
-     // 記事を登録
-  public function addarticle($userId,$text)
+  // 記事を登録
+  public function addarticle($userId, $text)
   {
     $sql = "insert into article(user_id,text) values(?, ?)";
     $result = $this->exec($sql, [$userId, $text]);
@@ -19,27 +19,25 @@ class article extends DbData
     return $userarticle;
   }
 
-    //全ての記事を取得
-    public function allarticle()
-    {
-      $sql = "select * from article";
-      $stmt = $this->query($sql, []);
-      $articles = $stmt->fetchAll();
-      return $articles;
-    }
+  //全ての記事を取得
+  public function allarticle()
+  {
+    $sql = "select * from article";
+    $stmt = $this->query($sql, []);
+    $articles = $stmt->fetchAll();
+    return $articles;
+  }
 
-      // 指定した記事を削除する
+  // 指定した記事を削除する
   public function deletearticle($article_id)
   {
-    $sql = "delete from question where article_id = ?";
+    $sql = "delete from article where article_id = ?";
     $result = $this->exec($sql, [$article_id]);
   }
   //グッド数の追加
-  public function goodarticle($good,$article_id)
+  public function goodarticle($good, $article_id)
   {
     $sql = "update article set good = ? where article_id = ?";
-    $result = $this->exec($sql, [$good,$article_id]);
+    $result = $this->exec($sql, [$good, $article_id]);
   }
-
-
 }
