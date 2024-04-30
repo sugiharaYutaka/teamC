@@ -9,6 +9,11 @@ class article extends DbData
     $sql = "insert into article(user_id,text) values(?, ?)";
     $result = $this->exec($sql, [$userId, $text]);
   }
+  public function _addarticle($userId, $article_title, $section_title, $section_text, $tag)
+  {
+    $sql = "insert into article(user_id, article_title, section_title, section_text, tag) values(?, ?, ?, ?, ?)";
+    $result = $this->exec($sql, [$userId, $article_title, $section_title, $section_text, $tag]);
+  }
 
   //指定したユーザーの記事を取得
   public function userarticle($userId)
