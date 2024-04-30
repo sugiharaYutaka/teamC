@@ -1,5 +1,13 @@
 <?php
 include "header.php";
+$article_id = $_GET['article_id'];
+require_once ('class/article.php');
+$Article = new article();
+$article_data = $Article->getArticleById($article_id);
+
+$section_titles = explode('//', $article_data['section_title']);
+$section_main_texts = explode('//', $article_data['section_main_text']);
+
 ?>
 <link href="css/article_detail.css" rel="stylesheet">
 <div class="main-container margin-top">
@@ -13,33 +21,44 @@ include "header.php";
                 </div>
                 <div class="w-80">
                     <span class="title">
-                        神戸太郎
+                        <?php
+                        echo $article_data['name'];
+                        ?>
                     </span>
                 </div>
                 <div class="tag-container">
+
                     <span class="tag">AWS</span>
                     <span class="tag">Linux</span>
-                    <span class="tag">Python</span>
+                    <span class="tag">
+                        <?php
+                        echo $article_data['tag'];
+                        ?>
+                    </span>
                 </div>
             </div>
             <div class="row">
                 <div class="article-title">
-                    <span>AWSでブロックチェーン実装してみた</span>
+                    <span>
+                        <?php
+                        echo $article_data['article_title'];
+                        ?>
+                    </span>
                 </div>
             </div>
             <hr>
-            <?php for ($index = 0; $index < 5; $index++) {
+            <?php foreach ($section_titles as $index => $title) {
                 echo '
                 <div class="row">
                     <span class="main-text-title">
-                        1.はじめに
-                    </span>
+                        ' . ($index + 1) . '.' . $section_titles[$index] .
+                    '</span>
                 </div>
                 <hr>
                 <div class="row">
                 <span class="main-text">
-                    きょうはきょうはきょうあｈ
-                </span>
+                ' . $section_main_texts .
+                    '</span>
 
                 </div>
                 ';

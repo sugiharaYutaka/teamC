@@ -8,7 +8,8 @@ $articles = $article->allarticle(); //全ての記事を取ってくる
 
 $result = UserLogic::checkLogin();
 
-if (empty($_GET['search'])) $_GET['search'] = "";
+if (empty($_GET['search']))
+    $_GET['search'] = "";
 $searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる
 $searchWord = mb_convert_kana($searchWord, 's');//全角スペースを半角にする
 $searchWords = explode(" ", $searchWord);   //スペース区切りで分割する
@@ -27,29 +28,31 @@ $hitFlag = true;
         $qtext = $art['article_title'];
         $tag = $art['tag'];
         $searchWordFlag = true;
-        for ($i = 0; $i < count($searchWords); $i++){
-            if (strstr($qtext, $searchWords[$i]) == true ||
-                strstr($tag, $searchWords[$i]) == true) $searchWordFlag = false;
+        for ($i = 0; $i < count($searchWords); $i++) {
+            if (
+                strstr($qtext, $searchWords[$i]) == true ||
+                strstr($tag, $searchWords[$i]) == true
+            )
+                $searchWordFlag = false;
         }
-        if ($searchWord != "" && $searchWordFlag){  //検索内容があり、かつ内容と違った場合表示しない
+        if ($searchWord != "" && $searchWordFlag) {  //検索内容があり、かつ内容と違った場合表示しない
             continue;
-        }
-        else{
+        } else {
             $hitFlag = false;
         }
-        
+
         echo '
         <div class="row">
             <div class="w-20">
                 <div class="icon-wrap" alt="icon">
-                <a href="profile.php?user_id=', $art['user_id'],'">
+                <a href="profile.php?user_id=', $art['user_id'], '">
                     <img src="" class="user-icon" onError="this.onerror=null;this.src=\'../teamC/img/user_icon.png\'">
                 </div>
             </div>
             <div class="w-80">
                 <div class="top-wrap">
                     <span class="title">
-                        <a href="">
+                        <a href="article_detail.php?article_id=', $art['article_id'], '">
                            ', mb_strimwidth($art['article_title'], 0, 160, '...', 'UTF-8'), '
                         </a>
                     </span>
@@ -98,7 +101,8 @@ $hitFlag = true;
     ?>
     <?php   //ヒットしてたかどうかでdisplayを変更するクラスを追加する
     $ZeroHitClass = "ZeroHitDisplay";
-    if ($hitFlag) $ZeroHitClass = "";
+    if ($hitFlag)
+        $ZeroHitClass = "";
     ?>
     <div class="ZeroHit <?php echo $ZeroHitClass; ?>">
         <p>検索結果が見つかりませんでした</p>
