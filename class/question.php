@@ -57,4 +57,11 @@ class question extends DbData
     $questions = $stmt->fetchAll();
     return $questions;
   }
+
+  //指定した質問の編集
+  public function EditQuestion($question_id,$text){
+    $sql = "update question set text = ? where question_id = ?";
+    $result = $this->exec($sql, [$text,$question_id]);
+    return $result;
+  }
 }

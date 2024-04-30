@@ -18,9 +18,12 @@ $user_name = $userLogic->getUserById($question['user_id']);
                     </span>
                 </div>
             </div>
+            <form class="qusetion-form" method="post" action="../teamC/class/editQuestion.php?question_id=<?=$question_id?>" enctype="multipart/form-data">
             <?php
-            echo nl2br('<p class="question-text">' . $question['text'] . '</p>');
+            echo '<textarea name="text" class="input lines">'.$question['text'].'</textarea>';
             ?>
+            <input type="submit" value="保存">
+            </form>
         </div>
     <hr>
     <span class="label title-margin">回答一覧</span>
