@@ -8,10 +8,10 @@ $articles = $article->allarticle(); //全ての記事を取ってくる
 
 $result = UserLogic::checkLogin();
 
-$searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる 空ならNULLが入る
-if (is_null($searchWord)){  //NULLから空白に変える
-    $searchWord = "";
-}
+if (empty($_GET['search'])) $_GET['search'] = "";
+$searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる
+$searchWord = mb_convert_kana($searchWord, 's');//全角スペースを半角にする
+$searchWords = explode(" ", $searchWord);   //スペース区切りで分割する
 
 $hitFlag = true;
 ?>
@@ -26,12 +26,18 @@ $hitFlag = true;
     foreach ($articles as $art) {
         $qtext = $art['text'];
         $tag = $art['tag'];
-        if ($searchWord != "" && strstr($tag, $searchWord) == false && strstr($qtext, $searchWord) == false){  //検索内容があり、かつ内容と違った場合表示しない
+        $searchWordFlag = true;
+        for ($i = 0; $i < count($searchWords); $i++){
+            if (strstr($qtext, $searchWords[$i]) == true ||
+                strstr($tag, $searchWords[$i]) == true) $searchWordFlag = false;
+        }
+        if ($searchWord != "" && $searchWordFlag){  //検索内容があり、かつ内容と違った場合表示しない
             continue;
         }
         else{
             $hitFlag = false;
         }
+        
         echo '
         <div class="row">
             <div class="w-20">

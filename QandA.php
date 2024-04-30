@@ -57,6 +57,7 @@ $hitFlag = true;
         else{
             $hitFlag = false;
         }
+
         echo '
         <div class="row">
             <div class="w-20">
