@@ -78,4 +78,6 @@ class answer extends DbData
         $bestans = $stmt->fetch();
         return $bestans;
     }
+
+    
 }
