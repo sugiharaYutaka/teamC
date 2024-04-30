@@ -6,10 +6,17 @@ require_once __DIR__ . '/class/answer.php';
 $answer = new answer();
 $questions = $question->allquestion(); //全ての質問を取ってくる
 
-if (empty($_GET['search'])) $_GET['search'] = "";
-$searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる
-$searchWord = mb_convert_kana($searchWord, 's');//全角スペースを半角にする
-$searchWords = explode(" ", $searchWord);   //スペース区切りで分割する
+$hitFlag = true;
+if (empty($_GET['search'])) {
+    $emptyFlag = true;
+    $hitFlag = false;
+}
+else{
+    $searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる
+    $searchWord = mb_convert_kana($searchWord, 's');//全角スペースを半角にする
+    $searchWords = explode(" ", $searchWord);   //スペース区切りで分割する
+    $emptyFlag = false;
+}
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -24,7 +31,6 @@ if ($result) {
     $login_user['name'] = 'ゲスト';
     $login_user['user_id'] = 0;
 }
-$hitFlag = true;
 ?>
 <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
 <link href="css/QandA.css" rel="stylesheet">
@@ -46,16 +52,19 @@ $hitFlag = true;
             $qtext = $qtext . "...";
         }
         $tag = $ques['tag'];
-        $searchWordFlag = true;
-        for ($i = 0; $i < count($searchWords); $i++){
-            if (strstr($qtext, $searchWords[$i]) == true ||
-                strstr($tag, $searchWords[$i]) == true) $searchWordFlag = false;
-        }
-        if ($searchWord != "" && $searchWordFlag){  //検索内容があり、かつ内容と違った場合表示しない
-            continue;
-        }
-        else{
-            $hitFlag = false;
+
+        if (!$emptyFlag){
+            $searchWordFlag = true;
+            for ($i = 0; $i < count($searchWords); $i++){
+                if (strstr($qtext, $searchWords[$i]) == true ||
+                    strstr($tag, $searchWords[$i]) == true) $searchWordFlag = false;
+            }
+            if ($searchWord != "" && $searchWordFlag){  //検索内容があり、かつ内容と違った場合表示しない
+                continue;
+            }
+            else{
+                $hitFlag = false;
+            }
         }
 
         echo '
