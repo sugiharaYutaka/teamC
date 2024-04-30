@@ -50,7 +50,7 @@ $hitFlag = true;
                 <div class="top-wrap">
                     <span class="title">
                         <a href="">
-                           ', mb_strimwidth($art['text'], 0, 160, '...', 'UTF-8'), '
+                           ', mb_strimwidth($art['article_title'], 0, 160, '...', 'UTF-8'), '
                         </a>
                     </span>
                 </div>';
