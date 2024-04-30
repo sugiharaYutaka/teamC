@@ -24,7 +24,7 @@ $hitFlag = true;
 <div class="main-container">
     <?php
     foreach ($articles as $art) {
-        $qtext = $art['text'];
+        $qtext = $art['artical_title'];
         $tag = $art['tag'];
         $searchWordFlag = true;
         for ($i = 0; $i < count($searchWords); $i++){
