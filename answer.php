@@ -4,10 +4,26 @@ require_once ('../teamC/class/getQA.php');
 require_once ('../teamC/class/UserLogic.php');
 $userLogic = new UserLogic();
 $user_name = $userLogic->getUserById($question['user_id']);
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+    require_once 'UserLogic.php';
+}
+
+$result = UserLogic::checkLogin();
+
+if ($result) {
+    $login_user = $_SESSION['login_user'];
+    $user_id = $login_user['user_id'];
+} else {
+    $login_user['name'] = 'ゲスト';
+    $user_id = 1;
+}
+
 ?>
 <link href="css/answer.css" rel="stylesheet">
 <div class="main-container margin-top">
-    <form class="answer-form" method="post" action="../teamC/class/sendAnswer.php" enctype="multipart/form-data">
+    <form class="answer-form" method="post" action="../teamC/class/sendAnswer.php?user_id=<?= $user_id ?>" enctype="multipart/form-data">
         <div class="row">
             <div class="user-data">
                 <div class="w-20">

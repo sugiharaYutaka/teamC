@@ -70,14 +70,31 @@ class answer extends DbData
         $this->exec($sql, [$bestans,$answer_id]);
     }
 
-    //指定した質問にベストアンサーが存在するかの確認
-    public function GetBestAnswer($answer_id)
+
+    //ベストアンサーに選ばれたユーザーにポイント
+    public function PointUser($point,$user_id)
     {
-        $sql = "select bestans from answers where answer_id = ?";
-        $stmt = $this->query($sql, [$answer_id]);
-        $bestans = $stmt->fetch();
-        return $bestans;
+        $sql = "update users set point = ? where user_id = ?";
+        $this->exec($sql, [$point,$user_id]);
     }
 
+    //現在ベストアンサーに選ばれているユーザーの取得
+    public function BestAnsUser($question_id)
+    {
+        $sql = "select user_id from answers where quetion_id = ? and bestans = 1";
+        $stmt = $this->query($sql, [$question_id]);
+        $bestansuser = $stmt->fetch();
+        return $bestansuser;
+
+    }
+
+    //指定したユーザーのポイント取得
+    public function GetPoint($user_id)
+    {
+        $sql = "select point from users where user_id = ?";
+        $stmt = $this->query($sql, [$user_id]);
+        $point = $stmt->fetch();
+        return $point;
+    }
     
 }

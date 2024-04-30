@@ -3,7 +3,7 @@ require_once __DIR__ . '/answer.php';
 
 //post var init
 $text = $_POST['answer'];
-$user_id = 1;
+$user_id = $_GET['user_id'];
 $question_id = $_POST['question_id'];
 //$user_id = (int)$_SESSION['user_id'];
 
