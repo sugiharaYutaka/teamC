@@ -47,11 +47,11 @@ include "header.php";
                 <p class="username"><?php echo ($userData['name']) ?></p>
                 <div class="achievements">実績</div>
             </div>
+        </div>
             <div class="main-block-wrapper2">
                 <div class="question"><?php echo ($userData['name']) ?>さんの質問</div>
                 <div class="question"><?php echo ($userData['name']) ?>さんの記事</div>
             </div>
-        </div>
     </div>
 </body>
 

@@ -15,7 +15,7 @@ $login_err = isset($_SESSION['login_err']) ? $_SESSION['login_err'] : null;
 unset($_SESSION['login_err']);
 
 $login_user = $_SESSION['login_user'];
-//var_dump($login_user)
+//var_dump($userData['icon_filename']);
 ?>
 
 <!DOCTYPE html>
@@ -43,33 +43,39 @@ include "header.php";
             return true;
         }
     }
-</script>
+    function imgdata(input){
+        console.log(input);
+        for (let i = 0; i < input.files.length; i++) {
+          console.log(input.files[i]);
+        }
+        var filedata = input.files[0];
+        console.log(filedata.name);
+            document.getElementById('filename').innerHTML = "<p>"+ filedata.name + "</p>";
+            return false;
+    }
 
+</script>
 <body>
     <div class="main-block margin-top">
-        <div id="alert">
-            <?php if (isset($login_err)) : ?>
-                <p><?php echo $login_err; ?></p>
-            <?php endif; ?>
-        </div>
         <div class="main-block-wrapper">
             <div class="left-contents">
                 <div class="icon">プロフィール画像</div>
                 <img src="img/<?php echo ($login_user['icon_filename']) ?>" id="iconimg">
-                <form action="iconchange.php">
-                    <label class="file_label">
-                        <div class="icon-change">
-                            <input type="file" name="file" id="file" accept=".png, .jpg, .jpeg">ファイル選択
-                        </div>
+                <form method="POST" action="iconchange.php" name="form2"enctype="multipart/form-data">
+                    <label class="selectimg">ファイルを選択
+                        <input type="file" name="file" id="file" onchange="imgdata(this)" accept=".png, .jpg, .jpeg" required>
                     </label>
-                    <input type="hidden" name="user_id" value="<?php echo ($login_user['user_id']) ?>">
+                    <div id="filename">
+                    </div>
+                <input type="hidden" name="user_id" value="<?php echo ($login_user['user_id']) ?>">
+                    <input type="submit" class="iconchange" value="変更">
                 </form>
             </div>
             <div class="right-contents">
                 <div class="mailaddress">ユーザーID</div>
                 <p><?php echo ($login_user['user_id']) ?></p>
                 <div class="name">名前</div>
-                <p><?php echo ($login_user['name']) ?></p>
+                <p class="username"><?php echo ($login_user['name']) ?></p>
                 <div class="mailaddress">メールアドレス</div>
                 <p><?php echo ($login_user['email']) ?></p>
 
@@ -77,7 +83,12 @@ include "header.php";
         </div>
         <div class="main-block-wrapper2">
             <div class="password">パスワード変更</div>
-            <form action="mypagechange.php" method="POST" name="form">
+        <div id="alert">
+            <?php if (isset($login_err)) : ?>
+                <p><?php echo $login_err; ?></p>
+            <?php endif; ?>
+        </div>
+            <form action="passwordchange.php" method="POST" name="form1">
                 <h3>新しいパスワード</h3>
                 <input type="password" id="pw1" name="password" placeholder="パスワード" required="required">
                 <h3>新しいパスワード確認用</h3>
