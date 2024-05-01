@@ -1,10 +1,19 @@
 <?php
+$sort = null;
 include "header.php";
 require_once __DIR__ . '/class/question.php';
 $question = new question();
 require_once __DIR__ . '/class/answer.php';
 $answer = new answer();
-$questions = $question->allquestion(); //全ての質問を取ってくる
+if(isset($_POST['sort'])){
+    $sort = $_POST['sort'];
+}
+if($sort == "create" || $sort == null){
+    $questions = $question->allquestion(); //全ての質問を取ってくる
+}
+else if($sort == "anscount"){
+    $questions = $question->allquestion_ans(); 
+}
 
 $hitFlag = true;
 if (empty($_GET['search'])) {
@@ -37,6 +46,13 @@ if ($result) {
 <form action="../teamC/QandA.php" method="get" class="search margin-top">
     <input type="search" class="input" name="search" placeholder="キーワードを入力">
     <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+</form>
+<form action="../teamC/QandA.php" method="post" class="sort">
+    <select name="sort">
+        <option value="create" <?php if($sort == "create" || $sort == null){echo "selected";}?>>作成順</option>
+        <option value="anscount" <?php if($sort == "anscount"){echo "selected";}?>>回答数順</option>
+        <input type="submit" value="送信">
+    </select>
 </form>
 <div class="main-container">
     <?php

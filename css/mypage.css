@@ -177,6 +177,14 @@ input[type=submit]:hover {
     height: auto;
 }
 
+.point {
+    background-color: rgb(69, 69, 69);
+    color: white;
+    padding: 5px;
+    width: 100%;
+    height: auto;
+}
+
 .password {
     background-color: rgb(69, 69, 69);
     color: white;

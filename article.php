@@ -1,12 +1,22 @@
 <?php
+$sort = null;
 include "header.php";
 if (!isset($article)) {
     require_once __DIR__ . '/class/article.php';
     $article = new article();
 }
-$articles = $article->allarticle(); //全ての記事を取ってくる
+if(isset($_POST['sort'])){
+    $sort = $_POST['sort'];
+}
+if($sort == "create" || $sort == null){
+    $articles = $article->allarticle();
+}
+else if($sort == "good"){
+    $articles = $article->allarticle_good();
+}
 
 $result = UserLogic::checkLogin();
+
 
 
 $hitFlag = true;
@@ -27,6 +37,13 @@ else{
 <form action="../teamC/article.php" method="get" class="search margin-top">
     <input type="search" class="input" name="search" placeholder="キーワードを入力">
     <button type="submit" class="search-btn" name="submit"><i class="fa fa-search"></i></button>
+</form>
+<form action="../teamC/article.php" method="post" class="sort">
+    <select name="sort">
+        <option value="create" <?php if($sort == "create" || $sort == null){echo "selected";}?>>作成順</option>
+        <option value="good" <?php if($sort == "good"){echo "selected";}?>>グッド数</option>
+        <input type="submit" value="送信">
+    </select>
 </form>
 <div class="main-container">
     <?php

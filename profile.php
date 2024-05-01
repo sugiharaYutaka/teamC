@@ -45,6 +45,8 @@ include "header.php";
                 <p><?php echo($id) ?></p>
                 <div class="name">名前</div>
                 <p class="username"><?php echo ($userData['name']) ?></p>
+                <div class="name">現在のポイント</div>
+                <p class="username"><?php echo ($userData['point']) ?></p>
                 <div class="achievements">実績</div>
             </div>
         </div>
