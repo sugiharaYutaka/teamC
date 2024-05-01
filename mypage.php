@@ -72,6 +72,8 @@ include "header.php";
                 <p><?php echo ($login_user['name']) ?></p>
                 <div class="mailaddress">メールアドレス</div>
                 <p><?php echo ($login_user['email']) ?></p>
+                <div class="mailaddress">現在のポイント</div>
+                <p><?php echo ($login_user['point']) ?></p>
 
             </div>
         </div>

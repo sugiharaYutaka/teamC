@@ -35,4 +35,4 @@ $article = new article();
 $article->goodarticle($good,$articleid);
 
 
-require_once __DIR__ . '/article.php';
+header("Location:/teamC/article.php");

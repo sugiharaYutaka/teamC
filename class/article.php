@@ -52,4 +52,12 @@ class article extends DbData
     $sql = "update article set good = ? where article_id = ?";
     $result = $this->exec($sql, [$good, $article_id]);
   }
+
+  public function allarticle_good()
+  {
+    $sql = "select * from article ORDER BY good DESC";
+    $stmt = $this->query($sql, []);
+    $articles = $stmt->fetchAll();
+    return $articles;
+  }
 }
