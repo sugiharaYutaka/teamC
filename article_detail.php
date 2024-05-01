@@ -2,6 +2,10 @@
 include "header.php";
 $article_id = $_GET['article_id'];
 require_once ('class/article.php');
+require_once ('class/article_comments.php');
+$articleComment = new ArticleComment();
+$comments = $articleComment->SelectComment($article_id);
+var_dump($comments);
 $Article = new article();
 $article_data = $Article->getArticleById($article_id);
 
@@ -85,30 +89,37 @@ array_pop($section_titles);
     </div>
     <div class="comment-group">
         <div class="start-content">
-            <div class="row">
-                <div class="w-20">
-                    <div class="icon-wrap" alt="icon">
-                        <img src="" class="user-icon" onError="this.onerror=null;this.src='../teamC/img/user_icon.png'">
+            <?php
+            foreach ($comments as $comment) {
+                ?>
+                <div class="row">
+                    <div class="w-20">
+                        <div class="icon-wrap" alt="icon">
+                            <img src="" class="user-icon" onError="this.onerror=null;this.src='../teamC/img/user_icon.png'">
+                        </div>
+                        <div class="name-wrap">
+                            <span class="user-name">
+                                <?php echo $comment['name'] ?>
+                            </span>
+                        </div>
                     </div>
-                    <div class="name-wrap">
-                        <span class="user-name">
-                            神戸太郎
-                        </span>
+                    <div class="w-80">
+                        <div class="text-wrap">
+                            <span class="answer-text">
+                                <?php echo $comment['text'] ?>
+                            </span>
+                        </div>
                     </div>
                 </div>
-                <div class="w-80">
-                    <div class="text-wrap">
-                        <span class="answer-text">
-                            いいと思うで
-                        </span>
-                    </div>
-                </div>
-            </div>
+                <?php
+            }
+            ?>
         </div>
         <div class="start-content margin-top-other">
-            <form method="post" action="">
+            <form method="post" action="class/posted_article_comment.php">
+                <input type="hidden" value="<?php echo $article_id ?>" name="article_id">
                 <div class="row">
-                    <textarea class="comment-textarea" placeholder="コメントを入力"></textarea>
+                    <textarea class="comment-textarea" placeholder="コメントを入力" name="comment"></textarea>
                     <div class="content-end">
                         <button class="btn">送信</button>
                     </div>
