@@ -29,8 +29,7 @@ $hitFlag = true;
 if (empty($_GET['search'])) {
     $emptyFlag = true;
     $hitFlag = false;
-}
-else{
+} else {
     $searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる
     $searchWord = mb_convert_kana($searchWord, 's');//全角スペースを半角にする
     $searchWords = explode(" ", $searchWord);   //スペース区切りで分割する
@@ -58,13 +57,16 @@ else{
                     $qtext = $ques['text'];
                     $tag = $ques['tag'];
 
-                    if (!$emptyFlag){
+                    if (!$emptyFlag) {
                         $searchWordFlag = true;
-                        for ($i = 0; $i < count($searchWords); $i++){
-                            if (strstr($qtext, $searchWords[$i]) == true ||
-                                strstr($tag, $searchWords[$i]) == true) $searchWordFlag = false;
+                        for ($i = 0; $i < count($searchWords); $i++) {
+                            if (
+                                strstr($qtext, $searchWords[$i]) == true ||
+                                strstr($tag, $searchWords[$i]) == true
+                            )
+                                $searchWordFlag = false;
                         }
-                        if ($searchWordFlag){  //検索内容があり、かつ内容と違った場合表示しない
+                        if ($searchWordFlag) {  //検索内容があり、かつ内容と違った場合表示しない
                             continue;
                         } else {
                             $hitFlag = false;
@@ -104,14 +106,17 @@ else{
                     $qtext = $art['article_title'];
                     $tag = $art['tag'];
 
-                    if (!$emptyFlag){
+                    if (!$emptyFlag) {
                         $searchWordFlag = true;
-                        for ($i = 0; $i < count($searchWords); $i++){
-                            if (strstr($qtext, $searchWords[$i]) == true ||
-                                strstr($tag, $searchWords[$i]) == true) $searchWordFlag = false;
+                        for ($i = 0; $i < count($searchWords); $i++) {
+                            if (
+                                strstr($qtext, $searchWords[$i]) == true ||
+                                strstr($tag, $searchWords[$i]) == true
+                            )
+                                $searchWordFlag = false;
                         }
-                        if ($searchWordFlag){  //検索内容があり、かつ内容と違った場合表示しない
-    
+                        if ($searchWordFlag) {  //検索内容があり、かつ内容と違った場合表示しない
+                
                             continue;
                         } else {
                             $hitFlag = false;
@@ -129,7 +134,8 @@ else{
                         </div>
                         <div class="w-80">
                             <span class="title">
-                                <a href=""><?php echo mb_strimwidth($art['article_title'], 0, 100, '...', 'UTF-8') ?></a>
+                                <a
+                                    href="article_detail.php?article_id=<?php echo $art['article_id'] ?>"><?php echo mb_strimwidth($art['article_title'], 0, 100, '...', 'UTF-8') ?></a>
                             </span>
                         </div>
                     </div>
