@@ -61,6 +61,9 @@ else{
                     if (!$emptyFlag){
                         $searchWordFlag = true;
                         for ($i = 0; $i < count($searchWords); $i++){
+                            if (empty($searchWords[$i])){
+                                continue;
+                            }
                             if (strstr($qtext, $searchWords[$i]) == true ||
                                 strstr($tag, $searchWords[$i]) == true) $searchWordFlag = false;
                         }
@@ -107,6 +110,9 @@ else{
                     if (!$emptyFlag){
                         $searchWordFlag = true;
                         for ($i = 0; $i < count($searchWords); $i++){
+                            if (empty($searchWords[$i])){
+                                continue;
+                            }
                             if (strstr($qtext, $searchWords[$i]) == true ||
                                 strstr($tag, $searchWords[$i]) == true) $searchWordFlag = false;
                         }
