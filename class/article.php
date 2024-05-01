@@ -34,7 +34,7 @@ class article extends DbData
   //全ての記事を取得
   public function allarticle()
   {
-    $sql = "select * from article ORDER BY updated_at DESC";
+    $sql = "select * from article ORDER BY created_at DESC";
     $stmt = $this->query($sql, []);
     $articles = $stmt->fetchAll();
     return $articles;
