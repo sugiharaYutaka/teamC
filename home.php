@@ -59,12 +59,14 @@ if (empty($_GET['search'])) {
 
                     if (!$emptyFlag) {
                         $searchWordFlag = true;
-                        for ($i = 0; $i < count($searchWords); $i++) {
-                            if (
-                                strstr($qtext, $searchWords[$i]) == true ||
-                                strstr($tag, $searchWords[$i]) == true
-                            )
-                                $searchWordFlag = false;
+
+                        for ($i = 0; $i < count($searchWords); $i++){
+                            if (empty($searchWords[$i])){
+                                continue;
+                            }
+                            if (strstr($qtext, $searchWords[$i]) == true ||
+                                strstr($tag, $searchWords[$i]) == true) $searchWordFlag = false;
+
                         }
                         if ($searchWordFlag) {  //検索内容があり、かつ内容と違った場合表示しない
                             continue;
@@ -108,12 +110,14 @@ if (empty($_GET['search'])) {
 
                     if (!$emptyFlag) {
                         $searchWordFlag = true;
-                        for ($i = 0; $i < count($searchWords); $i++) {
-                            if (
-                                strstr($qtext, $searchWords[$i]) == true ||
-                                strstr($tag, $searchWords[$i]) == true
-                            )
-                                $searchWordFlag = false;
+
+                        for ($i = 0; $i < count($searchWords); $i++){
+                            if (empty($searchWords[$i])){
+                                continue;
+                            }
+                            if (strstr($qtext, $searchWords[$i]) == true ||
+                                strstr($tag, $searchWords[$i]) == true) $searchWordFlag = false;
+
                         }
                         if ($searchWordFlag) {  //検索内容があり、かつ内容と違った場合表示しない
                 
