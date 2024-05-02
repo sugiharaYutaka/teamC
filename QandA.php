@@ -8,7 +8,7 @@ $questions = $question->allquestion(); //全ての質問を取ってくる
 
 if (empty($_GET['search'])) $_GET['search'] = "";
 $searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる
-$searchWord = mb_convert_kana($searchWord, 's');//全角スペースを半角にする
+$searchWord = mb_convert_kana($searchWord, 's'); //全角スペースを半角にする
 $searchWords = explode(" ", $searchWord);   //スペース区切りで分割する
 
 if (session_status() == PHP_SESSION_NONE) {
@@ -35,26 +35,27 @@ $hitFlag = true;
 <div class="main-container">
     <?php
     foreach ($questions as $ques) {
-        
+
         $questionId = $ques['question_id'];  //質問のIDを保存
         $qanswers = $answer->qanswer($questionId);
         $qcount = $answer->countanswer($questionId);
         $qtext = $ques['text'];
         $question_time = $ques['created_at']; //qusetionが作成された時間を取得
         if (Strlen($qtext) >= 80) {
-            $qtext = substr($qtext, 0,);
+            $qtext = substr($qtext, 0);
             $qtext = $qtext . "...";
         }
         $tag = $ques['tag'];
         $searchWordFlag = true;
-        for ($i = 0; $i < count($searchWords); $i++){
-            if (strstr($qtext, $searchWords[$i]) == true ||
-                strstr($tag, $searchWords[$i]) == true) $searchWordFlag = false;
+        for ($i = 0; $i < count($searchWords); $i++) {
+            if (
+                strstr($qtext, $searchWords[$i]) == true ||
+                strstr($tag, $searchWords[$i]) == true
+            ) $searchWordFlag = false;
         }
-        if ($searchWord != "" && $searchWordFlag){  //検索内容があり、かつ内容と違った場合表示しない
+        if ($searchWord != "" && $searchWordFlag) {  //検索内容があり、かつ内容と違った場合表示しない
             continue;
-        }
-        else{
+        } else {
             $hitFlag = false;
         }
 
@@ -62,7 +63,7 @@ $hitFlag = true;
         <div class="row">
             <div class="w-20">
                 <div class="icon-wrap" alt="icon">
-                    <a href="profile.php?user_id=', $ques['user_id'],'">
+                    <a href="profile.php?user_id=', $ques['user_id'], '">
                     <img src="" class="user-icon" onError="this.onerror=null;this.src=\'../teamC/img/user_icon.png\'">
                 </div>
             </div>
@@ -77,8 +78,8 @@ $hitFlag = true;
             echo '<a href="myquestion.php?question_id=', $ques['question_id'], '">
                         ', mb_strimwidth($qtext, 0, 160, '...', 'UTF-8'), '
                         </a>';
-        }    
-                echo '    
+        }
+        echo '    
                     </span>
                 </div>
                 <div class="bot-wrap">

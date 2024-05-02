@@ -1,7 +1,7 @@
 <?php
 include "header.php";
-require_once ('../teamC/class/getQA.php');
-require_once ('../teamC/class/UserLogic.php');
+require_once('../class/getQA.php');
+require_once('../class/UserLogic.php');
 $userLogic = new UserLogic();
 $user_name = $userLogic->getUserById($question['user_id']);
 
@@ -71,17 +71,17 @@ if ($result) {
                     </span>
                 </div>
             </div>';
-            if($answer['bestans'] == 1){
-                echo '<div class="bestw-80">';
-            } else {
-                echo '<div class="w-80">';
-            }
-            echo '<div class="text-wrap">
+        if ($answer['bestans'] == 1) {
+            echo '<div class="bestw-80">';
+        } else {
+            echo '<div class="w-80">';
+        }
+        echo '<div class="text-wrap">
                     <span class="answer-text">
                         ' . $answer['text'] . '
                     </span>
                 </div>
-                <form method="POST" action="bestanswer.php?question_id='.$answer['quetion_id'].'">
+                <form method="POST" action="bestanswer.php?question_id=' . $answer['quetion_id'] . '">
                     <div class="bot-wrap">
                 </form>
             </div>
