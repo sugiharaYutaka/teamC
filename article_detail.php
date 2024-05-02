@@ -5,7 +5,6 @@ require_once ('class/article.php');
 require_once ('class/article_comments.php');
 $articleComment = new ArticleComment();
 $comments = $articleComment->SelectComment($article_id);
-var_dump($comments);
 $Article = new article();
 $article_data = $Article->getArticleById($article_id);
 
