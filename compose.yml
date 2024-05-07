@@ -1,0 +1,75 @@
+version: "3"
+services:
+  web:
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile
+    
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www/html
+    depends_on:
+      - db
+  db:
+    build:
+      context: ./docker/mysql
+      dockerfile: Dockerfile
+    volumes:
+      - db_data:/var/lib/mysql
+      - conf_data:/etc/mysql/conf.d
+      - ./docker/mysql/data/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: teamc
+      MYSQL_USER: kobe
+      MYSQL_PASSWORD: denshi
+      MYSQL_AUTHENTICATION_PLUGIN: mysql_native_password
+  
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: "phpmyadmin"
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "8888:80"
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: root
+
+volumes:
+  db_data:
+  conf_data:
+  
+  # wordpress:
+  #   image: wordpress:latest
+  #   container_name: "wordpress"
+
+  #   volumes:
+  #     - ./wordpress:/var/www/html
+  #   restart: always
+
+  #   ports:
+  #     - "5000:80"
+    
+  #   environment:
+  #     - WORDPRESS_DB_HOST=db:3306
+  #     - WORDPRESS_DB_NAME=teamc
+  #     - WORDPRESS_DB_USER=kd
+  #     - WORDPRESS_DB_PASSWORD=kd
+  
+  # phpmyadmin:
+  #   image: phpmyadmin/phpmyadmin
+  #   container_name: "phpmyadmin"
+  #   restart: always
+  #   depends_on:
+  #     - db
+  #   ports:
+  #     - "8888:80"
+  #   environment:
+  #     PMA_HOST: db
+  #     MYSQL_ROOT_PASSWORD: root
+
