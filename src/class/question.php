@@ -1,6 +1,6 @@
 <?php
 // スーパークラスであるDbDataを利用するため
-require_once __DIR__ . '/dbdata.php';
+require_once __DIR__ . '/DbData.php';
 
 class question extends DbData
 {
@@ -59,9 +59,10 @@ class question extends DbData
   }
 
   //指定した質問の編集
-  public function EditQuestion($question_id,$text){
+  public function EditQuestion($question_id, $text)
+  {
     $sql = "update question set text = ? where question_id = ?";
-    $result = $this->exec($sql, [$text,$question_id]);
+    $result = $this->exec($sql, [$text, $question_id]);
     return $result;
   }
 }
