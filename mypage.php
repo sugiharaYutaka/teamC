@@ -43,31 +43,33 @@ include "header.php";
             return true;
         }
     }
-    function imgdata(input){
+    function imgdata(input) {
         console.log(input);
         for (let i = 0; i < input.files.length; i++) {
-          console.log(input.files[i]);
+            console.log(input.files[i]);
         }
         var filedata = input.files[0];
         console.log(filedata.name);
-            document.getElementById('filename').innerHTML = "<p>"+ filedata.name + "</p>";
-            return false;
+        document.getElementById('filename').innerHTML = "<p>" + filedata.name + "</p>";
+        return false;
     }
 
 </script>
+
 <body>
     <div class="main-block margin-top">
         <div class="main-block-wrapper">
             <div class="left-contents">
                 <div class="icon">プロフィール画像</div>
                 <img src="img/<?php echo ($login_user['icon_filename']) ?>" id="iconimg">
-                <form method="POST" action="iconchange.php" name="form2"enctype="multipart/form-data">
+                <form method="POST" action="iconchange.php" name="form2" enctype="multipart/form-data">
                     <label class="selectimg">ファイルを選択
-                        <input type="file" name="file" id="file" onchange="imgdata(this)" accept=".png, .jpg, .jpeg" required>
+                        <input type="file" name="file" id="file" onchange="imgdata(this)" accept=".png, .jpg, .jpeg"
+                            required>
                     </label>
                     <div id="filename">
                     </div>
-                <input type="hidden" name="user_id" value="<?php echo ($login_user['user_id']) ?>">
+                    <input type="hidden" name="user_id" value="<?php echo ($login_user['user_id']) ?>">
                     <input type="submit" class="iconchange" value="変更">
                 </form>
             </div>
@@ -85,11 +87,11 @@ include "header.php";
         </div>
         <div class="main-block-wrapper2">
             <div class="password">パスワード変更</div>
-        <div id="alert">
-            <?php if (isset($login_err)) : ?>
-                <p><?php echo $login_err; ?></p>
-            <?php endif; ?>
-        </div>
+            <div id="alert">
+                <?php if (isset($login_err)): ?>
+                    <p><?php echo $login_err; ?></p>
+                <?php endif; ?>
+            </div>
             <form action="passwordchange.php" method="POST" name="form1">
                 <h3>新しいパスワード</h3>
                 <input type="password" id="pw1" name="password" placeholder="パスワード" required="required">
