@@ -25,19 +25,25 @@ $articles = $article->allarticle();
 
 include "header.php";
 
-if (empty($_GET['search'])) $_GET['search'] = "";
-$searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる
-$searchWord = mb_convert_kana($searchWord, 's');//全角スペースを半角にする
-$searchWords = explode(" ", $searchWord);   //スペース区切りで分割する
-
 $hitFlag = true;
+if (empty($_GET['search'])) {
+    $emptyFlag = true;
+    $hitFlag = false;
+} else {
+    $searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる
+    $searchWord = mb_convert_kana($searchWord, 's'); //全角スペースを半角にする
+    $searchWords = explode(" ", $searchWord);   //スペース区切りで分割する
+    $emptyFlag = false;
+}
+
+
 ?>
 
 <body>
     <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
     <link href="css/home.css" rel="stylesheet">
     <div class="total">
-        <form action="../teamC/home.php" method="get" class="search margin-top">
+        <form action="../src/home.php" method="get" class="search margin-top">
             <input type="search" class="input" name="search" placeholder="キーワードを入力">
             <button type="submit" class="search-btn" name="submit"><i class="fa fa-search"></i></button>
             <p><?php echo $login_user['name']; ?></p>
@@ -51,35 +57,39 @@ $hitFlag = true;
                     $qtext = $ques['text'];
                     $tag = $ques['tag'];
 
-                    $searchWordFlag = true;
-                    for ($i = 0; $i < count($searchWords); $i++){
-                        if (strstr($qtext, $searchWords[$i]) == true ||
-                            strstr($tag, $searchWords[$i]) == true) $searchWordFlag = false;
-                    }
-                    if ($searchWord != "" && $searchWordFlag){  //検索内容があり、かつ内容と違った場合表示しない
+                    if (!$emptyFlag) {
+                        $searchWordFlag = true;
 
-                        continue;
-                    } else {
-                        $hitFlag = false;
+                        for ($i = 0; $i < count($searchWords); $i++) {
+                            if (empty($searchWords[$i])) {
+                                continue;
+                            }
+                            if (
+                                strstr($qtext, $searchWords[$i]) == true ||
+                                strstr($tag, $searchWords[$i]) == true
+                            ) $searchWordFlag = false;
+                        }
+                        if ($searchWordFlag) {  //検索内容があり、かつ内容と違った場合表示しない
+                            continue;
+                        } else {
+                            $hitFlag = false;
+                        }
                     }
-                    ?>
+                ?>
                     <div class="row">
                         <div class="w-20">
                             <div class="icon-wrap" alt="icon">
                                 <a href="profile.php?user_id=<?= $ques['user_id'] ?> ">
-                                    <img src="" class="user-icon"
-                                        onError="this.onerror=null;this.src='../teamC/img/user_icon.png'">
+                                    <img src="" class="user-icon" onError="this.onerror=null;this.src='../src/img/user_icon.png'">
                                 </a>
                             </div>
                         </div>
                         <div class="w-80">
                             <span class="title">
                                 <?php if ($login_user['user_id'] != $ques['user_id']) { ?>
-                                    <a
-                                        href="answer.php?question_id=<?= $ques['question_id'] ?>"><?php echo mb_strimwidth($ques['text'], 0, 100, '...', 'UTF-8') ?></a>
+                                    <a href="answer.php?question_id=<?= $ques['question_id'] ?>"><?php echo mb_strimwidth($ques['text'], 0, 100, '...', 'UTF-8') ?></a>
                                 <?php } else { ?>
-                                    <a
-                                        href="myquestion.php?question_id=<?= $ques['question_id'] ?>"><?php echo mb_strimwidth($ques['text'], 0, 100, '...', 'UTF-8') ?></a>
+                                    <a href="myquestion.php?question_id=<?= $ques['question_id'] ?>"><?php echo mb_strimwidth($ques['text'], 0, 100, '...', 'UTF-8') ?></a>
                                 <?php } ?>
                             </span>
                         </div>
@@ -96,30 +106,37 @@ $hitFlag = true;
                     $qtext = $art['article_title'];
                     $tag = $art['tag'];
 
-                    $searchWordFlag = true;
-                    for ($i = 0; $i < count($searchWords); $i++){
-                        if (strstr($qtext, $searchWords[$i]) == true ||
-                            strstr($tag, $searchWords[$i]) == true) $searchWordFlag = false;
-                    }
-                    if ($searchWord != "" && $searchWordFlag){  //検索内容があり、かつ内容と違った場合表示しない
+                    if (!$emptyFlag) {
+                        $searchWordFlag = true;
 
-                        continue;
-                    } else {
-                        $hitFlag = false;
+                        for ($i = 0; $i < count($searchWords); $i++) {
+                            if (empty($searchWords[$i])) {
+                                continue;
+                            }
+                            if (
+                                strstr($qtext, $searchWords[$i]) == true ||
+                                strstr($tag, $searchWords[$i]) == true
+                            ) $searchWordFlag = false;
+                        }
+                        if ($searchWordFlag) {  //検索内容があり、かつ内容と違った場合表示しない
+
+                            continue;
+                        } else {
+                            $hitFlag = false;
+                        }
                     }
-                    ?>
+                ?>
                     <div class="row">
                         <div class="w-20">
                             <div class="icon-wrap" alt="icon">
                                 <a href="profile.php?user_id=<?= $art['user_id'] ?> ">
-                                    <img src="" class="user-icon"
-                                        onError="this.onerror=null;this.src='../teamC/img/user_icon.png'">
+                                    <img src="" class="user-icon" onError="this.onerror=null;this.src='../src/img/user_icon.png'">
                                 </a>
                             </div>
                         </div>
                         <div class="w-80">
                             <span class="title">
-                                <a href=""><?php echo mb_strimwidth($art['article_title'], 0, 100, '...', 'UTF-8') ?></a>
+                                <a href="article_detail.php?article_id=<?php echo $art['article_id'] ?>"><?php echo mb_strimwidth($art['article_title'], 0, 100, '...', 'UTF-8') ?></a>
                             </span>
                         </div>
                     </div>

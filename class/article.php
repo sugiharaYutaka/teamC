@@ -24,10 +24,17 @@ class article extends DbData
     return $userarticle;
   }
 
+  public function getArticleById($article_id)
+  {
+    $sql = "select * from article inner join users on users.user_id = article.user_id where article_id = ?";
+    $stmt = $this->query($sql, [$article_id]);
+    $userarticle = $stmt->fetch();
+    return $userarticle;
+  }
   //全ての記事を取得
   public function allarticle()
   {
-    $sql = "select * from article ORDER BY updated_at DESC";
+    $sql = "select * from article ORDER BY created_at DESC";
     $stmt = $this->query($sql, []);
     $articles = $stmt->fetchAll();
     return $articles;
@@ -44,5 +51,13 @@ class article extends DbData
   {
     $sql = "update article set good = ? where article_id = ?";
     $result = $this->exec($sql, [$good, $article_id]);
+  }
+
+  public function allarticle_good()
+  {
+    $sql = "select * from article ORDER BY good DESC";
+    $stmt = $this->query($sql, []);
+    $articles = $stmt->fetchAll();
+    return $articles;
   }
 }
