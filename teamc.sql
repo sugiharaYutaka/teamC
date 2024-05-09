@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2024-05-02 10:26:22
--- サーバのバージョン： 10.4.28-MariaDB
--- PHP のバージョン: 8.2.4
+-- 生成日時: 2024-05-09 07:38:26
+-- サーバのバージョン： 10.4.22-MariaDB
+-- PHP のバージョン: 7.3.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,7 +34,7 @@ CREATE TABLE `answers` (
   `quetion_id` int(11) NOT NULL,
   `image_filename` varchar(255) DEFAULT NULL,
   `bestans` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- テーブルのデータのダンプ `answers`
@@ -73,7 +73,7 @@ CREATE TABLE `article` (
   `good` int(255) NOT NULL DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- テーブルのデータのダンプ `article`
@@ -97,19 +97,24 @@ CREATE TABLE `comments` (
   `comment_id` int(11) NOT NULL,
   `article_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `text` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `image_filename` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `text` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `image_filename` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `review` int(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- テーブルのデータのダンプ `comments`
 --
 
-INSERT INTO `comments` (`comment_id`, `article_id`, `user_id`, `text`, `image_filename`) VALUES
-(1, 4, 10, 'さ', NULL),
-(2, 5, 10, 'ささ', NULL),
-(3, 5, 10, 'sasa', NULL),
-(4, 5, 10, 'sasa', NULL);
+INSERT INTO `comments` (`comment_id`, `article_id`, `user_id`, `text`, `image_filename`, `review`) VALUES
+(1, 4, 10, 'さ', NULL, NULL),
+(2, 5, 10, 'ささ', NULL, NULL),
+(3, 5, 10, 'sasa', NULL, NULL),
+(4, 5, 10, 'sasa', NULL, NULL),
+(5, 5, 14, 'ｗｗｗｗｗ', NULL, NULL),
+(6, 5, 14, 'ｗｗｗｗ', NULL, 4),
+(7, 6, 14, 'aaaaaaaaaaaa', NULL, 4),
+(8, 6, 14, 'aaaaaaa', NULL, 5);
 
 -- --------------------------------------------------------
 
@@ -121,7 +126,7 @@ CREATE TABLE `goodarticle` (
   `article_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `good` tinyint(1) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- テーブルのデータのダンプ `goodarticle`
@@ -167,7 +172,7 @@ CREATE TABLE `question` (
   `image_filename` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- テーブルのデータのダンプ `question`
@@ -202,7 +207,7 @@ CREATE TABLE `users` (
   `password` varchar(255) DEFAULT NULL,
   `icon_filename` varchar(255) DEFAULT 'defaulticon.png',
   `point` int(11) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- テーブルのデータのダンプ `users`
@@ -220,7 +225,9 @@ INSERT INTO `users` (`user_id`, `email`, `name`, `password`, `icon_filename`, `p
 (9, 'a@a', 'aaaaa', '$2y$10$LtITLEVD34Sxo2oWysI.DeARRSsGBpqhHlN5pY0kg3a/XIC708Q6S', 'defaulticon.png', 0),
 (10, 'kobe@gmail.com', '神戸太郎', '$2y$10$CpFA6OJqPAzEVxzIAKnn0uYFshMrbSyW0NkxHDxNtXrj/ULp7CgQK', 'tomato.jpg', 0),
 (11, 'kobe2@gmail.com', '神戸太郎セカンド', '$2y$10$9JAmK5.d0JOb1XW2UzHU2uXP4YgvOWJXtue/bn84m0aN3gVI0jwPy', 'defaulticon.png', 0),
-(12, 'kobe3@gmail.com', '神戸太郎サード', '$2y$10$c8E45RisebKkvLPl0520JOiZaDZcFseNJO1BfUhkwOfNJlaOeJSpK', 'defaulticon.png', 2);
+(12, 'kobe3@gmail.com', '神戸太郎サード', '$2y$10$c8E45RisebKkvLPl0520JOiZaDZcFseNJO1BfUhkwOfNJlaOeJSpK', 'defaulticon.png', 2),
+(13, 'kishiyutaka0000@gmail.com', 'スギハラユタ', '$2y$10$.qkXEBEPFAmjlRrwdd/GJuHlCTttM30fgKvqOKmTrfzQDSZ3xmrRm', NULL, 0),
+(14, 'kishiyutaka00@gmail.com', '杉原優孝', '$2y$10$Hv7gevZmgfg8JSrvAiAJCuTFbyCheR5Zo9KvpU9iL/38TSfdSaY2a', 'defaulticon.png', 0);
 
 --
 -- ダンプしたテーブルのインデックス
@@ -276,7 +283,7 @@ ALTER TABLE `article`
 -- テーブルの AUTO_INCREMENT `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- テーブルの AUTO_INCREMENT `question`
@@ -288,7 +295,7 @@ ALTER TABLE `question`
 -- テーブルの AUTO_INCREMENT `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
