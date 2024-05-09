@@ -1,4 +1,3 @@
-
 <?php
 include "header.php";
 $article_id = $_GET['article_id'];
@@ -6,6 +5,20 @@ require_once ('class/article.php');
 require_once ('class/article_comments.php');
 $articleComment = new ArticleComment();
 $comments = $articleComment->SelectComment($article_id);
+$Allreview = $articleComment->getReviewById($article_id);
+$count = 0;
+$reviewSum = 0;
+$reviewAvg = 0;
+foreach ($Allreview as $review) {
+    if ($review[0]) {
+        $count++;
+        $reviewSum = $reviewSum + (int) $review[0];
+    }
+}
+if ($count != 0) {
+    $reviewAvg = $reviewSum / $count;
+}
+
 $Article = new article();
 $article_data = $Article->getArticleById($article_id);
 
@@ -17,6 +30,7 @@ array_pop($section_titles);
 
 ?>
 <link href="css/article_detail.css" rel="stylesheet">
+<link href="css/star.css" rel="stylesheet">
 <div class="main-container margin-top">
     <div class="content-group">
         <div class="start-content">
@@ -44,7 +58,18 @@ array_pop($section_titles);
                     ?>
                 </div>
             </div>
+            <div class="review">
+                <div class="stars-mini">
+                    <span class="star-avg">
+                        記事平均評価
+                        <?php
+                        echo $reviewAvg;
+                        ?>
+                    </span>
+                </div>
+            </div>
             <div class="row">
+
                 <div class="article-title">
                     <span>
                         <?php
@@ -109,17 +134,6 @@ array_pop($section_titles);
                             <span class="answer-text">
                                 <?php echo $comment['text'] ?>
                             </span>
-                            <form method="POST" action="class/evaluation.php">
-                            <div class="stars">
-                                <input type="hidden" name="article_id" value="<?= $article_id?>">
-                                <input type="hidden" name="comment_id" value="<?= $comment['comment_id'] ?>">
-                                <input type="radio" name="stars" id="star-1" value="1" /> 1
-                                <input type="radio" name="stars" id="star-2" value="2"/> 2
-                                <input type="radio" name="stars" id="star-3" value="3" checked/> 3
-                                <input type="radio" name="stars" id="star-4" value="4" /> 4
-                                <input type="radio" name="stars" id="star-5" value="5"/> 5
-                                <input type="submit">
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -130,6 +144,17 @@ array_pop($section_titles);
         <div class="start-content margin-top-other">
             <form method="post" action="class/posted_article_comment.php">
                 <input type="hidden" value="<?php echo $article_id ?>" name="article_id">
+                <div class="review">
+                    <div class="stars">
+                        <span>
+                            <input id="review01" type="radio" name="review" value="5"><label for="review01">★</label>
+                            <input id="review02" type="radio" name="review" value="4"><label for="review02">★</label>
+                            <input id="review03" type="radio" name="review" value="3"><label for="review03">★</label>
+                            <input id="review04" type="radio" name="review" value="2"><label for="review04">★</label>
+                            <input id="review05" type="radio" name="review" value="1"><label for="review05">★</label>
+                        </span>
+                    </div>
+                </div>
                 <div class="row">
                     <textarea class="comment-textarea" placeholder="コメントを入力" name="comment"></textarea>
                     <div class="content-end">
