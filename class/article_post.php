@@ -38,7 +38,7 @@ $tag = $_POST['tag'];
 $tag = str_replace(" ", "//", $tag);
 $Article = new article();
 if ($user_id == null) {
-    var_dump('login siro');
+    header("Location:../warning.php");
 } else {
     $Article->_addarticle($user_id, $article_title, $parsed_title, $parsed_main_text, $tag);
     header("Location:../home.php");
