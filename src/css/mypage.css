@@ -3,13 +3,16 @@ p {
     font-size: 18px;
     color: black;
 }
-h3{
+
+h3 {
     margin: 10px;
 }
+
 a {
     font-size: 18px;
     text-decoration: none;
 }
+
 .main-block {
     background-color: white;
     margin-left: auto;
@@ -29,7 +32,7 @@ a {
 }
 
 div#alert p {
-    padding-top: 10px;
+    margin: 10px;
     color: red;
     font-weight: bold;
     text-align: center;
@@ -53,7 +56,9 @@ div#alert {
 .icon {
     background-color: rgb(69, 69, 69);
     color: white;
-    padding: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
     width: 100%;
     height: auto;
 }
@@ -62,30 +67,33 @@ input[type=file] {
     display: none;
 }
 
-.file_label {
-    width: 100%;
+label.selectimg {
+    display: block;
+    width: auto;
+    height: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    background-color: white;
+    border: solid 2px rgb(25, 25, 25);
     text-align: center;
 }
 
-.icon-change {
-    margin-top: 15px;
-    padding: 5px;
-    width: 100%;
-    height: auto;
-    margin-right: auto;
-    margin-left: auto;
-    border-top: rgb(69, 69, 69) solid 1px;
-    border-left: rgb(69, 69, 69) solid 1px;
-    border-bottom: rgb(69, 69, 69) solid 3px;
-    border-right: rgb(69, 69, 69) solid 3px;
+#filename p {
+    font-size: 15px;
 }
 
-.icon-change:active {
-    border-bottom: rgb(69, 69, 69) solid 1px;
-    border-right: rgb(69, 69, 69) solid 1px;
-    border-top: rgb(69, 69, 69) solid 3px;
-    border-left: rgb(69, 69, 69) solid 3px;
+input[type=submit].iconchange {
+    width: 100%;
+    height: auto;
+    min-width: 60px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+
 }
+
+
 
 img#iconimg {
     width: 100%;
@@ -99,8 +107,9 @@ img#iconimg {
 .name {
     background-color: rgb(69, 69, 69);
     color: white;
-    padding: 5px;
-    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
     height: auto;
 }
 
@@ -115,17 +124,21 @@ img#iconimg {
 .achievements {
     background-color: rgb(69, 69, 69);
     color: white;
-    padding: 5px;
-    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
     height: auto;
 }
 
-form{
+form {
     text-align: center;
+    width: 100%;
 }
+
 input[type=password] {
     font-size: 20px;
 }
+
 input[type=submit] {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -136,7 +149,7 @@ input[type=submit] {
     min-width: 180px;
     font-size: 20px;
     border: none;
-    background-color: rgb(25,25,25);
+    background-color: rgb(25, 25, 25);
     color: white;
     font-family: "Kosugi Maru", sans-serif;
     font-weight: 200;
@@ -158,6 +171,15 @@ input[type=submit]:hover {
 .mailaddress {
     background-color: rgb(69, 69, 69);
     color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    height: auto;
+}
+
+.point {
+    background-color: rgb(69, 69, 69);
+    color: white;
     padding: 5px;
     width: 100%;
     height: auto;
@@ -166,15 +188,18 @@ input[type=submit]:hover {
 .password {
     background-color: rgb(69, 69, 69);
     color: white;
-    padding: 5px;
-    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
     height: auto;
 }
 
 .password-change {
     background-color: rgb(69, 69, 69);
     color: white;
-    padding: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
     margin-left: 235px;
     width: 175px;
     height: 45px;
@@ -183,8 +208,9 @@ input[type=submit]:hover {
 .question {
     background-color: rgb(69, 69, 69);
     color: white;
-    padding: 5px;
-    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
     height: auto;
 }
 
@@ -198,4 +224,30 @@ input[type=submit]:hover {
     bottom: 0;
     width: 100%;
     height: 50px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.password-change {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 50px;
+    width: 30%;
+    min-width: 180px;
+    font-size: 20px;
+    border: none;
+    background-color: rgb(25, 25, 25);
+    color: white;
+    font-family: "Kosugi Maru", sans-serif;
+    font-weight: 200;
+}
+
+.password-change:hover {
+    background-color: rgb(69, 69, 69);
 }

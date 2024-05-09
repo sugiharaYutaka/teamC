@@ -24,18 +24,19 @@ if ($result) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
 
 </head>
 <div id="hamberger">
     <nav>
         <ul>
             <h3>KOBE DENSHI</h3>
-            <li><a href="home.php">HOME</a></li>
-            <li><a href="mypage.php">MYPAGE</a></li>
-            <li><a href="QandA.php">QUESTION</a></li>
-            <li><a href="question.php">QUESTION POST</a></li>
-            <li><a href="article.php">ARTICLE</a></li>
-            <li><a href="article_post.php">ARTICLE POST</a></li>
+            <li><a href="home.php"><i class="icons fas fa-home"></i>HOME</a></li>
+            <li><a href="mypage.php"><i class="far fa-address-card"></i>MYPAGE</a></li>
+            <li><a href="QandA.php"><i class="far fa-comments"></i>QUESTION</a></li>
+            <li><a href="question.php"><i class="fas fa-pen"></i>QUESTION POST</a></li>
+            <li><a href="article.php"><i class="far fa-newspaper"></i>ARTICLE</a></li>
+            <li><a href="article_post.php"><i class="fas fa-pen"></i>ARTICLE POST</a></li>
         </ul>
         <button onclick="location.href='<?php echo ($buttonUrl) ?>'">
             <?php echo ($login_user['button2']) ?>

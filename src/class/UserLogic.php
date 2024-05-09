@@ -189,7 +189,7 @@ class UserLogic
         $arr[] = password_hash($userData['password'], PASSWORD_DEFAULT);
         //var_dump($userData);
         $arr[] = $userData['user_id'];
-        
+
         try {
             $stmt = connect()->prepare($sql);
             $result = $stmt->execute($arr);
@@ -198,6 +198,28 @@ class UserLogic
             return $result;
         }
     }
+    /**
+     * プロフィール画像変更
+     * @param array $userData
+     * @return bool $result
+     */
+    public static function changeImg($userData)
+    {
+        $result = false;
+        $sql = 'UPDATE users SET icon_filename = ? WHERE user_id = ?';
 
+        $arr = [];
+        foreach ($_FILES as $fil) {
+        }
+        $arr[] = $fil['full_path'];
+        $arr[] = $userData['user_id'];
 
+        try {
+            $stmt = connect()->prepare($sql);
+            $result = $stmt->execute($arr);
+            return $result;
+        } catch (\Exception $e) {
+            return $result;
+        }
+    }
 }
