@@ -87,20 +87,8 @@ include "header.php";
         </div>
         <div class="main-block-wrapper2">
             <div class="password">パスワード変更</div>
-            <div id="alert">
-                <?php if (isset($login_err)): ?>
-                    <p><?php echo $login_err; ?></p>
-                <?php endif; ?>
-            </div>
-            <form action="passwordchange.php" method="POST" name="form1">
-                <h3>新しいパスワード</h3>
-                <input type="password" id="pw1" name="password" placeholder="パスワード" required="required">
-                <h3>新しいパスワード確認用</h3>
-                <p>※同じパスワードをもう一度入力してください</p>
-                <input type="password" id="pw2" name="password" placeholder="パスワード確認用" required="required"><br>
-                <input type="hidden" name="user_id" value="<?php echo ($login_user['user_id']) ?>">
-                <input onclick="return check()" type="submit" value="パスワードを変更">
-            </form>
+            <a href="password_change_page.php" class="center"><input class="password-change" type="button"
+                    value="パスワードを変更"></a>
             <div class="question">自分の質問</div>
             <div class="question">自分の記事</div>
         </div>
