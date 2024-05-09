@@ -169,7 +169,7 @@
     display: flex;
 }
 
-.stars{
-    left:10%
-}
 
+.answer-text {
+    overflow-wrap: normal;
+}

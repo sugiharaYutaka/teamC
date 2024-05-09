@@ -133,6 +133,11 @@ nav button {
     color: rgb(25, 25, 25);
 }
 
+nav ul li a i{
+    position: relative;
+    top: 3px;
+    margin-right: 5px;
+}
 
 .toggle-btn {
     display: block;

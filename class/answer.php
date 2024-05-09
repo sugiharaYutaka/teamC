@@ -1,6 +1,6 @@
 <?php
 // スーパークラスであるDbDataを利用するため
-require_once __DIR__ . '/dbdata.php';
+require_once __DIR__ . '/DbData.php';
 
 class answer extends DbData
 {
@@ -64,18 +64,18 @@ class answer extends DbData
     }
 
     //ベストアンサーに指定された回答をベストアンサーに変更。また、ベストアンサー取り消しも出来る
-    public function BestAnswer($answer_id,$bestans)
+    public function BestAnswer($answer_id, $bestans)
     {
         $sql = "update answers set bestans = ? where answer_id = ?";
-        $this->exec($sql, [$bestans,$answer_id]);
+        $this->exec($sql, [$bestans, $answer_id]);
     }
 
 
     //ベストアンサーに選ばれたユーザーにポイント
-    public function PointUser($point,$user_id)
+    public function PointUser($point, $user_id)
     {
         $sql = "update users set point = ? where user_id = ?";
-        $this->exec($sql, [$point,$user_id]);
+        $this->exec($sql, [$point, $user_id]);
     }
 
     //現在ベストアンサーに選ばれているユーザーの取得
@@ -96,5 +96,5 @@ class answer extends DbData
         $point = $stmt->fetch();
         return $point;
     }
-    
+
 }

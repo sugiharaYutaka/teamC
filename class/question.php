@@ -1,6 +1,6 @@
 <?php
 // スーパークラスであるDbDataを利用するため
-require_once __DIR__ . '/dbdata.php';
+require_once __DIR__ . '/DbData.php';
 
 class question extends DbData
 {
@@ -58,19 +58,20 @@ class question extends DbData
     return $questions;
   }
 
-    //全ての質問を取ってくる(回答数順)
-    public function allquestion_ans()
-    {
-      $sql = "SELECT q.*,ifnull(anscnt,0) FROM (SELECT * FROM question) as q LEFT JOIN (SELECT quetion_id, ifnull(count(answer_id),0) as anscnt FROM answers GROUP BY quetion_id) AS ans ON q.question_id = ans.quetion_id ORDER BY anscnt DESC;";
-      $stmt = $this->query($sql, []);
-      $questions = $stmt->fetchAll();
-      return $questions;
-    }
+  //全ての質問を取ってくる(回答数順)
+  public function allquestion_ans()
+  {
+    $sql = "SELECT q.*,ifnull(anscnt,0) FROM (SELECT * FROM question) as q LEFT JOIN (SELECT quetion_id, ifnull(count(answer_id),0) as anscnt FROM answers GROUP BY quetion_id) AS ans ON q.question_id = ans.quetion_id ORDER BY anscnt DESC;";
+    $stmt = $this->query($sql, []);
+    $questions = $stmt->fetchAll();
+    return $questions;
+  }
 
   //指定した質問の編集
-  public function EditQuestion($question_id,$text){
+  public function EditQuestion($question_id, $text)
+  {
     $sql = "update question set text = ? where question_id = ?";
-    $result = $this->exec($sql, [$text,$question_id]);
+    $result = $this->exec($sql, [$text, $question_id]);
     return $result;
   }
 }
