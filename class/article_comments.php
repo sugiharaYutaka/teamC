@@ -14,4 +14,10 @@ class ArticleComment extends DbData
         $stmt = $this->query($sql, [$article_id]);
         return $stmt->fetchAll();
     }
+
+    public function evaluation($evaluation,$comment_id)
+    {
+        $sql =     $sql = "update comments set evaluation = ? where comment_id = ?";
+        $result = $this->exec($sql, [$evaluation, $comment_id]);
+    }
 }

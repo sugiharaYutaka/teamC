@@ -1,3 +1,4 @@
+
 <?php
 include "header.php";
 $article_id = $_GET['article_id'];
@@ -89,6 +90,7 @@ array_pop($section_titles);
     <div class="comment-group">
         <div class="start-content">
             <?php
+            $count = 1;
             foreach ($comments as $comment) {
                 ?>
                 <div class="row">
@@ -107,6 +109,17 @@ array_pop($section_titles);
                             <span class="answer-text">
                                 <?php echo $comment['text'] ?>
                             </span>
+                            <form method="POST" action="class/evaluation.php">
+                            <div class="stars">
+                                <input type="hidden" name="article_id" value="<?= $article_id?>">
+                                <input type="hidden" name="comment_id" value="<?= $comment['comment_id'] ?>">
+                                <input type="radio" name="stars" id="star-1" value="1" /> 1
+                                <input type="radio" name="stars" id="star-2" value="2"/> 2
+                                <input type="radio" name="stars" id="star-3" value="3" checked/> 3
+                                <input type="radio" name="stars" id="star-4" value="4" /> 4
+                                <input type="radio" name="stars" id="star-5" value="5"/> 5
+                                <input type="submit">
+                            </div>
                         </div>
                     </div>
                 </div>
