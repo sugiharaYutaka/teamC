@@ -23,7 +23,11 @@ if ($result) {
 ?>
 <link href="css/answer.css" rel="stylesheet">
 <div class="main-container margin-top">
-    <form class="answer-form" method="post" action="../teamC/class/sendAnswer.php?user_id=<?= $user_id ?>" enctype="multipart/form-data">
+    <?php if ($user_id != 1){ ?>
+        <form class="answer-form" method="post" action="../teamC/class/sendAnswer.php?user_id=<?= $user_id ?>" enctype="multipart/form-data">
+    <?php }else{ ?>
+        <form class="answer-form" method="post" action="../teamC/warning.php" enctype="multipart/form-data">
+    <?php } ?>
         <div class="row">
             <div class="user-data">
                 <div class="w-20">

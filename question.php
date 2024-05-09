@@ -23,7 +23,7 @@ include "header.php";
     ?>
     <form class="qusetion-form" method="post" action="../teamC/class/sendQuestion.php" enctype="multipart/form-data">
         <?php }else{ ?>
-            <form class="qusetion-form" method="post" action="../teamC/login_form.php" enctype="multipart/form-data">
+            <form class="qusetion-form" method="post" action="../teamC/warning.php" enctype="multipart/form-data">
             <?php } ?>
         <div class=" row">
             <span class="label">質問内容</span>
