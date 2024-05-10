@@ -5,13 +5,12 @@ if (!isset($article)) {
     require_once __DIR__ . '/class/article.php';
     $article = new article();
 }
-if(isset($_POST['sort'])){
+if (isset($_POST['sort'])) {
     $sort = $_POST['sort'];
 }
-if($sort == "create" || $sort == null){
+if ($sort == "create" || $sort == null) {
     $articles = $article->allarticle();
-}
-else if($sort == "good"){
+} else if ($sort == "good") {
     $articles = $article->allarticle_good();
 }
 
@@ -23,10 +22,9 @@ $hitFlag = true;
 if (empty($_GET['search'])) {
     $emptyFlag = true;
     $hitFlag = false;
-}
-else{
+} else {
     $searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる
-    $searchWord = mb_convert_kana($searchWord, 's');//全角スペースを半角にする
+    $searchWord = mb_convert_kana($searchWord, 's'); //全角スペースを半角にする
     $searchWords = explode(" ", $searchWord);   //スペース区切りで分割する
     $emptyFlag = false;
 }
@@ -34,14 +32,18 @@ else{
 ?>
 <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
 <link href="css/article.css" rel="stylesheet">
-<form action="../teamC/article.php" method="get" class="search margin-top">
+<form action="article.php" method="get" class="search margin-top">
     <input type="search" class="input" name="search" placeholder="キーワードを入力">
     <button type="submit" class="search-btn" name="submit"><i class="fa fa-search"></i></button>
 </form>
-<form action="../teamC/article.php" method="post" class="sort">
+<form action="article.php" method="post" class="sort">
     <select name="sort">
-        <option value="create" <?php if($sort == "create" || $sort == null){echo "selected";}?>>作成順</option>
-        <option value="good" <?php if($sort == "good"){echo "selected";}?>>グッド数</option>
+        <option value="create" <?php if ($sort == "create" || $sort == null) {
+                                    echo "selected";
+                                } ?>>作成順</option>
+        <option value="good" <?php if ($sort == "good") {
+                                    echo "selected";
+                                } ?>>グッド数</option>
         <input type="submit" value="送信">
     </select>
 </form>
@@ -51,22 +53,22 @@ else{
         $qtext = $art['article_title'];
         $tag = $art['tag'];
 
-        if (!$emptyFlag){
+        if (!$emptyFlag) {
             $searchWordFlag = true;
-            for ($i = 0; $i < count($searchWords); $i++){
-                if (empty($searchWords[$i])){
+            for ($i = 0; $i < count($searchWords); $i++) {
+                if (empty($searchWords[$i])) {
                     continue;
                 }
-                if (strstr($qtext, $searchWords[$i]) == true ||
-                    strstr($tag, $searchWords[$i]) == true) $searchWordFlag = false;
+                if (
+                    strstr($qtext, $searchWords[$i]) == true ||
+                    strstr($tag, $searchWords[$i]) == true
+                ) $searchWordFlag = false;
             }
-            if ($searchWord != "" && $searchWordFlag){  //検索内容があり、かつ内容と違った場合表示しない
+            if ($searchWord != "" && $searchWordFlag) {  //検索内容があり、かつ内容と違った場合表示しない
                 continue;
-            }
-            else{
+            } else {
                 $hitFlag = false;
             }
-
         }
 
         echo '
@@ -74,7 +76,7 @@ else{
             <div class="w-20">
                 <div class="icon-wrap" alt="icon">
                 <a href="profile.php?user_id=', $art['user_id'], '">
-                    <img src="" class="user-icon" onError="this.onerror=null;this.src=\'../teamC/img/user_icon.png\'">
+                    <img src="" class="user-icon" onError="this.onerror=null;this.src=\'img/user_icon.png\'">
                 </div>
             </div>
             <div class="w-80">
