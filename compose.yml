@@ -68,7 +68,6 @@ volumes:
   #   depends_on:
   #     - db
   #   ports:
-  sdad
   #     - "8888:80"
   #   environment:
   #     PMA_HOST: db
