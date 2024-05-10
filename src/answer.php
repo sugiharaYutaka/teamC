@@ -22,6 +22,9 @@ if ($result) {
 
 ?>
 <link href="css/answer.css" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
 <div class="main-container margin-top">
     <form class="answer-form" method="post" action="class/sendAnswer.php?user_id=<?= $user_id ?>" enctype="multipart/form-data">
         <div class="row">
@@ -77,11 +80,21 @@ if ($result) {
             echo '<div class="w-80">';
         }
         echo '<div class="text-wrap">
+            if($answer['bestans'] == 1){
+                echo '<div class="bestw-80">
+                        <i class="fa-solid fa-medal"></i>
+                        <div class"bestText-container">
+                        <div>ベストアンサー</div>';
+            } else {
+                echo '<div class="w-80">';
+            }
+            echo '<div class="text-wrap">
                     <span class="answer-text">
                         ' . $answer['text'] . '
                     </span>
-                </div>
-                <form method="POST" action="bestanswer.php?question_id=' . $answer['quetion_id'] . '">
+                </div>';
+            if($answer['bestans'] == 1) echo '</div>';
+            echo '<form method="POST" action="bestanswer.php?question_id='.$answer['quetion_id'].'">
                     <div class="bot-wrap">
                 </form>
             </div>
