@@ -17,9 +17,13 @@ if ($result) {
 
 $article_id = $_POST["article_id"];
 $comment = $_POST['comment'];
-var_dump($comment, $article_id);
+// var_dump($comment, $article_id);
 require_once("article_comments.php");
 $articleComment = new ArticleComment();
 
-$articleComment->InsertComment($article_id, $user_id, $comment);
-header('Location:../article_detail.php?article_id=' . $article_id);
+if ($user_id == null) {
+    header("Location:../warning.php");
+} else {
+    $articleComment->InsertComment($article_id, $user_id, $comment, $review);
+    header('Location:article_detail.php?article_id=' . $article_id);
+}

@@ -20,7 +20,7 @@ foreach ($main_texts as $main_text) {
     $parsed_main_text = $parsed_main_text . $main_text . "//";
 }
 
-require_once ('../class/article.php');
+require_once('article.php');
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
     require_once 'UserLogic.php';
@@ -43,5 +43,3 @@ if ($user_id == null) {
     $Article->_addarticle($user_id, $article_title, $parsed_title, $parsed_main_text, $tag);
     header("Location:../home.php");
 }
-
-?>

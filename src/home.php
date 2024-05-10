@@ -43,7 +43,7 @@ if (empty($_GET['search'])) {
     <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
     <link href="css/home.css" rel="stylesheet">
     <div class="total">
-        <form action="../src/home.php" method="get" class="search margin-top">
+        <form action="home.php" method="get" class="search margin-top">
             <input type="search" class="input" name="search" placeholder="キーワードを入力">
             <button type="submit" class="search-btn" name="submit"><i class="fa fa-search"></i></button>
             <p><?php echo $login_user['name']; ?></p>
@@ -80,7 +80,7 @@ if (empty($_GET['search'])) {
                         <div class="w-20">
                             <div class="icon-wrap" alt="icon">
                                 <a href="profile.php?user_id=<?= $ques['user_id'] ?> ">
-                                    <img src="" class="user-icon" onError="this.onerror=null;this.src='../src/img/user_icon.png'">
+                                    <img src="" class="user-icon" onError="this.onerror=null;this.src='img/user_icon.png'">
                                 </a>
                             </div>
                         </div>
@@ -130,7 +130,7 @@ if (empty($_GET['search'])) {
                         <div class="w-20">
                             <div class="icon-wrap" alt="icon">
                                 <a href="profile.php?user_id=<?= $art['user_id'] ?> ">
-                                    <img src="" class="user-icon" onError="this.onerror=null;this.src='../src/img/user_icon.png'">
+                                    <img src="" class="user-icon" onError="this.onerror=null;this.src='img/user_icon.png'">
                                 </a>
                             </div>
                         </div>

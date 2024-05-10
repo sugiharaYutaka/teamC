@@ -28,9 +28,7 @@ if ($result) {
 
 $q = new question();
 if ($q->EditQuestion($question_id, $text)) {
-    header("Location:../myquestion.php?question_id=".$question_id);
+    header("Location:../myquestion.php?question_id=" . $question_id);
 } else {
     echo 'error';
 }
-
-?>

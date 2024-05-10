@@ -37,7 +37,7 @@ array_pop($section_titles);
             <div class="row">
                 <div class="w-20">
                     <div class="icon-wrap" alt="icon">
-                        <img src="" class="user-icon" onError="this.onerror=null;this.src='../src/img/user_icon.png'">
+                        <img src="" class="user-icon" onError="this.onerror=null;this.src='img/user_icon.png'">
                     </div>
                 </div>
                 <div class="w-80">
@@ -121,7 +121,7 @@ array_pop($section_titles);
                 <div class="row">
                     <div class="w-20">
                         <div class="icon-wrap" alt="icon">
-                            <img src="" class="user-icon" onError="this.onerror=null;this.src='../teamC/img/user_icon.png'">
+                            <img src="" class="user-icon" onError="this.onerror=null;this.src='img/user_icon.png'">
                         </div>
                         <div class="name-wrap">
                             <span class="user-name">
