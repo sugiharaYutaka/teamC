@@ -6,6 +6,7 @@ $userLogic = new UserLogic();
 $user_name = $userLogic->getUserById($question['user_id']);
 ?>
 <link href="css/answer.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 <div class="main-container margin-top">
     <div class="row">
             <div class="user-data">
@@ -42,7 +43,11 @@ $user_name = $userLogic->getUserById($question['user_id']);
                 </div>
             </div>';
             if($answer['bestans'] == 1){
-                echo '<div class="bestw-80">';
+                echo '<div class="bestw-80">
+                <div class="bestAns-container">
+                <i class="fa-solid fa-medal"></i>
+                <div class"bestText-container">
+                <div>ベストアンサー</div>';
             } else {
                 echo '<div class="w-80">';
             }
@@ -50,8 +55,9 @@ $user_name = $userLogic->getUserById($question['user_id']);
                     <span class="answer-text">
                         ' . $answer['text'] . '
                     </span>
-                </div>
-                <form method="POST" action="bestanswer.php?question_id='.$answer['quetion_id'].'">
+                </div>';
+            if($answer['bestans'] == 1) echo '</div></div>';
+            echo '<form method="POST" action="bestanswer.php?question_id='.$answer['quetion_id'].'">
                     <div class="bot-wrap">
                     <span class="bot-label">
                         <input type="hidden" name="answer_id" value="', $answer['answer_id'], '">&nbsp;
