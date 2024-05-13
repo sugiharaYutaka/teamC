@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2024-05-09 07:38:26
--- サーバのバージョン： 10.4.22-MariaDB
--- PHP のバージョン: 7.3.33
+-- 生成日時: 2024-05-13 14:28:01
+-- サーバのバージョン： 10.4.28-MariaDB
+-- PHP のバージョン: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,7 +34,7 @@ CREATE TABLE `answers` (
   `quetion_id` int(11) NOT NULL,
   `image_filename` varchar(255) DEFAULT NULL,
   `bestans` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- テーブルのデータのダンプ `answers`
@@ -55,7 +55,10 @@ INSERT INTO `answers` (`answer_id`, `user_id`, `text`, `quetion_id`, `image_file
 (12, 11, '神戸でした', 19, NULL, 0),
 (13, 12, '神戸ですか', 19, NULL, 1),
 (14, 12, 'aaa?', 20, NULL, 1),
-(15, 12, 'ほんまにな', 18, NULL, 1);
+(15, 12, 'ほんまにな', 18, NULL, 1),
+(16, 12, 'SimpleAdapterを使用した場合は不可能です\r\nsetItemBitmapを使用したら普通のImageViewには表示できるはずです', 23, NULL, 0),
+(17, 12, '出来ません', 23, NULL, 0),
+(18, 11, 'https://qiita.com/aymikmts/items/7139fa6c4da3b57cb4fc\r\nBitmapを普通の画像に変換してみては？？↑のサイトを参考にしてみてください。', 23, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -73,7 +76,7 @@ CREATE TABLE `article` (
   `good` int(255) NOT NULL DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- テーブルのデータのダンプ `article`
@@ -85,7 +88,14 @@ INSERT INTO `article` (`article_id`, `article_title`, `user_id`, `section_title`
 (3, 'てすととうこう', 3, 'はじめに//つぎに//', 'てすとです//てすです//', 'test', 2, '2024-04-30 02:53:18', '2024-05-02 00:40:11'),
 (4, 'てすととうこう', 3, 'はじめに//', 'てすとです//', 'test', 1, '2024-04-30 02:53:22', '2024-05-02 00:39:59'),
 (5, 'てすととうこう', 3, 'はじめに//', 'てすとです//', 'test', 1, '2024-04-30 02:53:34', '2024-05-02 00:40:01'),
-(6, 'テスト', 12, '作り方//コード//', 'このアプリでは//...//', 'C#', 1, '2024-05-01 00:38:55', '2024-05-02 00:40:02');
+(6, 'テスト', 12, '作り方//コード//', 'このアプリでは//...//', 'C#', 1, '2024-05-01 00:38:55', '2024-05-02 00:40:02'),
+(7, 'PHPでSQLを使用したサイトの作成方法', 10, 'はじめに//コード//', '今回はPHPでSQLを使用して、データベースからデータの取得をしたり、データベースを更新することのできるアプリの説明をしていこうと思います。//<?php $sort = null; include \"header.php\"; if (!isset($article)) {     require_once __DIR__ . \'/class/article.php\';     $article = new article(); } if(isset($_POST[\'sort\'])){     $sort', 'PHP、SQL', 0, '2024-05-13 00:43:22', '2024-05-13 00:43:22'),
+(8, 'PHPでSQLを使用したサイトの作成方法', 10, 'はじめに//コード//', '今回はPHPでSQLを使用して、データベースからデータの取得をしたり、データベースを更新することのできるアプリの説明をしていこうと思います。// public function __construct()     {         $loadIni = new LoadIni();          // PDOオブジェクトを生成する 															         //$dsn = \'mysql:host=localhost;dbname=teamc;charset=utf8\';   ', 'PHP、SQL', 0, '2024-05-13 00:44:54', '2024-05-13 00:44:54'),
+(9, '', 10, '//', ' public function __construct()     {         $loadIni = new LoadIni();          // PDOオブジェクトを生成する 															         //$dsn = \'mysql:host=localhost;dbname=teamc;charset=utf8\';         //$user = \'kobe\';         //$password = \'denshi\';         $dsn = \'', '', 0, '2024-05-13 00:46:16', '2024-05-13 00:46:16'),
+(10, '', 10, '//', ' public function __construct()     {         $loadIni = new LoadIni();          // PDOオブジェクトを生成する 															         //$dsn = \'mysql:host=localhost;dbname=teamc;charset=utf8\';         //$user = \'kobe\';         //$password = \'denshi\';         $dsn = \'', '', 0, '2024-05-13 00:46:17', '2024-05-13 00:46:17'),
+(11, 'PHP', 10, 'はじめに//', '//', '', 0, '2024-05-13 00:46:45', '2024-05-13 00:46:45'),
+(12, 'PHP', 10, 'はじめに//コード//', '今回はPHPでSQLを使用して、データベースからデータの取得をしたり、データベースを更新することのできるアプリの説明をしていこうと思います。//<php//', 'PHP、SQL', 0, '2024-05-13 00:47:19', '2024-05-13 00:47:19'),
+(13, '', 10, '//', '//', '', 0, '2024-05-13 00:47:39', '2024-05-13 00:47:39');
 
 -- --------------------------------------------------------
 
@@ -97,10 +107,10 @@ CREATE TABLE `comments` (
   `comment_id` int(11) NOT NULL,
   `article_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `text` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `image_filename` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `text` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `image_filename` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `review` int(5) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- テーブルのデータのダンプ `comments`
@@ -114,7 +124,8 @@ INSERT INTO `comments` (`comment_id`, `article_id`, `user_id`, `text`, `image_fi
 (5, 5, 14, 'ｗｗｗｗｗ', NULL, NULL),
 (6, 5, 14, 'ｗｗｗｗ', NULL, 4),
 (7, 6, 14, 'aaaaaaaaaaaa', NULL, 4),
-(8, 6, 14, 'aaaaaaa', NULL, 5);
+(8, 6, 14, 'aaaaaaa', NULL, 5),
+(9, 7, 10, 'エラーおきててわろた', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -126,7 +137,7 @@ CREATE TABLE `goodarticle` (
   `article_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `good` tinyint(1) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- テーブルのデータのダンプ `goodarticle`
@@ -172,7 +183,7 @@ CREATE TABLE `question` (
   `image_filename` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- テーブルのデータのダンプ `question`
@@ -192,7 +203,8 @@ INSERT INTO `question` (`question_id`, `user_id`, `text`, `tag`, `image_filename
 (19, 10, 'インプット\r\nこんにちは\r\n私はC#\r\nPythonのKotlin\r\nそのPHPは私のHTMLですか？\r\nいいえrubyです。SQL!?なに？\r\nこのC++\r\nそんな私のCSS\r\nです', 'C++', NULL, '2024-04-26 04:54:24', '2024-05-01 00:46:38'),
 (20, 10, 'aa', 'a', NULL, '2024-04-30 00:34:54', '2024-04-30 00:34:54'),
 (21, 12, 'テスト', 'C#,C,Python', NULL, '2024-05-01 00:30:21', '2024-05-01 00:30:21'),
-(22, 12, 'てすとのとうこう', 'あ', NULL, '2024-05-01 00:36:59', '2024-05-01 00:36:59');
+(22, 12, 'てすとのとうこう', 'あ', NULL, '2024-05-01 00:36:59', '2024-05-01 00:36:59'),
+(23, 10, 'KotlinでBitmapの画像をリストビューに表示させたいのですがどのようにすれば解決できますかね？？', 'Kotlin', NULL, '2024-05-13 04:34:43', '2024-05-13 04:34:43');
 
 -- --------------------------------------------------------
 
@@ -207,7 +219,7 @@ CREATE TABLE `users` (
   `password` varchar(255) DEFAULT NULL,
   `icon_filename` varchar(255) DEFAULT 'defaulticon.png',
   `point` int(11) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- テーブルのデータのダンプ `users`
@@ -223,8 +235,8 @@ INSERT INTO `users` (`user_id`, `email`, `name`, `password`, `icon_filename`, `p
 (7, 'aa@aaaa', 'a', '$2y$10$YbWEawvqtVgcmpWGpyKx3uy5KJsGtTdH9RfJYE1FSpGBIfwWlGynK', 'defaulticon.png', 0),
 (8, 'a@aaa', 'a', '$2y$10$EyNkK41CsXzKBkN8tN4O3ew8WKBfuaFNXcmrihLqr1gdHcN9tiNXG', 'defaulticon.png', 0),
 (9, 'a@a', 'aaaaa', '$2y$10$LtITLEVD34Sxo2oWysI.DeARRSsGBpqhHlN5pY0kg3a/XIC708Q6S', 'defaulticon.png', 0),
-(10, 'kobe@gmail.com', '神戸太郎', '$2y$10$CpFA6OJqPAzEVxzIAKnn0uYFshMrbSyW0NkxHDxNtXrj/ULp7CgQK', 'tomato.jpg', 0),
-(11, 'kobe2@gmail.com', '神戸太郎セカンド', '$2y$10$9JAmK5.d0JOb1XW2UzHU2uXP4YgvOWJXtue/bn84m0aN3gVI0jwPy', 'defaulticon.png', 0),
+(10, 'kobe@gmail.com', '神戸太郎', '$2y$10$CpFA6OJqPAzEVxzIAKnn0uYFshMrbSyW0NkxHDxNtXrj/ULp7CgQK', '54969.png', 0),
+(11, 'kobe2@gmail.com', '神戸太郎セカンド', '$2y$10$9JAmK5.d0JOb1XW2UzHU2uXP4YgvOWJXtue/bn84m0aN3gVI0jwPy', 'defaulticon.png', 1),
 (12, 'kobe3@gmail.com', '神戸太郎サード', '$2y$10$c8E45RisebKkvLPl0520JOiZaDZcFseNJO1BfUhkwOfNJlaOeJSpK', 'defaulticon.png', 2),
 (13, 'kishiyutaka0000@gmail.com', 'スギハラユタ', '$2y$10$.qkXEBEPFAmjlRrwdd/GJuHlCTttM30fgKvqOKmTrfzQDSZ3xmrRm', NULL, 0),
 (14, 'kishiyutaka00@gmail.com', '杉原優孝', '$2y$10$Hv7gevZmgfg8JSrvAiAJCuTFbyCheR5Zo9KvpU9iL/38TSfdSaY2a', 'defaulticon.png', 0);
@@ -271,25 +283,25 @@ ALTER TABLE `users`
 -- テーブルの AUTO_INCREMENT `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `answer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `answer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- テーブルの AUTO_INCREMENT `article`
 --
 ALTER TABLE `article`
-  MODIFY `article_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `article_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- テーブルの AUTO_INCREMENT `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- テーブルの AUTO_INCREMENT `question`
 --
 ALTER TABLE `question`
-  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- テーブルの AUTO_INCREMENT `users`
