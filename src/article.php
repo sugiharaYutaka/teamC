@@ -24,7 +24,7 @@ if (empty($_GET['search'])) {
     $hitFlag = false;
 } else {
     $searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる
-    $searchWord = mb_convert_kana($searchWord, 's'); //全角スペースを半角にする
+    $searchWord = mb_convert_kana($searchWord, 's');//全角スペースを半角にする
     $searchWords = explode(" ", $searchWord);   //スペース区切りで分割する
     $emptyFlag = false;
 }
@@ -39,11 +39,11 @@ if (empty($_GET['search'])) {
 <form action="article.php" method="post" class="sort">
     <select name="sort">
         <option value="create" <?php if ($sort == "create" || $sort == null) {
-                                    echo "selected";
-                                } ?>>作成順</option>
+            echo "selected";
+        } ?>>作成順</option>
         <option value="good" <?php if ($sort == "good") {
-                                    echo "selected";
-                                } ?>>グッド数</option>
+            echo "selected";
+        } ?>>グッド数</option>
         <input type="submit" value="送信">
     </select>
 </form>
@@ -62,13 +62,15 @@ if (empty($_GET['search'])) {
                 if (
                     strstr($qtext, $searchWords[$i]) == true ||
                     strstr($tag, $searchWords[$i]) == true
-                ) $searchWordFlag = false;
+                )
+                    $searchWordFlag = false;
             }
             if ($searchWord != "" && $searchWordFlag) {  //検索内容があり、かつ内容と違った場合表示しない
                 continue;
             } else {
                 $hitFlag = false;
             }
+
         }
 
         echo '

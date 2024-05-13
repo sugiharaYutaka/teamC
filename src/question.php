@@ -20,10 +20,10 @@ include "header.php";
         $login_user['name'] = 'ゲスト';
     }
     if ($user_id != null) {
-    ?>
+        ?>
         <form class="qusetion-form" method="post" action="class/sendQuestion.php" enctype="multipart/form-data">
         <?php } else { ?>
-            <form class="qusetion-form" method="post" action="/warning.php" enctype="multipart/form-data">
+            <form class="qusetion-form" method="post" action="warning.php" enctype="multipart/form-data">
             <?php } ?>
             <div class=" row">
                 <span class="label">質問内容</span>
@@ -42,5 +42,5 @@ include "header.php";
                     <button type="submit" class="btn">送信</button>
                 </div>
             </div>
-            </form>
+        </form>
 </div>

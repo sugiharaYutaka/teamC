@@ -1,8 +1,8 @@
 <?php
 include "header.php";
 $article_id = $_GET['article_id'];
-require_once('class/article.php');
-require_once('class/article_comments.php');
+require_once ('class/article.php');
+require_once ('class/article_comments.php');
 $articleComment = new ArticleComment();
 $comments = $articleComment->SelectComment($article_id);
 $Allreview = $articleComment->getReviewById($article_id);
@@ -37,7 +37,7 @@ array_pop($section_titles);
             <div class="row">
                 <div class="w-20">
                     <div class="icon-wrap" alt="icon">
-                        <img src="" class="user-icon" onError="this.onerror=null;this.src='img/user_icon.png'">
+                        <img src="" class="user-icon" onError="this.onerror=null;this.src='/img/user_icon.png'">
                     </div>
                 </div>
                 <div class="w-80">
@@ -80,20 +80,21 @@ array_pop($section_titles);
             </div>
             <hr>
             <?php foreach ($section_titles as $index => $title) {
-                echo '
+                echo ('
                 <div class="row">
                     <span class="main-text-title">
                         ' . ($index + 1) . '.' . $section_titles[$index] .
                     '</span>
                 </div>
-                <hr>
+                <hr>');
+                echo nl2br('
                 <div class="row">
                 <span class="main-text">
                 ' . $section_main_texts[$index] .
                     '</span>
 
                 </div>
-                ';
+                ');
             }
             ?>
 
@@ -117,7 +118,7 @@ array_pop($section_titles);
             <?php
             $count = 1;
             foreach ($comments as $comment) {
-            ?>
+                ?>
                 <div class="row">
                     <div class="w-20">
                         <div class="icon-wrap" alt="icon">
@@ -137,7 +138,7 @@ array_pop($section_titles);
                         </div>
                     </div>
                 </div>
-            <?php
+                <?php
             }
             ?>
         </div>

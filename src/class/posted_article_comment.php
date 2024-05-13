@@ -17,8 +17,9 @@ if ($result) {
 
 $article_id = $_POST["article_id"];
 $comment = $_POST['comment'];
-// var_dump($comment, $article_id);
-require_once("article_comments.php");
+$review = $_POST['review'];
+//var_dump($comment, $article_id, $review);
+require_once ("article_comments.php");
 $articleComment = new ArticleComment();
 
 if ($user_id == null) {
@@ -27,3 +28,5 @@ if ($user_id == null) {
     $articleComment->InsertComment($article_id, $user_id, $comment, $review);
     header('Location:article_detail.php?article_id=' . $article_id);
 }
+
+?>

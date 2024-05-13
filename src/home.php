@@ -1,6 +1,8 @@
 <?php
-session_start();
-require_once 'class/UserLogic.php';
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+    require_once 'class/UserLogic.php';
+}
 
 $user_id = 1;
 require_once __DIR__ . '/class/Product.php';
@@ -31,7 +33,7 @@ if (empty($_GET['search'])) {
     $hitFlag = false;
 } else {
     $searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる
-    $searchWord = mb_convert_kana($searchWord, 's'); //全角スペースを半角にする
+    $searchWord = mb_convert_kana($searchWord, 's');//全角スペースを半角にする
     $searchWords = explode(" ", $searchWord);   //スペース区切りで分割する
     $emptyFlag = false;
 }
@@ -67,7 +69,9 @@ if (empty($_GET['search'])) {
                             if (
                                 strstr($qtext, $searchWords[$i]) == true ||
                                 strstr($tag, $searchWords[$i]) == true
-                            ) $searchWordFlag = false;
+                            )
+                                $searchWordFlag = false;
+
                         }
                         if ($searchWordFlag) {  //検索内容があり、かつ内容と違った場合表示しない
                             continue;
@@ -75,7 +79,7 @@ if (empty($_GET['search'])) {
                             $hitFlag = false;
                         }
                     }
-                ?>
+                    ?>
                     <div class="row">
                         <div class="w-20">
                             <div class="icon-wrap" alt="icon">
@@ -87,9 +91,11 @@ if (empty($_GET['search'])) {
                         <div class="w-80">
                             <span class="title">
                                 <?php if ($login_user['user_id'] != $ques['user_id']) { ?>
-                                    <a href="answer.php?question_id=<?= $ques['question_id'] ?>"><?php echo mb_strimwidth($ques['text'], 0, 100, '...', 'UTF-8') ?></a>
+                                    <a
+                                        href="answer.php?question_id=<?= $ques['question_id'] ?>"><?php echo mb_strimwidth($ques['text'], 0, 100, '...', 'UTF-8') ?></a>
                                 <?php } else { ?>
-                                    <a href="myquestion.php?question_id=<?= $ques['question_id'] ?>"><?php echo mb_strimwidth($ques['text'], 0, 100, '...', 'UTF-8') ?></a>
+                                    <a
+                                        href="myquestion.php?question_id=<?= $ques['question_id'] ?>"><?php echo mb_strimwidth($ques['text'], 0, 100, '...', 'UTF-8') ?></a>
                                 <?php } ?>
                             </span>
                         </div>
@@ -116,16 +122,18 @@ if (empty($_GET['search'])) {
                             if (
                                 strstr($qtext, $searchWords[$i]) == true ||
                                 strstr($tag, $searchWords[$i]) == true
-                            ) $searchWordFlag = false;
+                            )
+                                $searchWordFlag = false;
+
                         }
                         if ($searchWordFlag) {  //検索内容があり、かつ内容と違った場合表示しない
-
+                
                             continue;
                         } else {
                             $hitFlag = false;
                         }
                     }
-                ?>
+                    ?>
                     <div class="row">
                         <div class="w-20">
                             <div class="icon-wrap" alt="icon">
@@ -136,7 +144,8 @@ if (empty($_GET['search'])) {
                         </div>
                         <div class="w-80">
                             <span class="title">
-                                <a href="article_detail.php?article_id=<?php echo $art['article_id'] ?>"><?php echo mb_strimwidth($art['article_title'], 0, 100, '...', 'UTF-8') ?></a>
+                                <a
+                                    href="article_detail.php?article_id=<?php echo $art['article_id'] ?>"><?php echo mb_strimwidth($art['article_title'], 0, 100, '...', 'UTF-8') ?></a>
                             </span>
                         </div>
                     </div>

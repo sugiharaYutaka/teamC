@@ -1,8 +1,7 @@
 <?php
-session_start();
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
-    require_once 'UserLogic.php';
+    require_once 'class/UserLogic.php';
 }
 $err = [];
 if (!$email = filter_input(INPUT_POST, 'email')) {

@@ -20,6 +20,7 @@ class answer extends DbData
         } catch (Exception $e) {
             return false;
         }
+
     }
 
     //回答の取り出し
@@ -84,6 +85,7 @@ class answer extends DbData
         $stmt = $this->query($sql, [$question_id]);
         $bestansuser = $stmt->fetch();
         return $bestansuser;
+
     }
 
     //指定したユーザーのポイント取得
@@ -94,4 +96,5 @@ class answer extends DbData
         $point = $stmt->fetch();
         return $point;
     }
+
 }

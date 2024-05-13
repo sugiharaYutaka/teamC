@@ -20,7 +20,7 @@ if (empty($_GET['search'])) {
     $hitFlag = false;
 } else {
     $searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる
-    $searchWord = mb_convert_kana($searchWord, 's'); //全角スペースを半角にする
+    $searchWord = mb_convert_kana($searchWord, 's');//全角スペースを半角にする
     $searchWords = explode(" ", $searchWord);   //スペース区切りで分割する
     $emptyFlag = false;
 }
@@ -48,11 +48,11 @@ if ($result) {
 <form action="QandA.php" method="post" class="sort">
     <select name="sort">
         <option value="create" <?php if ($sort == "create" || $sort == null) {
-                                    echo "selected";
-                                } ?>>作成順</option>
+            echo "selected";
+        } ?>>作成順</option>
         <option value="anscount" <?php if ($sort == "anscount") {
-                                        echo "selected";
-                                    } ?>>回答数順</option>
+            echo "selected";
+        } ?>>回答数順</option>
         <input type="submit" value="送信">
     </select>
 </form>
@@ -80,7 +80,8 @@ if ($result) {
                 if (
                     strstr($qtext, $searchWords[$i]) == true ||
                     strstr($tag, $searchWords[$i]) == true
-                ) $searchWordFlag = false;
+                )
+                    $searchWordFlag = false;
             }
             if ($searchWord != "" && $searchWordFlag) {  //検索内容があり、かつ内容と違った場合表示しない
                 continue;
@@ -94,7 +95,7 @@ if ($result) {
             <div class="w-20">
                 <div class="icon-wrap" alt="icon">
                     <a href="profile.php?user_id=', $ques['user_id'], '">
-                    <img src="" class="user-icon" onError="this.onerror=null;this.src=\'/img/user_icon.png\'">
+                    <img src="" class="user-icon" onError="this.onerror=null;this.src=\'img/user_icon.png\'">
                 </div>
             </div>
             <div class="w-80">
@@ -131,7 +132,8 @@ if ($result) {
     ?>
     <?php   //ヒットしてたかどうかでdisplayを変更するクラスを追加する
     $ZeroHitClass = "ZeroHitDisplay";
-    if ($hitFlag) $ZeroHitClass = "";
+    if ($hitFlag)
+        $ZeroHitClass = "";
     ?>
     <div class="ZeroHit <?php echo $ZeroHitClass; ?>">
         <p>検索結果が見つかりませんでした</p>

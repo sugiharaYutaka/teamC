@@ -24,7 +24,7 @@ function addSection() {
         let span_element_title = document.createElement('span');
         let input_element_title = document.createElement('input');
         let span_element_mainText = document.createElement('span');
-        let input_element_mainText = document.createElement('input');
+        let input_element_mainText = document.createElement('textarea');
         let div_element = document.createElement('div');
         let div_element_indent = document.createElement('div');
 

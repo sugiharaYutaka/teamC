@@ -19,7 +19,7 @@ include "header.php";
                     <span class="label">セクションタイトル</span>
                     <input class="input" name="title1">
                     <span class="label">セクション本文</span>
-                    <input class="input " name="main_text1">
+                    <textarea class="input " name="main_text1"></textarea>
                 </div>
             </div>
         </div>
