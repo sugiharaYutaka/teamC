@@ -80,20 +80,21 @@ array_pop($section_titles);
             </div>
             <hr>
             <?php foreach ($section_titles as $index => $title) {
-                echo '
+                echo ('
                 <div class="row">
                     <span class="main-text-title">
                         ' . ($index + 1) . '.' . $section_titles[$index] .
                     '</span>
                 </div>
-                <hr>
+                <hr>');
+                echo nl2br('
                 <div class="row">
                 <span class="main-text">
                 ' . $section_main_texts[$index] .
                     '</span>
 
                 </div>
-                ';
+                ');
             }
             ?>
 
