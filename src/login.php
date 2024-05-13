@@ -1,6 +1,9 @@
 <?php
 session_start();
-require_once 'class/UserLogic.php';
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+    require_once 'UserLogic.php';
+}
 $err = [];
 if (!$email = filter_input(INPUT_POST, 'email')) {
     $err['email'] = 'メールアドレスを記入してください。';
