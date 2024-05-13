@@ -1,6 +1,9 @@
 <?php
 session_start();
-require_once 'class/UserLogic.php';
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+    require_once 'UserLogic.php';
+}
 
 //ログイン判定
 //セッションが切れていたらログインをうながす。
