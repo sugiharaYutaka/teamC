@@ -26,7 +26,7 @@ if ($user_id == null) {
     header("Location:../warning.php");
 } else {
     $articleComment->InsertComment($article_id, $user_id, $comment, $review);
-    header('Location:article_detail.php?article_id=' . $article_id);
+    header('Location:../article_detail.php?article_id=' . $article_id);
 }
 
 ?>
