@@ -3,10 +3,8 @@ session_start();
 require_once 'class/UserLogic.php';
 
 $err = [];
-
 //画像パス登録処理
-$hasCreated = UserLogic::changeImg($_POST);
-
+$hasCreated = UserLogic::changeImg($_SESSION['login_user']['user_id'], $_FILES['file']['name']);
 if (!$hasCreated) {
     $err[] = '登録に失敗しました';
 }
