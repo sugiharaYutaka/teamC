@@ -147,17 +147,18 @@ array_pop($section_titles);
                 <input type="hidden" value="<?php echo $article_id ?>" name="article_id">
                 <div class="review">
                     <div class="stars">
+                        評価を入力
                         <span>
                             <input id="review01" type="radio" name="review" value="5"><label for="review01">★</label>
                             <input id="review02" type="radio" name="review" value="4"><label for="review02">★</label>
-                            <input id="review03" type="radio" name="review" value="3"><label for="review03">★</label>
+                            <input id="review03" type="radio" name="review" value="3" required="required"><label for="review03">★</label>
                             <input id="review04" type="radio" name="review" value="2"><label for="review04">★</label>
                             <input id="review05" type="radio" name="review" value="1"><label for="review05">★</label>
                         </span>
                     </div>
                 </div>
                 <div class="row">
-                    <textarea class="comment-textarea" placeholder="コメントを入力" name="comment"></textarea>
+                    <textarea class="comment-textarea" placeholder="コメントを入力" name="comment" required="required"></textarea>
                     <div class="content-end">
                         <button class="btn">送信</button>
                     </div>

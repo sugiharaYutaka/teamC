@@ -50,7 +50,7 @@ if ($result) {
         <input type="hidden" name="question_id" value="<?php echo ($question['question_id']); ?>">
         <div class="row">
             <span class="label">回答内容</span>
-            <textarea class="input lines" name="answer"></textarea>
+            <textarea class="input lines" name="answer" required="required"></textarea>
         </div>
         <div class="row">
             <span class="label">画像添付</span>
