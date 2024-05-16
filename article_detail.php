@@ -63,7 +63,7 @@ array_pop($section_titles);
                     <span class="star-avg">
                         記事平均評価
                         <?php
-                        echo $reviewAvg;
+                        echo round($reviewAvg, 2);
                         ?>
                     </span>
                 </div>
