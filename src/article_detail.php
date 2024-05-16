@@ -1,8 +1,8 @@
 <?php
 include "header.php";
 $article_id = $_GET['article_id'];
-require_once ('class/article.php');
-require_once ('class/article_comments.php');
+require_once('class/article.php');
+require_once('class/article_comments.php');
 $articleComment = new ArticleComment();
 $comments = $articleComment->SelectComment($article_id);
 $Allreview = $articleComment->getReviewById($article_id);
@@ -118,7 +118,7 @@ array_pop($section_titles);
             <?php
             $count = 1;
             foreach ($comments as $comment) {
-                ?>
+            ?>
                 <div class="row">
                     <div class="w-20">
                         <div class="icon-wrap" alt="icon">
@@ -138,7 +138,7 @@ array_pop($section_titles);
                         </div>
                     </div>
                 </div>
-                <?php
+            <?php
             }
             ?>
         </div>
@@ -147,17 +147,18 @@ array_pop($section_titles);
                 <input type="hidden" value="<?php echo $article_id ?>" name="article_id">
                 <div class="review">
                     <div class="stars">
+                        評価を入力
                         <span>
                             <input id="review01" type="radio" name="review" value="5"><label for="review01">★</label>
                             <input id="review02" type="radio" name="review" value="4"><label for="review02">★</label>
-                            <input id="review03" type="radio" name="review" value="3"><label for="review03">★</label>
+                            <input id="review03" type="radio" name="review" value="3" required="required"><label for="review03">★</label>
                             <input id="review04" type="radio" name="review" value="2"><label for="review04">★</label>
                             <input id="review05" type="radio" name="review" value="1"><label for="review05">★</label>
                         </span>
                     </div>
                 </div>
                 <div class="row">
-                    <textarea class="comment-textarea" placeholder="コメントを入力" name="comment"></textarea>
+                    <textarea class="comment-textarea" placeholder="コメントを入力" name="comment" required="required"></textarea>
                     <div class="content-end">
                         <button class="btn">送信</button>
                     </div>

@@ -6,7 +6,7 @@ include "header.php";
     <form method="post" action="class/article_post.php">
         <div class="row">
             <span class="label">記事タイトル</span>
-            <input class="input" name="article_title">
+            <input class="input" name="article_title" required="required">
         </div>
         <div class="row">
             <span class="label">タグ(半角スペースで区切って入力してください)</span>
@@ -17,9 +17,9 @@ include "header.php";
                 <span class="section">セクション1</span>
                 <div class="indent">
                     <span class="label">セクションタイトル</span>
-                    <input class="input" name="title1">
+                    <input class="input" name="title1" required="required">
                     <span class="label">セクション本文</span>
-                    <textarea class="input " name="main_text1"></textarea>
+                    <textarea class="input " name="main_text1" required="required"></textarea>
                 </div>
             </div>
         </div>
