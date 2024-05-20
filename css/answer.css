@@ -75,6 +75,7 @@ a {
 .lines {
     height: 20rem;
     resize: none;
+    font-size: 20px;
 }
 
 .btn {
