@@ -5,6 +5,4 @@ RUN docker-php-ext-install pdo_mysql
 
 WORKDIR /var/www/html
 
-RUN chmod -R 777 /var/www/html/img
-
 EXPOSE 80
