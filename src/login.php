@@ -48,20 +48,13 @@ include 'header.php';
 
     // APIレスポンス確認
     $responseData = json_decode($verifyResponse);
-    if ($responseData->success) {
-        // echo '<h1 class="text-center"><span class="no_wrap">ありがとうございました。</span></h1>'; // 成功（ロボットではない）
-        if (mail($to, "題名をこちらへ入力", $message, $headers)) {
-            echo '<h1 class="text-center"><span class="no_wrap">ありがとうございました。</span></h1>';
-        }
-    } else {
-        echo '<h1 class="text-center">Sorry unexpected error occurred, please try again later.</h1>'; // 失敗
-    }
     ?>
-    <div class="button">
-        <button class="cancel" onclick="location.href='mypage.php'">マイページ</button>
-    </div>
-    <div class="button">
-        <button class="cancel" onclick="location.href='home.php'">ホーム</button>
-    </div>
-    <br>
+    <h3 class="center">認証完了</h2>
+        <div class="button">
+            <button class="cancel" onclick="location.href='mypage.php'">マイページ</button>
+        </div>
+        <div class="button">
+            <button class="cancel" onclick="location.href='home.php'">ホーム</button>
+        </div>
+        <br>
 </div>
