@@ -104,14 +104,15 @@ a {
 
 .w-20 {
     flex: 0 0 auto;
-    width: 20%;
+    width: fit-content;
 }
 
 .w-80 {
     flex: 0 0 auto;
-    width: 80%;
+    width: fit-content;
     display: flex;
     align-items: center;
+    margin-left: 10px;
 }
 
 .bestw-80 {
@@ -203,7 +204,6 @@ a {
 
 .user-data {
     width: 40%;
-    flex-wrap: wrap;
     display: flex;
 }
 

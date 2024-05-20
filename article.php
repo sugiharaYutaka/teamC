@@ -97,7 +97,7 @@ else{
                             <!-- 日時ここまで -->
                                 <input type="hidden" name="article_id" value="', $art['article_id'], '">
                                 <input type="hidden" name="good" value="', $art['good'], '">&nbsp;
-                                <input type="submit" value="👍">
+                                <input type="submit" class="goodbtn" value="👍">
                             </span>
                         </form>';
         } else {
@@ -112,7 +112,7 @@ else{
                             <!-- 日時ここまで -->
                                 <input type="hidden" name="article_id" value="', $art['article_id'], '">
                                 <input type="hidden" name="good" value="', $art['good'], '">&nbsp;
-                                <input type="submit" value="👍">
+                                <input type="submit" class="goodbtn" value="👍">
                             </span>
                         </form>';
         }
