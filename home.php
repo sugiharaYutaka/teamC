@@ -8,7 +8,7 @@ $product = new Product();
 $item = $product->getItem($user_id);
 require_once __DIR__ . '/class/question.php';
 $question = new question();
-$questions = $question->allquestion(); //全ての質問を取ってくる
+$questions = $question->allquestionJoinUser(); //全ての質問を取ってくる
 
 $result = UserLogic::checkLogin();
 
@@ -21,7 +21,7 @@ if ($result) {
 
 require_once __DIR__ . '/class/article.php';
 $article = new article();
-$articles = $article->allarticle();
+$articles = $article->allarticleJoinUser();
 
 include "header.php";
 
@@ -60,12 +60,15 @@ if (empty($_GET['search'])) {
                     if (!$emptyFlag) {
                         $searchWordFlag = true;
 
-                        for ($i = 0; $i < count($searchWords); $i++){
-                            if (empty($searchWords[$i])){
+                        for ($i = 0; $i < count($searchWords); $i++) {
+                            if (empty($searchWords[$i])) {
                                 continue;
                             }
-                            if (strstr($qtext, $searchWords[$i]) == true ||
-                                strstr($tag, $searchWords[$i]) == true) $searchWordFlag = false;
+                            if (
+                                strstr($qtext, $searchWords[$i]) == true ||
+                                strstr($tag, $searchWords[$i]) == true
+                            )
+                                $searchWordFlag = false;
 
                         }
                         if ($searchWordFlag) {  //検索内容があり、かつ内容と違った場合表示しない
@@ -79,7 +82,7 @@ if (empty($_GET['search'])) {
                         <div class="w-20">
                             <div class="icon-wrap" alt="icon">
                                 <a href="profile.php?user_id=<?= $ques['user_id'] ?> ">
-                                    <img src="" class="user-icon"
+                                    <img src="img/<?php echo $ques['icon_filename'] ?>" class="user-icon"
                                         onError="this.onerror=null;this.src='../teamC/img/user_icon.png'">
                                 </a>
                             </div>
@@ -111,12 +114,15 @@ if (empty($_GET['search'])) {
                     if (!$emptyFlag) {
                         $searchWordFlag = true;
 
-                        for ($i = 0; $i < count($searchWords); $i++){
-                            if (empty($searchWords[$i])){
+                        for ($i = 0; $i < count($searchWords); $i++) {
+                            if (empty($searchWords[$i])) {
                                 continue;
                             }
-                            if (strstr($qtext, $searchWords[$i]) == true ||
-                                strstr($tag, $searchWords[$i]) == true) $searchWordFlag = false;
+                            if (
+                                strstr($qtext, $searchWords[$i]) == true ||
+                                strstr($tag, $searchWords[$i]) == true
+                            )
+                                $searchWordFlag = false;
 
                         }
                         if ($searchWordFlag) {  //検索内容があり、かつ内容と違った場合表示しない
@@ -131,7 +137,7 @@ if (empty($_GET['search'])) {
                         <div class="w-20">
                             <div class="icon-wrap" alt="icon">
                                 <a href="profile.php?user_id=<?= $art['user_id'] ?> ">
-                                    <img src="" class="user-icon"
+                                    <img src="img/<?php echo $art['icon_filename'] ?>" class="user-icon"
                                         onError="this.onerror=null;this.src='../teamC/img/user_icon.png'">
                                 </a>
                             </div>
