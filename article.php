@@ -101,7 +101,7 @@ if (empty($_GET['search'])) {
                             <!-- 日時ここまで -->
                                 <input type="hidden" name="article_id" value="', $art['article_id'], '">
                                 <input type="hidden" name="good" value="', $art['good'], '">&nbsp;
-                                <input type="submit" value="👍">
+                                <input type="submit" class="goodbtn" value="👍">
                             </span>
                         </form>';
         } else {
@@ -116,7 +116,7 @@ if (empty($_GET['search'])) {
                             <!-- 日時ここまで -->
                                 <input type="hidden" name="article_id" value="', $art['article_id'], '">
                                 <input type="hidden" name="good" value="', $art['good'], '">&nbsp;
-                                <input type="submit" value="👍">
+                                <input type="submit" class="goodbtn" value="👍">
                             </span>
                         </form>';
         }

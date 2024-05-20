@@ -46,7 +46,6 @@ if (empty($_GET['search'])) {
         <form action="../teamC/home.php" method="get" class="search margin-top">
             <input type="search" class="input" name="search" placeholder="キーワードを入力">
             <button type="submit" class="search-btn" name="submit"><i class="fa fa-search"></i></button>
-            <p><?php echo $login_user['name']; ?></p>
         </form>
         <div class="qa-content">
             <div class="question">

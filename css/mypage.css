@@ -87,10 +87,9 @@ input[type=submit].iconchange {
     width: 100%;
     height: auto;
     min-width: 60px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 5px;
-
+    border-radius: 0;
+    text-align: center;
+padding: 5px;
 }
 
 
@@ -197,12 +196,11 @@ input[type=submit]:hover {
 .password-change {
     background-color: rgb(69, 69, 69);
     color: white;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 5px;
     margin-left: 235px;
     width: 175px;
     height: 45px;
+    border-radius: 0;
+    text-align: center;
 }
 
 .question {
