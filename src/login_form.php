@@ -19,6 +19,18 @@ session_destroy();
     <meta charset="UTF-8">
     <title>ログイン</title>
     <link href="css/form.css" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js?render=6LdOGOIpAAAAALFYf3OB97hwNTjrs0h3radmKcXj"></script>
+    <script>
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LdOGOIpAAAAALFYf3OB97hwNTjrs0h3radmKcXj', {
+                action: 'homepage'
+            }).then(function(token) {
+                var recaptchaResponse = document.getElementById('g-recaptcha-response');
+                recaptchaResponse.value = token;
+            });
+        });
+    </script>
+
 </head>
 
 <?php
@@ -50,6 +62,7 @@ include 'header.php';
             <input type="password" name="password" placeholder="パスワード" required="required">
         </div>
         <div class="row">
+            <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
             <input type="submit" class="btn" value="ログイン">
     </form>
 </div>
