@@ -91,10 +91,10 @@ if (empty($_GET['search'])) {
                             <span class="title">
                                 <?php if ($login_user['user_id'] != $ques['user_id']) { ?>
                                     <a
-                                        href="answer.php?question_id=<?= $ques['question_id'] ?>"><?php echo mb_strimwidth($ques['text'], 0, 100, '...', 'UTF-8') ?></a>
+                                        href="answer.php?question_id=<?= $ques['question_id'] ?>"><?php echo htmlspecialchars(mb_strimwidth($ques['text'], 0, 100, '...', 'UTF-8')) ?></a>
                                 <?php } else { ?>
                                     <a
-                                        href="myquestion.php?question_id=<?= $ques['question_id'] ?>"><?php echo mb_strimwidth($ques['text'], 0, 100, '...', 'UTF-8') ?></a>
+                                        href="myquestion.php?question_id=<?= $ques['question_id'] ?>"><?php echo htmlspecialchars(mb_strimwidth($ques['text'], 0, 100, '...', 'UTF-8')) ?></a>
                                 <?php } ?>
                             </span>
                         </div>

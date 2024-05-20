@@ -85,7 +85,7 @@ if (empty($_GET['search'])) {
                 <div class="top-wrap">
                     <span class="title">
                         <a href="article_detail.php?article_id=', $art['article_id'], '">
-                           ', mb_strimwidth($art['article_title'], 0, 160, '...', 'UTF-8'), '
+                           ', htmlspecialchars(mb_strimwidth($art['article_title'], 0, 160, '...', 'UTF-8')), '
                         </a>
                     </span>
                 </div>';

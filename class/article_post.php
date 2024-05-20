@@ -34,10 +34,9 @@ if ($result) {
     $user_id = $login_user['user_id'];
 }
 $article_title = $_POST['article_title'];
-if(empty($tag)){
+if (empty($tag)) {
     $tag = 'なし';
-}
-else{
+} else {
     $tag = $_POST['tag'];
     $tag = str_replace(" ", "//", $tag);
 }

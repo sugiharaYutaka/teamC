@@ -83,14 +83,14 @@ array_pop($section_titles);
                 echo ('
                 <div class="row">
                     <span class="main-text-title">
-                        ' . ($index + 1) . '.' . $section_titles[$index] .
+                        ' . ($index + 1) . '.' . htmlspecialchars($section_titles[$index]) .
                     '</span>
                 </div>
                 <hr>');
                 echo nl2br('
                 <div class="row">
                 <span class="main-text">
-                ' . $section_main_texts[$index] .
+                ' . htmlspecialchars($section_main_texts[$index]) .
                     '</span>
 
                 </div>
@@ -105,7 +105,7 @@ array_pop($section_titles);
                 echo '
             <div class="row">
                 <span class="main-text">
-                ' . ($index + 1) . '.' . $section_titles[$index] .
+                ' . ($index + 1) . '.' . htmlspecialchars($section_titles[$index]) .
                     '</span>
             </div>
             ';
@@ -126,14 +126,14 @@ array_pop($section_titles);
                         </div>
                         <div class="name-wrap">
                             <span class="user-name">
-                                <?php echo $comment['name'] ?>
+                                <?php echo htmlspecialchars($comment['name']) ?>
                             </span>
                         </div>
                     </div>
                     <div class="w-80">
                         <div class="text-wrap">
                             <span class="answer-text">
-                                <?php echo $comment['text'] ?>
+                                <?php echo htmlspecialchars($comment['text']) ?>
                             </span>
                         </div>
                     </div>
@@ -151,14 +151,16 @@ array_pop($section_titles);
                         <span>
                             <input id="review01" type="radio" name="review" value="5"><label for="review01">★</label>
                             <input id="review02" type="radio" name="review" value="4"><label for="review02">★</label>
-                            <input id="review03" type="radio" name="review" value="3" required="required"><label for="review03">★</label>
+                            <input id="review03" type="radio" name="review" value="3" required="required"><label
+                                for="review03">★</label>
                             <input id="review04" type="radio" name="review" value="2"><label for="review04">★</label>
                             <input id="review05" type="radio" name="review" value="1"><label for="review05">★</label>
                         </span>
                     </div>
                 </div>
                 <div class="row">
-                    <textarea class="comment-textarea" placeholder="コメントを入力" name="comment" required="required"></textarea>
+                    <textarea class="comment-textarea" placeholder="コメントを入力" name="comment"
+                        required="required"></textarea>
                     <div class="content-end">
                         <button class="btn">送信</button>
                     </div>
