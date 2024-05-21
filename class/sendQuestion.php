@@ -3,7 +3,13 @@ require_once __DIR__ . '/question.php';
 
 //post var init
 $text = $_POST['text'];
-$keyword = $_POST['keyword'];
+if(empty($keyword)){
+    $keyword = 'なし';
+}
+else{
+    $keyword = $_POST['keyword'];
+}
+
 $image = null;
 $imageFilename = null;
 

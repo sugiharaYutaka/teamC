@@ -27,7 +27,7 @@ include "header.php";
             <?php } ?>
         <div class=" row">
             <span class="label">質問内容</span>
-            <textarea class="input lines" name="text"></textarea>
+            <textarea class="input lines" name="text" required="required"></textarea>
         </div>
         <div class="row">
             <span class="label">タグ・キーワード</span>

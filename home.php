@@ -8,7 +8,7 @@ $product = new Product();
 $item = $product->getItem($user_id);
 require_once __DIR__ . '/class/question.php';
 $question = new question();
-$questions = $question->allquestion(); //全ての質問を取ってくる
+$questions = $question->allquestionJoinUser(); //全ての質問を取ってくる
 
 $result = UserLogic::checkLogin();
 
@@ -21,7 +21,7 @@ if ($result) {
 
 require_once __DIR__ . '/class/article.php';
 $article = new article();
-$articles = $article->allarticle();
+$articles = $article->allarticleJoinUser();
 
 include "header.php";
 
@@ -46,7 +46,6 @@ if (empty($_GET['search'])) {
         <form action="../teamC/home.php" method="get" class="search margin-top">
             <input type="search" class="input" name="search" placeholder="キーワードを入力">
             <button type="submit" class="search-btn" name="submit"><i class="fa fa-search"></i></button>
-            <p><?php echo $login_user['name']; ?></p>
         </form>
         <div class="qa-content">
             <div class="question">
@@ -60,12 +59,15 @@ if (empty($_GET['search'])) {
                     if (!$emptyFlag) {
                         $searchWordFlag = true;
 
-                        for ($i = 0; $i < count($searchWords); $i++){
-                            if (empty($searchWords[$i])){
+                        for ($i = 0; $i < count($searchWords); $i++) {
+                            if (empty($searchWords[$i])) {
                                 continue;
                             }
-                            if (strstr($qtext, $searchWords[$i]) == true ||
-                                strstr($tag, $searchWords[$i]) == true) $searchWordFlag = false;
+                            if (
+                                strstr($qtext, $searchWords[$i]) == true ||
+                                strstr($tag, $searchWords[$i]) == true
+                            )
+                                $searchWordFlag = false;
 
                         }
                         if ($searchWordFlag) {  //検索内容があり、かつ内容と違った場合表示しない
@@ -79,7 +81,7 @@ if (empty($_GET['search'])) {
                         <div class="w-20">
                             <div class="icon-wrap" alt="icon">
                                 <a href="profile.php?user_id=<?= $ques['user_id'] ?> ">
-                                    <img src="" class="user-icon"
+                                    <img src="img/<?php echo $ques['icon_filename'] ?>" class="user-icon"
                                         onError="this.onerror=null;this.src='../teamC/img/user_icon.png'">
                                 </a>
                             </div>
@@ -88,10 +90,10 @@ if (empty($_GET['search'])) {
                             <span class="title">
                                 <?php if ($login_user['user_id'] != $ques['user_id']) { ?>
                                     <a
-                                        href="answer.php?question_id=<?= $ques['question_id'] ?>"><?php echo mb_strimwidth($ques['text'], 0, 100, '...', 'UTF-8') ?></a>
+                                        href="answer.php?question_id=<?= $ques['question_id'] ?>"><?php echo htmlspecialchars(mb_strimwidth($ques['text'], 0, 100, '...', 'UTF-8')) ?></a>
                                 <?php } else { ?>
                                     <a
-                                        href="myquestion.php?question_id=<?= $ques['question_id'] ?>"><?php echo mb_strimwidth($ques['text'], 0, 100, '...', 'UTF-8') ?></a>
+                                        href="myquestion.php?question_id=<?= $ques['question_id'] ?>"><?php echo htmlspecialchars(mb_strimwidth($ques['text'], 0, 100, '...', 'UTF-8')) ?></a>
                                 <?php } ?>
                             </span>
                         </div>
@@ -111,12 +113,15 @@ if (empty($_GET['search'])) {
                     if (!$emptyFlag) {
                         $searchWordFlag = true;
 
-                        for ($i = 0; $i < count($searchWords); $i++){
-                            if (empty($searchWords[$i])){
+                        for ($i = 0; $i < count($searchWords); $i++) {
+                            if (empty($searchWords[$i])) {
                                 continue;
                             }
-                            if (strstr($qtext, $searchWords[$i]) == true ||
-                                strstr($tag, $searchWords[$i]) == true) $searchWordFlag = false;
+                            if (
+                                strstr($qtext, $searchWords[$i]) == true ||
+                                strstr($tag, $searchWords[$i]) == true
+                            )
+                                $searchWordFlag = false;
 
                         }
                         if ($searchWordFlag) {  //検索内容があり、かつ内容と違った場合表示しない
@@ -131,7 +136,7 @@ if (empty($_GET['search'])) {
                         <div class="w-20">
                             <div class="icon-wrap" alt="icon">
                                 <a href="profile.php?user_id=<?= $art['user_id'] ?> ">
-                                    <img src="" class="user-icon"
+                                    <img src="img/<?php echo $art['icon_filename'] ?>" class="user-icon"
                                         onError="this.onerror=null;this.src='../teamC/img/user_icon.png'">
                                 </a>
                             </div>

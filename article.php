@@ -5,13 +5,12 @@ if (!isset($article)) {
     require_once __DIR__ . '/class/article.php';
     $article = new article();
 }
-if(isset($_POST['sort'])){
+if (isset($_POST['sort'])) {
     $sort = $_POST['sort'];
 }
-if($sort == "create" || $sort == null){
-    $articles = $article->allarticle();
-}
-else if($sort == "good"){
+if ($sort == "create" || $sort == null) {
+    $articles = $article->allarticleJoinUser();
+} else if ($sort == "good") {
     $articles = $article->allarticle_good();
 }
 
@@ -23,8 +22,7 @@ $hitFlag = true;
 if (empty($_GET['search'])) {
     $emptyFlag = true;
     $hitFlag = false;
-}
-else{
+} else {
     $searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる
     $searchWord = mb_convert_kana($searchWord, 's');//全角スペースを半角にする
     $searchWords = explode(" ", $searchWord);   //スペース区切りで分割する
@@ -40,8 +38,12 @@ else{
 </form>
 <form action="../teamC/article.php" method="post" class="sort">
     <select name="sort">
-        <option value="create" <?php if($sort == "create" || $sort == null){echo "selected";}?>>作成順</option>
-        <option value="good" <?php if($sort == "good"){echo "selected";}?>>グッド数</option>
+        <option value="create" <?php if ($sort == "create" || $sort == null) {
+            echo "selected";
+        } ?>>作成順</option>
+        <option value="good" <?php if ($sort == "good") {
+            echo "selected";
+        } ?>>グッド数</option>
         <input type="submit" value="送信">
     </select>
 </form>
@@ -51,19 +53,21 @@ else{
         $qtext = $art['article_title'];
         $tag = $art['tag'];
 
-        if (!$emptyFlag){
+        if (!$emptyFlag) {
             $searchWordFlag = true;
-            for ($i = 0; $i < count($searchWords); $i++){
-                if (empty($searchWords[$i])){
+            for ($i = 0; $i < count($searchWords); $i++) {
+                if (empty($searchWords[$i])) {
                     continue;
                 }
-                if (strstr($qtext, $searchWords[$i]) == true ||
-                    strstr($tag, $searchWords[$i]) == true) $searchWordFlag = false;
+                if (
+                    strstr($qtext, $searchWords[$i]) == true ||
+                    strstr($tag, $searchWords[$i]) == true
+                )
+                    $searchWordFlag = false;
             }
-            if ($searchWord != "" && $searchWordFlag){  //検索内容があり、かつ内容と違った場合表示しない
+            if ($searchWord != "" && $searchWordFlag) {  //検索内容があり、かつ内容と違った場合表示しない
                 continue;
-            }
-            else{
+            } else {
                 $hitFlag = false;
             }
 
@@ -74,14 +78,14 @@ else{
             <div class="w-20">
                 <div class="icon-wrap" alt="icon">
                 <a href="profile.php?user_id=', $art['user_id'], '">
-                    <img src="" class="user-icon" onError="this.onerror=null;this.src=\'../teamC/img/user_icon.png\'">
+                    <img src="img/', $art['icon_filename'], '" class="user-icon" onError="this.onerror=null;this.src=\'../teamC/img/user_icon.png\'">
                 </div>
             </div>
             <div class="w-80">
                 <div class="top-wrap">
                     <span class="title">
                         <a href="article_detail.php?article_id=', $art['article_id'], '">
-                           ', mb_strimwidth($art['article_title'], 0, 160, '...', 'UTF-8'), '
+                           ', htmlspecialchars(mb_strimwidth($art['article_title'], 0, 160, '...', 'UTF-8')), '
                         </a>
                     </span>
                 </div>';
@@ -97,7 +101,7 @@ else{
                             <!-- 日時ここまで -->
                                 <input type="hidden" name="article_id" value="', $art['article_id'], '">
                                 <input type="hidden" name="good" value="', $art['good'], '">&nbsp;
-                                <input type="submit" value="👍">
+                                <input type="submit" class="goodbtn" value="👍">
                             </span>
                         </form>';
         } else {
@@ -112,7 +116,7 @@ else{
                             <!-- 日時ここまで -->
                                 <input type="hidden" name="article_id" value="', $art['article_id'], '">
                                 <input type="hidden" name="good" value="', $art['good'], '">&nbsp;
-                                <input type="submit" value="👍">
+                                <input type="submit" class="goodbtn" value="👍">
                             </span>
                         </form>';
         }
