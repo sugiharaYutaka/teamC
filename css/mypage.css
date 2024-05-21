@@ -236,6 +236,10 @@ input[type=submit]:hover {
     background: transparent;
 }
 
+.deleteBtn:hover{
+    cursor: pointer;
+}
+
 .username {
     font-size: 20px;
     margin: 5px;

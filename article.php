@@ -31,6 +31,7 @@ if (empty($_GET['search'])) {
 
 ?>
 <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v6.5.0/css/all.css" rel="stylesheet">
 <link href="css/article.css" rel="stylesheet">
 <form action="../teamC/article.php" method="get" class="search margin-top">
     <input type="search" class="input" name="search" placeholder="キーワードを入力">
@@ -101,7 +102,7 @@ if (empty($_GET['search'])) {
                             <!-- 日時ここまで -->
                                 <input type="hidden" name="article_id" value="', $art['article_id'], '">
                                 <input type="hidden" name="good" value="', $art['good'], '">&nbsp;
-                                <input type="submit" class="goodbtn" value="👍">
+                                <button type="submit" class="goodbtn" value=""><i class="fa-solid fa-thumbs-up"></i></button>
                             </span>
                         </form>';
         } else {
