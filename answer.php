@@ -76,7 +76,7 @@ if ($result) {
                 </div>
                 <div class="name-wrap">
                     <span class="user-name">
-                            ' . $answer['name'] . '
+                            ' . htmlspecialchars($answer['name']) . '
                     </span>
                 </div>
             </div>';
