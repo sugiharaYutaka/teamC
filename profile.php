@@ -44,15 +44,15 @@ include "header.php";
             <div class="mailaddress">ユーザーID</div>
                 <p><?php echo($id) ?></p>
                 <div class="name">名前</div>
-                <p class="username"><?php echo ($userData['name']) ?></p>
+                <p class="username"><?php echo htmlspecialchars(($userData['name'])) ?></p>
                 <div class="name">現在のポイント</div>
                 <p class="username"><?php echo ($userData['point']) ?></p>
                 <div class="achievements">実績</div>
             </div>
         </div>
             <div class="main-block-wrapper2">
-                <div class="question"><?php echo ($userData['name']) ?>さんの質問</div>
-                <div class="question"><?php echo ($userData['name']) ?>さんの記事</div>
+                <div class="question"><?php echo htmlspecialchars(($userData['name'])) ?>さんの質問</div>
+                <div class="question"><?php echo htmlspecialchars(($userData['name'])) ?>さんの記事</div>
             </div>
     </div>
 </body>

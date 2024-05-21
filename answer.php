@@ -40,7 +40,7 @@ if ($result) {
                     </div>
                     <div class="w-80">
                         <span class="name">
-                            <?php echo $user['name'] ?>
+                            <?php echo htmlspecialchars($user['name']) ?>
                         </span>
                     </div>
                 </div>
