@@ -73,8 +73,8 @@ input[type='submit'] {
 .search {
     z-index: 1030;
     display: flex;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 15%;
+    margin-right: 15%;
     margin-bottom: 20px;
 }
 
@@ -178,6 +178,7 @@ input[type='submit'] {
 .ZeroHitDisplay{
     display: none;
 }
+
 select{
     width: 100px;
     height: 25px;

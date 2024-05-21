@@ -37,7 +37,8 @@ array_pop($section_titles);
             <div class="row">
                 <div class="w-20">
                     <div class="icon-wrap" alt="icon">
-                        <img src="" class="user-icon" onError="this.onerror=null;this.src='../teamC/img/user_icon.png'">
+                        <img src="img/<?php echo $article_data['icon_filename'] ?>" class="user-icon"
+                            onError="this.onerror=null;this.src='../teamC/img/user_icon.png'">
                     </div>
                 </div>
                 <div class="w-80">
@@ -122,7 +123,8 @@ array_pop($section_titles);
                 <div class="row">
                     <div class="w-20">
                         <div class="icon-wrap" alt="icon">
-                            <img src="" class="user-icon" onError="this.onerror=null;this.src='../teamC/img/user_icon.png'">
+                            <img src="img/<?php echo $comment['icon_filename'] ?>" class="user-icon"
+                                onError="this.onerror=null;this.src='../teamC/img/user_icon.png'">
                         </div>
                         <div class="name-wrap">
                             <span class="user-name">
@@ -132,6 +134,25 @@ array_pop($section_titles);
                     </div>
                     <div class="w-80">
                         <div class="text-wrap">
+                            <?php
+                            if ($comment['review']) {
+                                echo '
+                                <div class="review">
+                                    <div class="stars-mini">
+                                        <span class="stars-comment">
+                                            ';
+                                for ($count = (int) $comment['review']; $count != 0; $count--) {
+                                    echo '<label>★</label>';
+                                }
+
+                                echo '
+                                        </span>
+                                    </div>
+                                </div>';
+                            }
+
+                            ?>
+
                             <span class="answer-text">
                                 <?php echo htmlspecialchars($comment['text']) ?>
                             </span>
