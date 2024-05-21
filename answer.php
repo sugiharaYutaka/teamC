@@ -45,7 +45,7 @@ if ($result) {
                     </div>
                 </div>
                 <?php
-                echo nl2br('<p class="question-text">' . $question['text'] . '</p>');
+                echo nl2br('<p class="question-text">' . htmlspecialchars($question['text']) . '</p>');
                 ?>
             </div>
             <hr class="hr-margin">
@@ -90,7 +90,7 @@ if ($result) {
             }
             echo '<div class="text-wrap">
                     <span class="answer-text">
-                        ' . $answer['text'] . '
+                        ' . htmlspecialchars($answer['text']) . '
                     </span>
                 </div>';
             if ($answer['bestans'] == 1)
