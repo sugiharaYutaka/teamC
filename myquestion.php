@@ -16,7 +16,7 @@ $user_name = $userLogic->getUserById($question['user_id']);
             </div>
             <div class="w-80">
                 <span class="name">
-                    <?php echo $user_name['name'] ?>
+                    <?php echo htmlspecialchars($user_name['name']) ?>
                 </span>
             </div>
         </div>
