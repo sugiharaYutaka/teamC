@@ -62,7 +62,7 @@ class article extends DbData
 
   public function allarticle_good()
   {
-    $sql = "select * from article ORDER BY good DESC";
+    $sql = "select * from article inner join users on users.user_id = article.user_id ORDER BY good DESC";
     $stmt = $this->query($sql, []);
     $articles = $stmt->fetchAll();
     return $articles;

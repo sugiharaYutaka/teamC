@@ -67,7 +67,31 @@ class question extends DbData
   //全ての質問を取ってくる(回答数順)
   public function allquestion_ans()
   {
-    $sql = "SELECT q.*,ifnull(anscnt,0) FROM (SELECT * FROM question) as q LEFT JOIN (SELECT quetion_id, ifnull(count(answer_id),0) as anscnt FROM answers GROUP BY quetion_id) AS ans ON q.question_id = ans.quetion_id ORDER BY anscnt DESC;";
+    //$sql = "SELECT q.*,ifnull(anscnt,0) FROM (SELECT * FROM question) as q LEFT JOIN (SELECT quetion_id, ifnull(count(answer_id),0) as anscnt FROM answers GROUP BY quetion_id) AS ans ON q.question_id = ans.quetion_id ORDER BY anscnt DESC;";
+    $sql = "
+      SELECT 
+          question.question_id,
+          question.text,
+          question.created_at,
+          question.tag,
+          users.user_id,
+          users.name, 
+          users.icon_filename,
+          COUNT(answers.answer_id) AS answer_count
+      FROM 
+          question
+      INNER JOIN 
+          answers ON question.question_id = answers.quetion_id
+      INNER JOIN 
+          users ON question.user_id = users.user_id
+      GROUP BY 
+          question.question_id, 
+          question.text,
+          users.user_id,
+          users.name
+      ORDER BY 
+          answer_count DESC;
+    ";
     $stmt = $this->query($sql, []);
     $questions = $stmt->fetchAll();
     return $questions;
