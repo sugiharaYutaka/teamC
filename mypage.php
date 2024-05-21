@@ -86,7 +86,7 @@ include "header.php";
                 <div class="mailaddress">ユーザーID</div>
                 <p><?php echo ($login_user['user_id']) ?></p>
                 <div class="name">名前</div>
-                <p class="username"><?php echo ($login_user['name']) ?></p>
+                <p class="username"><?php echo htmlspecialchars(($login_user['name'])) ?></p>
                 <div class="mailaddress">メールアドレス</div>
                 <p><?php echo ($login_user['email']) ?></p>
                 <div class="mailaddress">現在のポイント</div>
