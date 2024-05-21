@@ -44,7 +44,7 @@ array_pop($section_titles);
                 <div class="w-80">
                     <span class="title">
                         <?php
-                        echo $article_data['name'];
+                        echo htmlspecialchars($article_data['name']);
                         ?>
                     </span>
                 </div>
