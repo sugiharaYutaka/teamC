@@ -16,6 +16,14 @@ unset($_SESSION['login_err']);
 
 $login_user = $_SESSION['login_user'];
 //var_dump($userData['icon_filename']);
+
+require_once __DIR__ . '/class/question.php';
+$question = new question();
+$questions = $question->allquestion();
+
+require_once __DIR__ . '/class/article.php';
+$article = new article();
+$articles = $article->allarticle();
 ?>
 
 <!DOCTYPE html>
@@ -89,8 +97,28 @@ include "header.php";
             <div class="password">パスワード変更</div>
             <a href="password_change_page.php" class="center"><input class="password-change" type="button"
                     value="パスワードを変更"></a>
-            <div class="question">自分の質問</div>
-            <div class="question">自分の記事</div>
+            <div class="postedItem">自分の質問</div>
+                <?php 
+                foreach ($questions as $ques) {
+                    if ($ques['user_id'] == $login_user['user_id']){
+                        
+                        echo '<div class="postedContent">
+                            <a href="myquestion.php?question_id='. $ques['question_id'].'">'. mb_strimwidth($ques['text'], 0, 70, '...', 'UTF-8').'</a><br>
+                        </div>';
+                    }
+                }
+                ?>
+            <div class="postedItem">自分の記事</div>
+            <?php 
+                foreach ($articles as $art) {
+                    if ($art['user_id'] == $login_user['user_id']){
+                        
+                        echo '<div class="postedContent">
+                            <a href="article_detail.php?article_id='. $art['article_id'].'">'. mb_strimwidth($art['article_title'], 0, 70, '...', 'UTF-8').'</a><br>
+                        </div>';
+                    }
+                }
+                ?>
         </div>
     </div>
     </div>
