@@ -37,6 +37,7 @@ include "header.php";
     <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <link rel="stylesheet" href="css/mypage.css">
     <link rel="stylesheet" href="css/header.css">
+    <link href="https://use.fontawesome.com/releases/v6.5.0/css/all.css" rel="stylesheet">
     <title>mypage</title>
 </head>
 <script type="text/javascript">
@@ -103,19 +104,34 @@ include "header.php";
                     if ($ques['user_id'] == $login_user['user_id']){
                         
                         echo '<div class="postedContent">
-                            <a href="myquestion.php?question_id='. $ques['question_id'].'">'. mb_strimwidth($ques['text'], 0, 70, '...', 'UTF-8').'</a><br>
+                            <div class="wrap">
+                                <a href="myquestion.php?question_id='. $ques['question_id'].'">'. mb_strimwidth($ques['text'], 0, 70, '...', 'UTF-8').'</a>
+                                <form action="class/delete_posted_material.php" method="post">
+                                    <button type="submit" class="deleteBtn"><i class="fa-solid fa-trash-can fa-lg"></i></button>
+                                    <input type="hidden" name="id" value="'. $ques['question_id'].'">
+                                    <input type="hidden" name="type" value="question">
+                                </form>
+                            </div>
                         </div>';
                     }
                 }
                 ?>
+                
             <div class="postedItem">自分の記事</div>
             <?php 
                 foreach ($articles as $art) {
                     if ($art['user_id'] == $login_user['user_id']){
                         
                         echo '<div class="postedContent">
-                            <a href="article_detail.php?article_id='. $art['article_id'].'">'. mb_strimwidth($art['article_title'], 0, 70, '...', 'UTF-8').'</a><br>
-                        </div>';
+                            <div class="wrap">
+                                <a href="article_detail.php?article_id='. $art['article_id'].'">'. mb_strimwidth($art['article_title'], 0, 70, '...', 'UTF-8').'</a>
+                                <form action="class/delete_posted_material.php" method="post">
+                                    <button type="submit" class="deleteBtn"><i class="fa-solid fa-trash-can fa-lg"></i></button>
+                                    <input type="hidden" name="id" value="'. $art['article_id'].'">
+                                    <input type="hidden" name="type" value="article">
+                                </form>
+                            </div>
+                        </div>';                        
                     }
                 }
                 ?>
