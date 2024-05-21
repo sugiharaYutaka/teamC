@@ -218,6 +218,24 @@ input[type=submit]:hover {
     padding-bottom: 2px;
 }
 
+.postedContent .wrap{
+    display: flex;
+}
+
+.postedContent a{
+    width: 80%;
+}
+
+.postedContent form{
+    width: 20%;
+}
+
+.deleteBtn{
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
 .username {
     font-size: 20px;
     margin: 5px;
