@@ -11,12 +11,12 @@ $user_name = $userLogic->getUserById($question['user_id']);
     <div class="row">
         <div class="user-data">
             <div class="w-20">
-                <img src="img/<?php echo htmlspecialchars($user_name['icon_filename']) ?>" class="user-icon"
+                <img src="img/<?php echo $user_name['icon_filename'] ?>" class="user-icon"
                     onError="this.onerror=null;this.src='../teamC/img/user_icon.png'">
             </div>
             <div class="w-80">
                 <span class="name">
-                    <?php echo $user_name['name'] ?>
+                    <?php echo htmlspecialchars($user_name['name']) ?>
                 </span>
             </div>
         </div>
