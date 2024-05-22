@@ -65,7 +65,7 @@ array_pop($section_titles);
                     </span>
                 </div>
                 <div class="tag-container">
-                
+
                     <?php
                     foreach ($tagList as $tag) {
                         echo '
@@ -85,8 +85,8 @@ array_pop($section_titles);
                         ?>
                     </span>
                     <?php
-                    if($article_data['user_id'] == $user_id)
-                    echo '<br><a href="article_update.php?article_id=',$article_id,'"><i class="fas fa-pen">編集</i></a>';
+                    if ($article_data['user_id'] == $user_id)
+                        echo '<br><a href="article_update.php?article_id=', $article_id, '"><i class="fas fa-pen">編集</i></a>';
                     ?>
                 </div>
             </div>
@@ -158,7 +158,7 @@ array_pop($section_titles);
                             <?php
                             if ($comment['review']) {
                                 echo '
-                                <div class="review">
+                                <div class="review-mini">
                                     <div class="stars-mini">
                                         <span class="stars-comment">
                                             ';
