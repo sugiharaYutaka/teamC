@@ -65,7 +65,7 @@ include "header.php";
                         
                         echo '<div class="postedContent">
                             <div class="wrap">
-                                <a href="answer.php?question_id='. $ques['question_id'].'">'. mb_strimwidth($ques['text'], 0, 70, '...', 'UTF-8').'</a>
+                                <a href="answer.php?question_id='. $ques['question_id'].'">'. htmlspecialchars(mb_strimwidth($ques['text'], 0, 70, '...', 'UTF-8')).'</a>
                                 <form action="class/delete_posted_material.php" method="post">
                                     <button type="submit" class="deleteBtn"><i class="fa-solid fa-trash-can fa-lg"></i></button>
                                     <input type="hidden" name="id" value="'. $ques['question_id'].'">
@@ -84,7 +84,7 @@ include "header.php";
                         
                         echo '<div class="postedContent">
                             <div class="wrap">
-                                <a href="article_detail.php?article_id='. $art['article_id'].'">'. mb_strimwidth($art['article_title'], 0, 70, '...', 'UTF-8').'</a>
+                                <a href="article_detail.php?article_id='. $art['article_id'].'">'. htmlspecialchars(mb_strimwidth($art['article_title'], 0, 70, '...', 'UTF-8')).'</a>
                                 <form action="class/delete_posted_material.php" method="post">
                                     <button type="submit" class="deleteBtn"><i class="fa-solid fa-trash-can fa-lg"></i></button>
                                     <input type="hidden" name="id" value="'. $art['article_id'].'">

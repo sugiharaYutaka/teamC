@@ -105,14 +105,14 @@ include "header.php";
                         
                         echo '<div class="postedContent">
                             <div class="wrap">
-                                <a href="myquestion.php?question_id='. $ques['question_id'].'">'. mb_strimwidth($ques['text'], 0, 70, '...', 'UTF-8').'</a>
+                                <a href="myquestion.php?question_id='. $ques['question_id'].'">'.htmlspecialchars(mb_strimwidth($ques['text'], 0, 70, '...', 'UTF-8')).'</a>
                                 <form action="class/delete_posted_material.php" method="post">
                                     <button type="submit" class="deleteBtn"><i class="fa-solid fa-trash-can fa-lg"></i></button>
-                                    <input type="hidden" name="id" value="'. $ques['question_id'].'">
+                                    <input type="hidden" name="id" value="'.$ques['question_id'].'">
                                     <input type="hidden" name="type" value="question">
                                 </form>
                             </div>
-                        </div>';
+                        </div>' ;
                     }
                 }
                 ?>
@@ -121,13 +121,11 @@ include "header.php";
             <?php 
                 foreach ($articles as $art) {
                     if ($art['user_id'] == $login_user['user_id']){
-                        
-                        echo '<div class="postedContent">
-                            <div class="wrap">
-                                <a href="article_detail.php?article_id='. $art['article_id'].'">'. mb_strimwidth($art['article_title'], 0, 70, '...', 'UTF-8').'</a>
+                         echo '<div class="postedContent">
+                            <div class="wrap"><a href="article_detail.php?article_id='. $art['article_id'].'">'. htmlspecialchars(mb_strimwidth($art['article_title'], 0, 70, '...', 'UTF-8')).'</a>
                                 <form action="class/delete_posted_material.php" method="post">
                                     <button type="submit" class="deleteBtn"><i class="fa-solid fa-trash-can fa-lg"></i></button>
-                                    <input type="hidden" name="id" value="'. $art['article_id'].'">
+                                    <input type="hidden" name="id" value="'.$art['article_id'].'">
                                     <input type="hidden" name="type" value="article">
                                 </form>
                             </div>
