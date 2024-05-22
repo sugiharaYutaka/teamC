@@ -37,7 +37,7 @@ if (empty($_GET['search'])) {
     <input type="search" class="input" name="search" placeholder="キーワードを入力">
     <button type="submit" class="search-btn" name="submit"><i class="fa fa-search"></i></button>
 </form>
-<form action="../teamC/article.php" method="post" class="sort">
+<form action="article.php" method="post" class="sort">
     <select name="sort">
         <option value="create" <?php if ($sort == "create" || $sort == null) {
             echo "selected";
