@@ -41,11 +41,11 @@ if ($result) {
 ?>
 <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
 <link href="css/QandA.css" rel="stylesheet">
-<form action="../teamC/QandA.php" method="get" class="search margin-top">
+<form action="QandA.php" method="get" class="search margin-top">
     <input type="search" class="input" name="search" placeholder="キーワードを入力">
     <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
 </form>
-<form action="../teamC/QandA.php" method="post" class="sort">
+<form action="QandA.php" method="post" class="sort">
     <select name="sort">
         <option value="create" <?php if ($sort == "create" || $sort == null) {
             echo "selected";
@@ -95,7 +95,7 @@ if ($result) {
             <div class="w-20">
                 <div class="icon-wrap" alt="icon">
                     <a href="profile.php?user_id=', $ques['user_id'], '">
-                    <img src="img/', $ques['icon_filename'], '" class="user-icon" onError="this.onerror=null;this.src=\'../teamC/img/user_icon.png\'">
+                    <img src="img/', $ques['icon_filename'], '" class="user-icon" onError="this.onerror=null;this.src=\'img/user_icon.png\'">
                 </div>
             </div>
             <div class="w-80">
