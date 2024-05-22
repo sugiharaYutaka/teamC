@@ -33,7 +33,7 @@ if (empty($_GET['search'])) {
 <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
 <link href="https://use.fontawesome.com/releases/v6.5.0/css/all.css" rel="stylesheet">
 <link href="css/article.css" rel="stylesheet">
-<form action="../teamC/article.php" method="get" class="search margin-top">
+<form action="article.php" method="get" class="search margin-top">
     <input type="search" class="input" name="search" placeholder="キーワードを入力">
     <button type="submit" class="search-btn" name="submit"><i class="fa fa-search"></i></button>
 </form>
@@ -79,7 +79,7 @@ if (empty($_GET['search'])) {
             <div class="w-20">
                 <div class="icon-wrap" alt="icon">
                 <a href="profile.php?user_id=', $art['user_id'], '">
-                    <img src="img/', $art['icon_filename'], '" class="user-icon" onError="this.onerror=null;this.src=\'../teamC/img/user_icon.png\'">
+                    <img src="img/', $art['icon_filename'], '" class="user-icon" onError="this.onerror=null;this.src=\'img/user_icon.png\'">
                 </div>
             </div>
             <div class="w-80">

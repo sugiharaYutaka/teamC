@@ -54,7 +54,7 @@ array_pop($section_titles);
                 <div class="w-20">
                     <div class="icon-wrap" alt="icon">
                         <img src="img/<?php echo $article_data['icon_filename'] ?>" class="user-icon"
-                            onError="this.onerror=null;this.src='../teamC/img/user_icon.png'">
+                            onError="this.onerror=null;this.src='img/user_icon.png'">
                     </div>
                 </div>
                 <div class="w-80">
@@ -145,7 +145,7 @@ array_pop($section_titles);
                     <div class="w-20">
                         <div class="icon-wrap" alt="icon">
                             <img src="img/<?php echo $comment['icon_filename'] ?>" class="user-icon"
-                                onError="this.onerror=null;this.src='../teamC/img/user_icon.png'">
+                                onError="this.onerror=null;this.src='img/user_icon.png'">
                         </div>
                         <div class="name-wrap">
                             <span class="user-name">
