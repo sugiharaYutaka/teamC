@@ -13,8 +13,14 @@ $result = UserLogic::getUserById($id);
 $userData = $result;
 //var_dump($userData)
 
-?>
+require_once __DIR__ . '/class/question.php';
+$question = new question();
+$questions = $question->allquestion();
 
+require_once __DIR__ . '/class/article.php';
+$article = new article();
+$articles = $article->allarticle();
+?>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -51,8 +57,44 @@ include "header.php";
             </div>
         </div>
             <div class="main-block-wrapper2">
-                <div class="question"><?php echo htmlspecialchars(($userData['name'])) ?>さんの質問</div>
-                <div class="question"><?php echo htmlspecialchars(($userData['name'])) ?>さんの記事</div>
+
+                <div class="postedItem"><?php echo htmlspecialchars(($userData['name'])) ?>さんの質問</div>
+                <?php 
+                foreach ($questions as $ques) {
+                    if ($ques['user_id'] == $userData['user_id']){
+                        
+                        echo '<div class="postedContent">
+                            <div class="wrap">
+                                <a href="myquestion.php?question_id='. $ques['question_id'].'">'. mb_strimwidth($ques['text'], 0, 70, '...', 'UTF-8').'</a>
+                                <form action="class/delete_posted_material.php" method="post">
+                                    <button type="submit" class="deleteBtn"><i class="fa-solid fa-trash-can fa-lg"></i></button>
+                                    <input type="hidden" name="id" value="'. $ques['question_id'].'">
+                                    <input type="hidden" name="type" value="question">
+                                </form>
+                            </div>
+                        </div>';
+                    }
+                }
+                ?>
+                
+            <div class="postedItem"><?php echo htmlspecialchars(($userData['name'])) ?>さんの記事</div>
+            <?php 
+                foreach ($articles as $art) {
+                    if ($art['user_id'] == $userData['user_id']){
+                        
+                        echo '<div class="postedContent">
+                            <div class="wrap">
+                                <a href="article_detail.php?article_id='. $art['article_id'].'">'. mb_strimwidth($art['article_title'], 0, 70, '...', 'UTF-8').'</a>
+                                <form action="class/delete_posted_material.php" method="post">
+                                    <button type="submit" class="deleteBtn"><i class="fa-solid fa-trash-can fa-lg"></i></button>
+                                    <input type="hidden" name="id" value="'. $art['article_id'].'">
+                                    <input type="hidden" name="type" value="article">
+                                </form>
+                            </div>
+                        </div>';                        
+                    }
+                }
+                ?>
             </div>
     </div>
 </body>
