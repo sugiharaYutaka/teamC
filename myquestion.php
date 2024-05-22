@@ -36,7 +36,7 @@ $user_name = $userLogic->getUserById($question['user_id']);
         <div class="row-answer">
             <div class="w-20">
                 <div class="icon-wrap" alt="icon">
-                    <img src="img/' . $answers['icon_filename'] . '" class="user-icon" onError="this.onerror=null;this.src=\'img/user_icon.png\'">
+                    <img src="img/' . $answer['icon_filename'] . '" class="user-icon" onError="this.onerror=null;this.src=\'img/user_icon.png\'">
                 </div>
                 <div class="name-wrap">
                     <span class="user-name">
