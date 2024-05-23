@@ -20,7 +20,7 @@ $goodarticle = new goodarticle();
 $goodflag = $goodarticle->goodarticles($login_user['user_id'], $articleid);
 
 
-if ($goodflag['good'] == 0) {
+if ($goodflag['good'] == 1) {
     $good = $good - 1;
     $goodflag = 1;
     $goodarticle->goodupdate($goodflag, $login_user['user_id'], $articleid);
