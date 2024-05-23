@@ -22,11 +22,11 @@ $goodflag = $goodarticle->goodarticles($login_user['user_id'], $articleid);
 
 if ($goodflag['good'] == 1) {
     $good = $good - 1;
-    $goodflag = 1;
+    $goodflag = 0;
     $goodarticle->goodupdate($goodflag, $login_user['user_id'], $articleid);
 } else {
     $good = $good + 1;
-    $goodflag = 0;
+    $goodflag = 1;
     $goodarticle->goodupdate($goodflag, $login_user['user_id'], $articleid);
 }
 require_once __DIR__ . '/class/article.php';
