@@ -2,6 +2,7 @@
 $titles = [];
 $main_texts = [];
 $article_id = $_GET['article_id'];
+$tag = $_POST['tag'];
 foreach ($_POST as $key => $value) {
     if (preg_match('/^title[0-9]{1,2}$/', $key)) {
         array_push($titles, $_POST[$key]);
@@ -44,7 +45,7 @@ $Article = new article();
 if ($user_id == null) {
     header("Location:../warning.php");
 } else {
-    $Article->updatearticle($user_id, $article_title, $parsed_title, $parsed_main_text, $tag,$article_id);
+    $Article->updatearticle($user_id, $article_title, $parsed_title, $parsed_main_text, $tag, $article_id);
     header("Location:../home.php");
 }
 

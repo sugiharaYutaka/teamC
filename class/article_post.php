@@ -1,7 +1,7 @@
 <?php
 $titles = [];
 $main_texts = [];
-
+$tag = $_POST['tag'];
 foreach ($_POST as $key => $value) {
     if (preg_match('/^title[0-9]{1,2}$/', $key)) {
         array_push($titles, $_POST[$key]);
